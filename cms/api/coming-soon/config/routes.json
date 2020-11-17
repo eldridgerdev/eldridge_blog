@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/coming-soon",
+      "handler": "coming-soon.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/coming-soon",
+      "handler": "coming-soon.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/coming-soon",
+      "handler": "coming-soon.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

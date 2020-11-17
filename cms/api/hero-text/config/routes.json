@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hero-text",
+      "handler": "hero-text.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hero-text",
+      "handler": "hero-text.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hero-text",
+      "handler": "hero-text.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
