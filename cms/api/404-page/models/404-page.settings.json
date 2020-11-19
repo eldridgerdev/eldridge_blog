@@ -11,7 +11,7 @@
   },
   "attributes": {
     "Text": {
-      "type": "string"
+      "type": "richtext"
     },
     "Image": {
       "model": "file",

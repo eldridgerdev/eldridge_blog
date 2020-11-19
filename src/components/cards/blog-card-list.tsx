@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
 
@@ -37,17 +37,26 @@ const formatDate = (dateString: string) => {
 }
 
 const BlogList: React.FC<BlogListProps> = ({ data }) => {
+    const mql = window.matchMedia('(max-width: 1024px)')
+    const [isMobileView, setIsMobileView] = useState(!!mql.matches);
+
+    // @TODO: Memory leak, clean up listener
+    mql.addEventListener('change', (e) => {
+        setIsMobileView(!!e.matches);
+    });
+
     return (
         <Container>
             {data.map((post, i) => {
                 const { id, published_at, Title: title, Description: desc, image } = post.node
                 return <BlogCard
-                    id={id}
+                    blogId={id}
                     date={formatDate(published_at)}
                     title={title}
-                    desc={desc}
-                    img={image?.childImageSharp.fluid}
+                    description={desc}
+                    image={image?.childImageSharp.fluid}
                     key={i}
+                    height={isMobileView ? 'auto' : '250px'}
                 />
             })}
         </Container>

@@ -3,8 +3,6 @@ import styled, { StyledFunction } from 'styled-components'
 import Image from 'gatsby-image'
 import BgImage from 'gatsby-background-image';
 
-// @TODO: gatsby-background-image looks better than whatever this is.
-
 interface BgImageProps {
     fluid?: {
         [key: string]: any
@@ -49,9 +47,24 @@ const FakeBgImage = styled(BgImage)<FakeBgImageStyledProps>`
     background-size: cover;
 
     ${(props: FakeBgImageStyledProps) => {
+      let propStyles = '';
       if (props.height) {
-        return `height: ${props.height};`;
+        propStyles = `
+          ${propStyles}
+          height: ${props.height};
+        `
       }
+
+      if (props.mobileHeight) {
+        propStyles = `
+          ${propStyles}
+          @media screen and (max-width: 600px) {
+            height: ${props.mobileHeight};
+          }
+        `
+      }
+
+      return propStyles
     }}
     // z-index: -1;
 
@@ -60,14 +73,6 @@ const FakeBgImage = styled(BgImage)<FakeBgImageStyledProps>`
       //   object-position: 0% 0% !important;
       //   font-family: "object-fit: cover !important; object-position: 0% 0% !important;";
       // }
-    
-      ${(props: FakeBgImageStyledProps) => {
-        if (props.mobileHeight) {
-          return `@media screen and (max-width: 600px) {
-              height: ${props.mobileHeight};
-          }`
-        }
-      }
     }
 `
 
@@ -86,16 +91,18 @@ const BackgroundImage = ({
   children = null,
   className = ''
 }: BgImageProps) => (
-  <Parent>
-    <FakeBgImage
-      Tag='section'
-      fluid={fluid}
-      // title={title}
-      height={height}
-      mobileHeight={mobileHeight}
-    />
-    <Content className={className}>{children}</Content>
-  </Parent>
+  // <Parent>
+    <>
+      <FakeBgImage
+        Tag='section'
+        fluid={fluid}
+        // title={title}
+        height={height}
+        mobileHeight={mobileHeight}
+      />
+      <Content className={className}>{children}</Content>
+    </>
+  // </Parent>
 );
 
 export default BackgroundImage;
