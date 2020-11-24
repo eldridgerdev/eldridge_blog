@@ -6,32 +6,27 @@ import Image from 'gatsby-image'
 import theme from '../../utils/theme'
 import BgImage from '../bgImage'
 import HeroGradient from './hero-gradient'
+import tw from 'twin.macro'
 
-const height = 50
+const height = 45
+const mobileHeight = 30
 
 const HeroContainer = styled.div`
     height: ${height}vh;
+    @media screen and (max-width: 600px) {
+        height: ${mobileHeight}vh;
+    }
     position: relative;
     border-bottom: ${theme.colors.main};
     border-bottom-width: thick;
     overflow: hidden;
     border-style: solid;
+    // ${tw`h-48 sm:h-48 md:h-64`}
 `
 
 interface HeroImageStyledProps {
     url: string
 }
-
-const HeroImage = styled.div<HeroImageStyledProps>`
-    background-image: url(${({ url }) => url});
-    background-position-x: center;
-    background-position-y: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    height: ${height}vh;
-    position: relative;
-`
 
 const HeroText = styled.div`
     text-align: center;
@@ -39,7 +34,11 @@ const HeroText = styled.div`
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 75%;
     color: ${theme.colors.light};
+    ${tw`font-bold leading-tight
+        text-xl sm:text-xl md:text-2xl
+    `}
 `
 
 type HeroTextProps = {
@@ -49,11 +48,14 @@ type HeroTextProps = {
 }
 
 const HeroTextComponent = ({ text, img, title }: HeroTextProps ) => {
-    const TextComponent = () => (
-        <HeroText className='text-2xl font-bold'>
-            <h1>{text}</h1>
-        </HeroText>
-    )
+    const TextComponent = () => {
+        if (!text) return null;
+        return (
+            <HeroText className='text-2xl font-bold'>
+                <h1>{text}</h1>
+            </HeroText>
+        )
+    }
 
     if (img) {
         return (
@@ -64,7 +66,7 @@ const HeroTextComponent = ({ text, img, title }: HeroTextProps ) => {
                 title={title}
                 fluid={img}
                 height={`${height}vh`}
-                // mobileHeight='25vh'
+                mobileHeight={`${mobileHeight}vh`}
             >
                 <TextComponent />
             </BgImage>
@@ -80,7 +82,7 @@ const HeroTextComponent = ({ text, img, title }: HeroTextProps ) => {
 
 type HeroProps = {
     image?: any,
-    text?: string
+    text?: string | null
 }
 
 const Hero: React.FC<HeroProps> = ({ image, text }) => {
@@ -106,7 +108,7 @@ const Hero: React.FC<HeroProps> = ({ image, text }) => {
         <HeroContainer>
             {/* <HeroGradient /> */}
             <HeroTextComponent
-                text={text || data.strapiHeroText.text}
+                text={text || text === null ? '' : data.strapiHeroText.text}
                 img={heroImage}
                 title={data.strapiHeroText.strapiId}
                 />

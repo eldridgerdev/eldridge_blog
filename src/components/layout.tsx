@@ -17,7 +17,7 @@ interface LayoutProps {
   // title: string,
   // location: WindowLocation
   heroOverride?: any,
-  heroText?: string
+  heroText?: string | null
 }
 
 const MainContainer = styled.main`

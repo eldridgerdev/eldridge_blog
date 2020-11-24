@@ -13,7 +13,7 @@ const ListContainer = () => {
                         published_at
                         Title
                         Description
-                        image {
+                        Image {
                             childImageSharp {
                                 fluid {
                                     ...GatsbyImageSharpFluid

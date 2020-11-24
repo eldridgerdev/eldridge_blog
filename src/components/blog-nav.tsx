@@ -35,18 +35,18 @@ type DataType = {
 }
 
 const BlogNav: React.FC<BlogNavProps> = () => {
-    const data: DataType = useStaticQuery(graphql`
-        query AllCategories {
-            allStrapiCategory {
-                edges {
-                    node {
-                        strapiId
-                        text
-                    }
-                }
-            }
-        }
-    `)
+    // const data: DataType = useStaticQuery(graphql`
+    //     query AllCategories {
+    //         allStrapiCategory {
+    //             edges {
+    //                 node {
+    //                     strapiId
+    //                     text
+    //                 }
+    //             }
+    //         }
+    //     }
+    // `)
 
     return (
         <Nav>

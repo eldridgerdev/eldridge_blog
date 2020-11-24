@@ -12,26 +12,23 @@ const Container = styled.div`
     // height: 350px;
     height: 250px;
     ${tw`min-w-full
-    w-1/2 mb-4 px-2 flex-col`}
+    w-1/2 mb-4 px-2`}
 `
 
 const FlexContainer = styled(Link)`
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    flex-direction: row;
+    // flex-wrap: wrap;
+    // align-items: flex-start;
     padding: 0px;
-    height: 100%;
-    overflow: hidden;
+    // height: 100%;
+    // overflow: hidden;
+    // ${tw`max-w-md`}
     
     background: white;// ${theme.colors.trinary};
     color: black;
     border: rgba(0,0,0,0.3);
-    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    // border-radius: 10px;
     border-radius: 0.25rem;
-    // box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
-    // box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 
     box-shadow: 15px 15px 20px 0px rgba(0,0,0,0.3);
     transition: .4s;
@@ -47,9 +44,7 @@ const DefaultImage = styled.div`
     // height: 250px;
 `
 
-const DisplayImageContainer = styled.div.attrs(props => ({
-    className: props.className,
-}))`
+const DisplayImageContainer = styled.div`
     display: flex;
     width: 40%;
     overflow: hidden;
@@ -61,14 +56,14 @@ type DisplayImageProps = {
 }
 // @TODO: Responsiveify
 const DisplayImage = styled(({ image, className }: DisplayImageProps) => {
-    if (image) {
+    // if (image) {
         return <Image
             fluid={image}
             className={className}
             imgStyle={{
                 objectPosition: 'left center',
             }}/>
-    }
+    // }
 
     return <DefaultImage className={`${className} bg-gray-500`} />
 })`
@@ -82,7 +77,8 @@ const DisplayImage = styled(({ image, className }: DisplayImageProps) => {
 
 const lipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mauris urna, lobortis vitae nisi et, fermentum vehicula ante. Maecenas odio tellus, rutrum mollis pretium eu, dictum euismod risus. Cras vel bibendum turpis. Nam accumsan nisl leo, id egestas eros consequat eu. Quisque eget massa vel ligula imperdiet congue. Interdum et malesuada fames ac ante ipsum primis in faucibus. CONSIDER 250-300 CHAR LIMIT'
 
-type LatestBlogProps = {
+// @TODO: same as LatestBlogCard
+export type LatestBlogProps = {
     image?: any,
     title: string,
     description: string,

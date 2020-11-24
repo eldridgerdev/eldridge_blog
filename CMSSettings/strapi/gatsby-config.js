@@ -10,7 +10,10 @@ const plugins = [
           ],
           singleTypes: [
             'hero-text',
-            'logo'
+            'logo',
+            '404-page',
+            'about-page',
+            'index-page'
           ],
           queryLimit: 1000,
         },
