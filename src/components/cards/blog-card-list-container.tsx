@@ -11,9 +11,10 @@ const ListContainer = () => {
                     node {
                         id
                         published_at
+                        Hide
                         Title
                         Description
-                        Image {
+                        image {
                             childImageSharp {
                                 fluid {
                                     ...GatsbyImageSharpFluid
@@ -26,7 +27,7 @@ const ListContainer = () => {
         }
     `)
 
-    const posts = data.allStrapiBlogPost.edges
+    const posts = data.allStrapiBlogPost.edges.filter((edge: any) => !edge.node.Hide)
 
     return <BlogList data={posts} />
 }

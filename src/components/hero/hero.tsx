@@ -44,7 +44,7 @@ const HeroText = styled.div`
 type HeroTextProps = {
     text: string,
     img: any,
-    title: string
+    title?: string
 }
 
 const HeroTextComponent = ({ text, img, title }: HeroTextProps ) => {
@@ -63,7 +63,7 @@ const HeroTextComponent = ({ text, img, title }: HeroTextProps ) => {
             //     <TextComponent />
             // </HeroImage>
             <BgImage
-                title={title}
+                title={title || 'Hero Image'}
                 fluid={img}
                 height={`${height}vh`}
                 mobileHeight={`${mobileHeight}vh`}
@@ -86,31 +86,31 @@ type HeroProps = {
 }
 
 const Hero: React.FC<HeroProps> = ({ image, text }) => {
-    const data = useStaticQuery(graphql`
-        query GetHero {
-            strapiHeroText {
-                strapiId
-                text
-                image {
-                    childImageSharp {
-                      fluid {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                }
-            }
-        }
-    `)
+    // const data = useStaticQuery(graphql`
+    //     query GetHero {
+    //         strapiHeroText {
+    //             strapiId
+    //             text
+    //             image {
+    //                 childImageSharp {
+    //                   fluid {
+    //                     ...GatsbyImageSharpFluid
+    //                   }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // `)
 
-    const heroImage= image || data.strapiHeroText.image?.childImageSharp?.fluid
+    // const heroImage= image || data.strapiHeroText.image?.childImageSharp?.fluid
 
     return (
         <HeroContainer>
             {/* <HeroGradient /> */}
             <HeroTextComponent
-                text={text || text === null ? '' : data.strapiHeroText.text}
-                img={heroImage}
-                title={data.strapiHeroText.strapiId}
+                text={text || ''}
+                img={image}
+                // title={data.strapiHeroText.strapiId}
                 />
         </HeroContainer>
     )
