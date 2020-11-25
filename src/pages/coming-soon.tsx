@@ -11,19 +11,35 @@ import theme from '../utils/theme'
 
 interface NotFoundPageProps extends PageProps {
   data: {
-    site: {
-      siteMetadata: {
-        title: string
+    strapiComingSoonPage: {
+      Page: {
+        Content: string,
+        Page: {
+          SiteTitle: string,
+          HeroText: string,
+          HeroImage: any
+        }
       }
     }
   }
 }
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
+  query ComingSoonPage {
+    strapiComingSoon {
+      Page {
+        Content
+        Page {
+          SiteTitle
+          HeroText
+          HeroImage {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -43,13 +59,13 @@ const HomeText = styled.span`
 `
 
 const NotFoundPage = ({ data, location }: NotFoundPageProps) => {
-  const siteTitle = data.site.siteMetadata.title
+  const pageData = data.strapiComingSoonPage.Page
 
   return (
-    <Layout /*location={location} title={siteTitle} */>
-      <SEO title="404: Not Found" />
+    <Layout heroText={pageData.Page.HeroText} heroOverride={pageData.Page.HeroImage?.childImageSharp.fluid}>
+      <SEO title={pageData.Page.SiteTitle} />
       <h1>Coming Soon</h1>
-      <p>This page does not exist yet, check back later</p>
+      <p>{ pageData.Content || "This page does not exist yet, check back later"}</p>
       <HomeButton to='/'>
         <HomeText><FontAwesomeIcon icon={faHome} style={{color: theme.colors.main}} /></HomeText>
       </HomeButton>

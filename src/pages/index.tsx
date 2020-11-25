@@ -14,20 +14,39 @@ import styled from "styled-components"
 import theme from "../utils/theme"
 
 type DataType = {
-  allStrapiBlogPost: {
-    edges: [{
-      node: {
-        strapiId: string,
-        id: string,
-        Title: string,
-        Description: string,
-        image?: any
-      }
-    }]
+  strapiIndexPage: {
+    Page: {
+      SiteTitle: string,
+      HeroText: string,
+      HeroImage: any
+    }
   }
 }
 
-const BlogIndex: React.FC = ({ location }: any) => {
+export const pageQuery = graphql`
+  query IndexPage {
+    strapiIndexPage {
+      Page {
+        SiteTitle
+        HeroText
+        HeroImage {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+type IndexProps = {
+  data: DataType,
+  location: any
+}
+
+const BlogIndex: React.FC<IndexProps> = ({ data, location }) => {
   // @TODO responsive width
   const LatestContainer = styled.div`
     display: flex;
@@ -70,26 +89,18 @@ const BlogIndex: React.FC = ({ location }: any) => {
     // </IconContainer>
   )
 
+  const pageData = data.strapiIndexPage.Page
+  const image = pageData?.HeroImage.childImageSharp.fluid
+
   return (
     <>
-      <Layout /* location={location} /* title='title'*/>
+      <Layout heroOverride={image} heroText={pageData.HeroText} >
+        <SEO title={pageData.SiteTitle} />
         <LatestContainer>
           <LatestText>Latest Adventure</LatestText>
           <LatestBlog />
           <MorePosts to='/blog-post-list'>More Posts<MoreIcon /></MorePosts>
         </LatestContainer>
-        {/* @TODO: card list */}
-        {/* <div className='flex -mx-2 flex-wrap'>
-          {data.allStrapiBlogPost.edges.map((post) => (
-            <BlogCard
-              title={post.node.Title}
-              description={post.node.Description}
-              image={post.node.image?.childImageSharp.fluid}
-              key={post.node.strapiId}
-              id={post.node.id}
-            />
-          ))}
-        </div> */}
       </Layout>
     </>
   )

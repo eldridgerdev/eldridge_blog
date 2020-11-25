@@ -11,22 +11,39 @@ import theme from '../utils/theme'
 
 interface NotFoundPageProps extends PageProps {
   data: {
-    site: {
-      siteMetadata: {
-        title: string
+    strapiFourOFourPage: {
+      Page: {
+        Content: string,
+        Page: {
+          SiteTitle: string,
+          HeroText: string,
+          HeroImage: any
+        }
       }
     }
   }
 }
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
+
+query FourOFourPage {
+  strapiFourOFourPage {
+    Page {
+      Page {
+        SiteTitle
+        HeroText
+        HeroImage {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
+      Content
     }
   }
+}
 `
 
 const HomeButton = styled(Link)`
@@ -43,13 +60,14 @@ const HomeText = styled.span`
 `
 
 const NotFoundPage = ({ data, location }: NotFoundPageProps) => {
-  const siteTitle = data.site.siteMetadata.title
+  const pageData= data.strapiFourOFourPage.Page.Page
+  const { SiteTitle: title, HeroText: text, HeroImage: image } = pageData;
 
   return (
-    <Layout /*location={location} title={siteTitle} */>
-      <SEO title="404: Not Found" />
+    <Layout heroText={text} heroOverride={image?.childImageSharp.fluid}>
+      <SEO title={title} />
       <h1>Not Found</h1>
-      <p>This page does not exist.</p>
+      <p>{data.strapiFourOFourPage.Page.Content || 'This page does not exist.'}</p>
       <HomeButton to='/'>
         <HomeText><FontAwesomeIcon icon={faHome} style={{color: theme.colors.main}} /></HomeText>
       </HomeButton>

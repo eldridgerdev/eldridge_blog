@@ -15,6 +15,16 @@ const makeRequest = (graphql, request) => new Promise((resolve, reject) => {
   )
 })
 
+// exports.createSchemaCustomization = ({ actions }) => {
+//   const { createTypes } = actions
+//   const typeDefs = `
+//     type StrapiBlogPost implements Node {
+      
+//     }
+//   `
+//   createTypes(typeDefs)
+// }
+
 // Implement the Gatsby API “createPages”. This is called once the
 // data layer is bootstrapped to let plugins create pages from data
 exports.createPages = ({ actions, graphql }) => {

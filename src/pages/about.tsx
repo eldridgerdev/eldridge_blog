@@ -12,31 +12,24 @@ import BlogText from '../components/blog-post-text-section'
 
 interface AboutPageProps extends PageProps {
   data: {
-    site: {
-      siteMetadata: {
-        title: string
-      }
-    }
-
     strapiAboutPage: any
   }
 }
 
 export const pageQuery = graphql`
-  query getAboutData {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-
+  query getAboutPage {
     strapiAboutPage {
-      id
-      text
-      image {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+      Page {
+        Content
+        Page {
+          SiteTitle
+          HeroText
+          HeroImage {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
           }
         }
       }
@@ -45,13 +38,14 @@ export const pageQuery = graphql`
 `
 
 const AboutPage = ({ data, location }: AboutPageProps) => {
-//   const siteTitle = data.site.siteMetadata.title
-  const aboutData = data.strapiAboutPage;
-  const image = aboutData.image?.childImageSharp.fluid;
+  const aboutData = data.strapiAboutPage
+  const image = aboutData.Page.Page.HeroImage?.childImageSharp.fluid
+  const { SiteTitle: title, HeroText: text } = aboutData.Page.Page
+
   return (
-    <Layout heroOverride={image} heroText={null} /*location={location} title={siteTitle} */>
-      <SEO title="About Us" />
-      <BlogText text={aboutData.text} />
+    <Layout heroOverride={image} heroText={text || null} /*location={location} title={siteTitle} */>
+      <SEO title={title} />
+      <BlogText text={aboutData.Page.Content} />
       {/* <h1>About us</h1>
       <p>Blah</p> */}
     </Layout>

@@ -35,7 +35,7 @@ const LatestBlogContainer: React.FC<Props> = () => {
                         published_at
                         Title
                         Description
-                        Image {
+                        image {
                             childImageSharp {
                                 fixed (height: 250) {
                                     ...GatsbyImageSharpFixed

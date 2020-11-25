@@ -26,7 +26,7 @@ export const query = graphql`
       text,
       id,
       published_at,
-      Image {
+      image {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid

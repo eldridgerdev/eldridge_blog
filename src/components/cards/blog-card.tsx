@@ -45,6 +45,8 @@ type TextContainerProps = {
 
 const TextContainer = styled.div`
     ${(props: TextContainerProps) => props.height && `height: ${props.height};`}
+
+    ${tw`min-w-0 lg:min-w-1/3`}
     
     & > h1 {
         ${tw`text-base lg:text-xl`}
