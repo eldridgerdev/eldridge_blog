@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
+import { useMedia } from 'react-media'
 
 import BlogCard from './blog-card'
 
@@ -37,13 +38,7 @@ const formatDate = (dateString: string) => {
 }
 
 const BlogList: React.FC<BlogListProps> = ({ data }) => {
-    const mql = window.matchMedia('(max-width: 1024px)')
-    const [isMobileView, setIsMobileView] = useState(!!mql.matches);
-
-    // @TODO: Memory leak, clean up listener
-    mql.addEventListener('change', (e) => {
-        setIsMobileView(!!e.matches);
-    });
+    const isMobileView = useMedia({ query: "(max-width: 1024px)" })
 
     return (
         <Container>
