@@ -2,9 +2,9 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
-import Img from 'gatsby-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import Image from 'gatsby-image'
 
 import theme from '../../utils/theme';
 
@@ -133,13 +133,21 @@ const Header: React.FC<HeaderProps> = ({ title = "Eldridge Expedition" }) => {
         query GetLogo {
             strapiLogo {
                 id
-                strapiId
+                strapiId 
                 LogoImage {
-                    publicURL
+                    childImageSharp {
+                        fixed (height: 77) {
+                            ...GatsbyImageSharpFixed
+                        }
+                    }
                 }
             }
         }
     `)
+    
+                // LogoImage {
+                //     publicURL
+                // }
 
     const [navbarOpen, setNavbarOpen] = React.useState(false);
     
@@ -147,7 +155,8 @@ const Header: React.FC<HeaderProps> = ({ title = "Eldridge Expedition" }) => {
         <Nav>
             <LogoArea>
                 <Logo>
-                    <img src={data.strapiLogo.LogoImage.publicURL} />
+                    <Image fixed={data.strapiLogo.LogoImage.childImageSharp.fixed} />
+                    {/* <img src={data.strapiLogo.LogoImage.publicURL} /> */}
                 </Logo>
             </LogoArea>
 

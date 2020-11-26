@@ -12,7 +12,8 @@ const plugins = [
             'logo',
             'four-o-four-page',
             'about-page',
-            'index-page'
+            'index-page',
+            'blog-list-page'
           ],
           queryLimit: 1000,
         },

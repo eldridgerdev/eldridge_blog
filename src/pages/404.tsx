@@ -42,6 +42,13 @@ query FourOFourPage {
       }
       Content
     }
+    image {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
   }
 }
 `

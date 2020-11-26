@@ -59,7 +59,7 @@ const HomeText = styled.span`
 `
 
 const NotFoundPage = ({ data, location }: NotFoundPageProps) => {
-  const pageData = data.strapiComingSoonPage.Page
+  const pageData = data.strapiComingSoon.Page
 
   return (
     <Layout heroText={pageData.Page.HeroText} heroOverride={pageData.Page.HeroImage?.childImageSharp.fluid}>
