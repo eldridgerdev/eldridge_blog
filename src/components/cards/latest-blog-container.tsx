@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React, { useState } from 'react'
+import { useMedia } from 'react-media'
 
 import LatestBlogCard, { LatestBlogProps } from './latest-blog-card'
 import BlogCard, { BlogCardProps } from './blog-card'
@@ -53,14 +54,8 @@ const LatestBlogContainer: React.FC<Props> = () => {
 
     const post = data.allStrapiBlogPost.edges[0].node
     const image = post.image?.childImageSharp.fluid
-    
-    const mql = window.matchMedia('(max-width: 1024px)')
-    const [isMobileView, setIsMobileView] = useState(!!mql.matches);
 
-    // @TODO: Memory leak, clean up listener
-    mql.addEventListener('change', (e) => {
-        setIsMobileView(!!e.matches);
-    });
+    const isMobileView = useMedia({ query: "(max-width: 1024px)" })
 
     const GetCard = ({ ...props }: BlogCardProps) => {
         // @TODO: LatestBlogCard is currently broken
