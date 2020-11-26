@@ -55,6 +55,17 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `opensans\:400,600,700`,
+          `alegreya\:400,700`,
+          `ubuntu mono\:400,700,800`,
+        ],
+        display: 'swap',
+      },
+    },
     // {
     //   resolve: 'gatsby-transformer-cloudinary',
     //   options: {
