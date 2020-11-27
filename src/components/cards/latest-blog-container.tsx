@@ -79,7 +79,7 @@ const LatestBlogContainer: React.FC<Props> = () => {
             description={post.Description}
             date={formatDate(post.published_at)}
             makeLong={!isMobileView}
-            full={true}
+            full
         />
     )
 }
