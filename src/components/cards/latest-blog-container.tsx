@@ -7,7 +7,9 @@ import BlogCard, { BlogCardProps } from './blog-card'
 import styled from 'styled-components'
 import tw from 'twin.macro'
 
-type Props = {}
+type Props = {
+    featuredPost?: any
+}
 
 const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -26,34 +28,53 @@ const Container = styled.ul`
     ${tw`mt-4 container`}
 `
 
-const LatestBlogContainer: React.FC<Props> = () => {
+// @TODO Fix fragment
+// export const blogPostFragment = graphql`
+// fragment BlogPostFragment on StrapiBlogPost {
+//     id
+//     published_at
+//     Title
+//     Description
+//     image {
+//         childImageSharp {
+//             fixed (height:250) {
+//                 ...GatsbyImageSharpFixed
+//             }
+//             fluid {
+//                 ...GatsbyImageSharpFluid
+//             }
+//         }
+//     }
+// }`
+
+const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
     const data = useStaticQuery(graphql`
-        query LatestBlog {
-            allStrapiBlogPost(sort: {fields: published_at, order: DESC}, limit: 1) {
-                edges {
-                    node {
-                        id
-                        published_at
-                        Title
-                        Description
-                        image {
-                            childImageSharp {
-                                fixed (height: 250) {
-                                    ...GatsbyImageSharpFixed
-                                }
-                                fluid {
-                                    ...GatsbyImageSharpFluid
-                                }
+    query LatestBlog {
+        allStrapiBlogPost(sort: {fields: published_at, order: DESC}, limit: 1) {
+            edges {
+                node {
+                    id
+                    published_at
+                    Title
+                    Description
+                    image {
+                        childImageSharp {
+                            fixed (height:250) {
+                                ...GatsbyImageSharpFixed
+                            }
+                            fluid {
+                                ...GatsbyImageSharpFluid
                             }
                         }
                     }
                 }
             }
         }
+    }
     `)
 
-    const post = data.allStrapiBlogPost.edges[0].node
-    const image = post.image?.childImageSharp.fluid
+    const post = featuredPost || data.allStrapiBlogPost.edges[0].node
+    const image = post.image?.childImageSharp?.fluid
 
     const isMobileView = useMedia({ query: "(max-width: 1024px)" })
 

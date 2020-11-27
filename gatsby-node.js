@@ -55,3 +55,24 @@ exports.createPages = ({ actions, graphql }) => {
 
   return getArticles;
 }
+
+exports.sourceNodes =({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    interface BlogPost {
+      Title: String!
+      Description: String!
+    }
+
+    type StrapiBlogPost implements Node & BlogPost @infer {
+      Title: String!
+      Description: String!
+    }
+  
+    type StrapiFeaturedPost implements Node {
+      blog_post: StrapiBlogPost
+    }
+  `
+
+  createTypes(typeDefs)
+}

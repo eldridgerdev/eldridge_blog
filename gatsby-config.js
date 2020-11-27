@@ -83,6 +83,10 @@ module.exports = {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {}
+    },
     // {
     //   resolve: 'gatsby-background-image-es5',
     //   options: {
@@ -106,7 +110,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     'gatsby-plugin-fontawesome-css',
-    'gatsby-plugin-styled-components'
     // `gatsby-plugin-background-image`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
