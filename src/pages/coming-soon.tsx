@@ -11,7 +11,7 @@ import theme from '../utils/theme'
 
 interface NotFoundPageProps extends PageProps {
   data: {
-    strapiComingSoonPage: {
+    strapiComingSoon: {
       Page: {
         Content: string,
         Page: {

@@ -105,7 +105,8 @@ module.exports = {
     // },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
-    'gatsby-plugin-fontawesome-css'
+    'gatsby-plugin-fontawesome-css',
+    'gatsby-plugin-styled-components'
     // `gatsby-plugin-background-image`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
