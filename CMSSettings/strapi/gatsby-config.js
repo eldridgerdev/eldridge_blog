@@ -13,7 +13,8 @@ const plugins = [
             'four-o-four-page',
             'about-page',
             'index-page',
-            'blog-list-page'
+            'blog-list-page',
+            'featured-post'
           ],
           queryLimit: 1000,
         },

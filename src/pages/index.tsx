@@ -21,6 +21,7 @@ type DataType = {
       HeroImage: any
     }
   }
+  strapiFeaturedPost: any
 }
 
 export const pageQuery = graphql`
@@ -37,6 +38,25 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+
+    strapiFeaturedPost {
+        blog_post {
+            id
+            published_at
+            Title
+            Description
+            image {
+                childImageSharp {
+                    fixed (height:250) {
+                        ...GatsbyImageSharpFixed
+                    }
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+        }
     }
   }
 `
@@ -89,16 +109,19 @@ const BlogIndex: React.FC<IndexProps> = ({ data, location }) => {
     // </IconContainer>
   )
 
+  const featuredPost = data.strapiFeaturedPost.blog_post
   const pageData = data.strapiIndexPage.Page
-  const image = pageData?.HeroImage.childImageSharp.fluid
+  const image = pageData.HeroImage?.childImageSharp.fluid
 
   return (
     <>
       <Layout heroOverride={image} heroText={pageData.HeroText} >
         <SEO title={pageData.SiteTitle} />
         <LatestContainer>
-          <LatestText>Latest Adventure</LatestText>
-          <LatestBlog />
+          <LatestText>{
+            featuredPost ? 'Featured Post' : 'Latest Adventure'
+          }</LatestText>
+          <LatestBlog featuredPost={featuredPost} />
           <MorePosts to='/blog-post-list'>More Posts<MoreIcon /></MorePosts>
         </LatestContainer>
       </Layout>

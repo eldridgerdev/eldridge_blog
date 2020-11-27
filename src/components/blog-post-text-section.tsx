@@ -16,22 +16,22 @@ const Text = styled.div`
     font-family: 'Alegreya', serif;
     font-weight: 400;
 
-    ${tw`leading-tight text-base`}
+    ${tw`leading-tight text-xl md:text-2xl`}
 
     & > h2 {
-        ${tw`leading-loose text-2xl md:text-4xl`}
+        ${tw`leading-loose text-3xl md:text-4xl`}
     }
 
     & > h3 {
-        ${tw`leading-loose text-xl md:text-3xl`}
+        ${tw`leading-loose text-2xl md:text-3xl`}
     }
 
     & > h4 {
-        ${tw`leading-loose text-base md:text-2xl`}
+        ${tw`leading-loose text-xl md:text-2xl`}
     }
 
     & > h5 {
-        ${tw`leading-loose text-sm md:text-xl`}
+        ${tw`leading-loose text-xl md:text-xl`}
     }
 `
 
