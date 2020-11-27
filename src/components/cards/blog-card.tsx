@@ -90,47 +90,55 @@ const Date = styled.h2`
     font-weight: normal;
 `
 
+const CardLink = styled(Link)<{ makeLong: boolean }>`
+    display: flex;
+    ${({ makeLong }) => makeLong ? `
+        flex-direction: row;
+    `: `
+        flex-direction: column
+        ${tw`max-w-md`}
+    `}
+
+    & > img:hover {
+        .blog-image {
+            filter: contrast(100%);
+        }
+    }
+
+    &:hover {
+        transform: scale(1.05, 1.05);
+        box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.2), 
+            -5px -5px 30px 15px rgba(0,0,0,0.2);
+    }
+    transition: .4s;
+    border: 1px solid rgba(0,0,0,0.2);
+    margin: 0 auto;
+    ${tw`rounded overflow-hidden shadow-lg`}
+`
+// ${!makeLong && tw`max-w-md`}
+
+const ListItem = styled.li<{ full: boolean }>`
+    ${tw`w-1/2 mb-4 px-2 min-w-full`}
+    ${({ full }) => full && `
+        ${tw`sm:min-w-full md:min-w-0 lg:min-w-0 xl:min-w-0`}
+    `}
+`
+
+const Container = styled(({ children, full }) => (
+    <ListItem full={full}>
+        {children}
+    </ListItem>
+))`
+    display: flex;
+    padding: 1rem;
+`
+
 const BlogCard = ({
     title, description, image, blogId, date, height, makeLong=false, full=false
 }: BlogCardProps) => {
-    const ListItem = styled.li`
-        ${tw`w-1/2 mb-4 px-2 min-w-full`}
-        ${!full && tw`sm:min-w-full md:min-w-0 lg:min-w-0 xl:min-w-0`}
-    `
-    const Container = styled(({ children }) => (
-        <ListItem>
-            {children}
-        </ListItem>
-    ))`
-        display: flex;
-        padding: 1rem;
-    `
-
-    const CardLink = styled(Link)`
-        display: flex;
-        flex-direction: ${makeLong ? 'row' : 'column'};
-
-        & > img:hover {
-            .blog-image {
-                filter: contrast(100%);
-            }
-        }
-
-        &:hover {
-            transform: scale(1.05, 1.05);
-            box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.2), 
-                -5px -5px 30px 15px rgba(0,0,0,0.2);
-        }
-        transition: .4s;
-        border: 1px solid rgba(0,0,0,0.2);
-        margin: 0 auto;
-        ${tw`rounded overflow-hidden shadow-lg`}
-        ${!makeLong && tw`max-w-md`}
-    `
-    
     return (
-        <Container>
-            <CardLink to={`/${blogId}`}>
+        <Container full={full}>
+            <CardLink makeLong={makeLong} to={`/${blogId}`}>
                 {/* <div className='rounded overflow-hidden shadow-lg'> */}
                     <DisplayImage image={image} />
                     <TextContainer height={height}>
