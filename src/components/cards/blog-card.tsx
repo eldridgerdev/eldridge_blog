@@ -44,7 +44,7 @@ type TextContainerProps = {
 }
 
 const TextContainer = styled.div`
-    ${(props: TextContainerProps) => props.height && `height: ${props.height};`}
+    // ${(props: TextContainerProps) => props.height && `height: ${props.height};`}
 
     background-color: #FFFFFF;
     ${tw`min-w-0 lg:min-w-1/3`}
@@ -91,13 +91,15 @@ const Date = styled.h2`
     font-weight: normal;
 `
 
-const CardLink = styled(Link)<{ $makeLong: boolean }>`
+const CardLink = styled(Link)<{ $makeLong: boolean, $height?: string }>`
+    ${(props) => props.$height && `height: ${props.$height};`}
     display: flex;
     width: 100%;
     ${ ({ $makeLong }) => $makeLong ? `
         flex-direction: row;
     `: `
         flex-direction: column;
+        // height: 75vh;
     `}
 
     // ${({ $makeLong }) => !$makeLong && tw`max-w-md`}
@@ -138,12 +140,16 @@ const ListItem = styled.li<{ $full: boolean }>`
 const BlogCard = ({
     title, description, image, blogId, date, height, makeLong=false, full=false
 }: BlogCardProps) => {
+    if (!height) {
+        makeLong ? height='45vh' : height='70vh'
+    }
+
     return (
         <ListItem $full={full}>
-            <CardLink $makeLong={makeLong} to={`/${blogId}`}>
+            <CardLink $height={height} $makeLong={makeLong} to={`/${blogId}`}>
                 {/* <div className='rounded overflow-hidden shadow-lg'> */}
                     <DisplayImage image={image} />
-                    <TextContainer height={height}>
+                    <TextContainer>
                         <Title>{title}</Title>
                         <Date>{date}</Date>
                         <Line />

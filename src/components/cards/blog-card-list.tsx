@@ -52,7 +52,8 @@ const BlogList: React.FC<BlogListProps> = ({ data }) => {
                     description={desc}
                     image={image?.childImageSharp.fluid}
                     key={i}
-                    height={isMobileView ? 'auto' : '250px'}
+                    // height={'70vh'}
+                    // height={isMobileView ? 'auto' : '75vh'}
                     full={false}
                 />
             })}
