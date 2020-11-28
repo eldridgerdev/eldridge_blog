@@ -8,20 +8,38 @@ import BgImage from '../bgImage'
 import HeroGradient from './hero-gradient'
 import tw from 'twin.macro'
 
-const height = 45
+const height = 65
 const mobileHeight = 30
 
 const HeroContainer = styled.div`
-    height: ${height}vh;
+    ${tw`mt-2`}
+// background-color: #6d695c;
+// background:
+// linear-gradient(135deg, #708090 21px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px),
+// linear-gradient(225deg, #708090 21px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px)0 64px;
+// background-color:#708090;
+// background-size: 64px 128px;
+
+    // background-color: ${theme.colors.main};
+    // background-color: rgba(7,91,27,1);
+    // max-height: ${height}vh;
+    // height: ${height}vh;
+    
+    height: 75%;
+    max-height: 75%;
     @media screen and (max-width: 600px) {
         height: ${mobileHeight}vh;
     }
     position: relative;
-    border-bottom: ${theme.colors.main};
-    border-bottom-width: thick;
+    // border-bottom: ${theme.colors.main};
+    // border-bottom-width: thick;
     overflow: hidden;
-    border-style: solid;
+    // border-style: solid;
     // ${tw`h-48 sm:h-48 md:h-64`}
+
+    // display: flex;
+    // justify-content: center;
+    // align-items: center
 `
 
 interface HeroImageStyledProps {

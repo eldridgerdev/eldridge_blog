@@ -37,14 +37,22 @@ interface FakeBgImageStyledProps {
     mobileHeight?: string | null
 }
 
-const FakeBgImage = styled(BgImage)<FakeBgImageStyledProps>`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-position: center left;
-    background-repeat: repeat-y;
-    background-size: cover;
+const FakeBgImage = styled(Image)<FakeBgImageStyledProps>`
+    max-height: 100%;
+    // @media screen and (min-width: 500px) {
+    //   // width: 500px;
+    //   margin: auto;
+    // }
+    // position: absolute;
+    // margin: auto;
+    // height: 100%;
+    // width: 100%;
+    // background-position: top left;
+    // background-repeat: repeat-y;
+    // background-size: cover;
+    // background-attachment: fixed;
+    // background-position: center;
+    // background-repeat: no-repeat;
 
     ${(props: FakeBgImageStyledProps) => {
       let propStyles = '';
@@ -99,8 +107,15 @@ const BackgroundImage = ({
         // title={title}
         height={height}
         mobileHeight={mobileHeight}
+        imgStyle={{
+          left: 0,
+          right: 0,
+          margin: '0 auto',
+          width: 'auto'
+        }}
       />
-      <Content className={className}>{children}</Content>
+      {children && 
+        <Content className={className}>{children}</Content>}
     </>
   // </Parent>
 );
