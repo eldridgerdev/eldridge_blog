@@ -13,10 +13,14 @@ const Container = styled.div`
 
 const Text = styled.div`
     color: #000000;
-    font-family: 'Alegreya', serif;
+    font-family: 'raleway', serif;
     font-weight: 400;
 
-    ${tw`leading-tight text-xl md:text-2xl`}
+    ${tw`leading-tight text-base md:text-xl`}
+
+    & > h1 {
+        ${tw`leading-loose text-3xl md:text-4xl`}
+    }
 
     & > h2 {
         ${tw`leading-loose text-3xl md:text-4xl`}

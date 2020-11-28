@@ -36,6 +36,7 @@ exports.createPages = ({ actions, graphql }) => {
       edges {
         node {
           id
+          Slug
         }
       }
     }
@@ -44,7 +45,7 @@ exports.createPages = ({ actions, graphql }) => {
     // Create pages for each article
     result.data.allStrapiBlogPost.edges.forEach(({ node }) => {
       createPage({
-        path: `/${node.id}`,
+        path: `/${node.Slug || node.id}`,
         component: path.resolve(`src/templates/blog-post.tsx`),
         context: {
           id: node.id
