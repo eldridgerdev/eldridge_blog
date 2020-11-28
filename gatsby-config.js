@@ -61,7 +61,9 @@ module.exports = {
         fonts: [
           `opensans\:400,600,700`,
           `alegreya\:400,700`,
+          `raleway\:400,700`,
           `ubuntu mono\:400,700,800`,
+          `lato\:400,700`
         ],
         display: 'swap',
       },

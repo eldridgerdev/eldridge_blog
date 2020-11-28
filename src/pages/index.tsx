@@ -43,6 +43,7 @@ export const pageQuery = graphql`
     strapiFeaturedPost {
         blog_post {
             id
+            Slug
             published_at
             Title
             Description

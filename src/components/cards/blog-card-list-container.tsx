@@ -10,6 +10,7 @@ const ListContainer = () => {
                 edges {
                     node {
                         id
+                        Slug
                         published_at
                         Hide
                         Title

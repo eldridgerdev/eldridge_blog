@@ -54,6 +54,7 @@ const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
             edges {
                 node {
                     id
+                    Slug
                     published_at
                     Title
                     Description
@@ -94,7 +95,7 @@ const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
 
     return (
         <GetCard
-            blogId={post.id}
+            blogId={post.Slug || post.id}
             title={post.Title}
             image={image}
             description={post.Description}

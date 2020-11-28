@@ -2,7 +2,7 @@
 
 export default {
     colors: {
-        background: '#FFFFFF',
+        background: "rgba(0,0,0,0.05)",
         main: '#D96262',
         secondary: '#2A3E59',
         trinary: '#A6786D',
