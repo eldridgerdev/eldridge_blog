@@ -1,16 +1,11 @@
 import { createGlobalStyle } from "styled-components"
 import tw from "twin.macro"
 
-import "./tailwind.css"
-
-// @TODO https://medium.com/@sergeybulavyk/mastering-your-fonts-in-gatsby-fbdf2782e083
-const OpenSansUrl = 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap'
-const Alegreyaurl = 'https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700;800&display=swap'
+import theme from './utils/theme'
 
 export default createGlobalStyle`
-  @import url(${OpenSansUrl});
-  @import url(${Alegreyaurl});
   body {
+    background-color: ${theme.colors.background};
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 600;

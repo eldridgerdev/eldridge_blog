@@ -2,9 +2,9 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
-import Img from 'gatsby-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import Image from 'gatsby-image'
 
 import theme from '../../utils/theme';
 
@@ -29,7 +29,6 @@ const navHeaders = [
 ]
 
 const Nav = styled.header`
-    // background-color: ${theme.colors.main};
     background-color: ${theme.colors.light};
     
     display: grid;
@@ -37,20 +36,10 @@ const Nav = styled.header`
     border-bottom: ${theme.colors.main};
     border-bottom-width: thick;
     border-style: solid;
-
-    // ${tw`transition duration-500 ease-in-out`}
-    // min-height: 72px;
-    // transition: all 1s ease-in-out;
-    // height: 72px;
-    // ${tw`p-6`};
 `
 
 const LogoArea = styled.div`
-    // margin-right: auto;
     color: ${theme.colors.secondary};
-    // margin-top: auto;
-    // margin-bottom: auto;
-    // ${tw`mr-6`};
     height: 72px;
     overflow: hidden;
 `
@@ -88,7 +77,6 @@ const NavButtonContainer = styled(({ className, open, children }) => {
         </>
     )
 })`
-    // flex-direction: row;
     align-items: flex-start;
 `
 
@@ -103,7 +91,10 @@ const NavButton = styled.a`
     }
     margin-right:50px;
     align-self: center;
-    ${tw`font-semibold block text-lg`}
+    ${tw`
+        font-semibold block text-lg
+        mr-0 md:mr-10
+    `}
 `
 
 const TitleSpan = styled.span`
@@ -142,13 +133,21 @@ const Header: React.FC<HeaderProps> = ({ title = "Eldridge Expedition" }) => {
         query GetLogo {
             strapiLogo {
                 id
-                strapiId
+                strapiId 
                 LogoImage {
-                    publicURL
+                    childImageSharp {
+                        fixed (height: 77) {
+                            ...GatsbyImageSharpFixed
+                        }
+                    }
                 }
             }
         }
     `)
+    
+                // LogoImage {
+                //     publicURL
+                // }
 
     const [navbarOpen, setNavbarOpen] = React.useState(false);
     
@@ -156,7 +155,8 @@ const Header: React.FC<HeaderProps> = ({ title = "Eldridge Expedition" }) => {
         <Nav>
             <LogoArea>
                 <Logo>
-                    <img src={data.strapiLogo.LogoImage.publicURL} />
+                    <Image fixed={data.strapiLogo.LogoImage.childImageSharp.fixed} />
+                    {/* <img src={data.strapiLogo.LogoImage.publicURL} /> */}
                 </Logo>
             </LogoArea>
 

@@ -3,8 +3,6 @@ import styled, { StyledFunction } from 'styled-components'
 import Image from 'gatsby-image'
 import BgImage from 'gatsby-background-image';
 
-// @TODO: gatsby-background-image looks better than whatever this is.
-
 interface BgImageProps {
     fluid?: {
         [key: string]: any
@@ -39,19 +37,42 @@ interface FakeBgImageStyledProps {
     mobileHeight?: string | null
 }
 
-const FakeBgImage = styled(BgImage)<FakeBgImageStyledProps>`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-position: center left;
-    background-repeat: repeat-y;
-    background-size: cover;
+const FakeBgImage = styled(Image)<FakeBgImageStyledProps>`
+    max-height: 100%;
+    // @media screen and (min-width: 500px) {
+    //   // width: 500px;
+    //   margin: auto;
+    // }
+    // position: absolute;
+    // margin: auto;
+    // height: 100%;
+    // width: 100%;
+    // background-position: top left;
+    // background-repeat: repeat-y;
+    // background-size: cover;
+    // background-attachment: fixed;
+    // background-position: center;
+    // background-repeat: no-repeat;
 
     ${(props: FakeBgImageStyledProps) => {
+      let propStyles = '';
       if (props.height) {
-        return `height: ${props.height};`;
+        propStyles = `
+          ${propStyles}
+          height: ${props.height};
+        `
       }
+
+      if (props.mobileHeight) {
+        propStyles = `
+          ${propStyles}
+          @media screen and (max-width: 600px) {
+            height: ${props.mobileHeight};
+          }
+        `
+      }
+
+      return propStyles
     }}
     // z-index: -1;
 
@@ -60,14 +81,6 @@ const FakeBgImage = styled(BgImage)<FakeBgImageStyledProps>`
       //   object-position: 0% 0% !important;
       //   font-family: "object-fit: cover !important; object-position: 0% 0% !important;";
       // }
-    
-      ${(props: FakeBgImageStyledProps) => {
-        if (props.mobileHeight) {
-          return `@media screen and (max-width: 600px) {
-              height: ${props.mobileHeight};
-          }`
-        }
-      }
     }
 `
 
@@ -86,16 +99,25 @@ const BackgroundImage = ({
   children = null,
   className = ''
 }: BgImageProps) => (
-  <Parent>
-    <FakeBgImage
-      Tag='section'
-      fluid={fluid}
-      // title={title}
-      height={height}
-      mobileHeight={mobileHeight}
-    />
-    <Content className={className}>{children}</Content>
-  </Parent>
+  // <Parent>
+    <>
+      <FakeBgImage
+        Tag='section'
+        fluid={fluid}
+        // title={title}
+        height={height}
+        mobileHeight={mobileHeight}
+        imgStyle={{
+          left: 0,
+          right: 0,
+          margin: '0 auto',
+          width: 'auto'
+        }}
+      />
+      {children && 
+        <Content className={className}>{children}</Content>}
+    </>
+  // </Parent>
 );
 
 export default BackgroundImage;

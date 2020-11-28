@@ -17,7 +17,7 @@ interface LayoutProps {
   // title: string,
   // location: WindowLocation
   heroOverride?: any,
-  heroText?: string
+  heroText?: string | null
 }
 
 const MainContainer = styled.main`
@@ -38,8 +38,7 @@ const Blah = styled.div`
 const Layout: React.FC<LayoutProps> = ({ children, heroOverride, heroText }) => {
   return (
     <>
-      <SEO title='test'/>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <div className="flex flex-col h-screen">
         <Header />
         <Blah className="flex-1 overflow-y-auto">

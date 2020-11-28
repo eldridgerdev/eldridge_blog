@@ -55,6 +55,28 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `opensans\:400,600,700`,
+          `alegreya\:400,700`,
+          `raleway\:400,400i,700,700i`,
+          `ubuntu mono\:400,700,800`,
+          `lato\:400,700`
+        ],
+        display: 'swap',
+      },
+    },
+    // {
+    //   resolve: 'gatsby-transformer-cloudinary',
+    //   options: {
+    //     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    //     apiKey: process.env.CLOUDINARY_API_KEY,
+    //     apiSecret: process.env.CLOUDINARY_API_SECRET,
+    //     uploadFolder: 'gatsby-cloudinary',
+    //   }
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -63,6 +85,10 @@ module.exports = {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {}
+    },
     // {
     //   resolve: 'gatsby-background-image-es5',
     //   options: {
@@ -70,22 +96,22 @@ module.exports = {
     //     specialChars: '/:',
     //   },
     // },
-    `gatsby-plugin-feed`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
-      },
-    },
+    // `gatsby-plugin-feed`,
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: `Gatsby Starter Blog`,
+    //     short_name: `GatsbyJS`,
+    //     start_url: `/`,
+    //     background_color: `#ffffff`,
+    //     theme_color: `#663399`,
+    //     display: `minimal-ui`,
+    //     icon: `content/assets/gatsby-icon.png`,
+    //   },
+    // },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
-    'gatsby-plugin-fontawesome-css'
+    'gatsby-plugin-fontawesome-css',
     // `gatsby-plugin-background-image`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

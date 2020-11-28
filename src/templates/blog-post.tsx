@@ -6,12 +6,13 @@ import BlogText from '../components/blog-post-text-section'
 
 // @TODO types for data
 const BlogPost: React.FC<{data: any}> = ({ data }) => {
+  const { HeroImage: image,  text, Title: title } = data.strapiBlogPost
   return (
     <Layout
-      heroOverride={data.strapiBlogPost.image?.childImageSharp.fluid}
-      heroText={data.strapiBlogPost.Title}
+      heroOverride={image?.childImageSharp.fluid}
+      heroText={null}
     >
-      <BlogText text={data.strapiBlogPost.text} />
+      <BlogText title={title} text={text} />
     </Layout>
   )
 }
@@ -26,7 +27,7 @@ export const query = graphql`
       text,
       id,
       published_at,
-      image {
+      HeroImage {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid

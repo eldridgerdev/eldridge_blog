@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
+import { useMedia } from 'react-media'
 
 import BlogCard from './blog-card'
 
@@ -8,6 +9,7 @@ type BlogListProps = {
     data: [{
         node: {
             id: string,
+            Slug?: string,
             published_at: string,
             Title: string,
             Description: string,
@@ -37,17 +39,21 @@ const formatDate = (dateString: string) => {
 }
 
 const BlogList: React.FC<BlogListProps> = ({ data }) => {
+    const isMobileView = useMedia({ query: "(max-width: 1024px)" })
+
     return (
         <Container>
             {data.map((post, i) => {
-                const { id, published_at, Title: title, Description: desc, image } = post.node
+                const { id, Slug, published_at, Title: title, Description: desc, image } = post.node
                 return <BlogCard
-                    id={id}
+                    blogId={Slug || id}
                     date={formatDate(published_at)}
                     title={title}
-                    desc={desc}
-                    img={image?.childImageSharp.fluid}
+                    description={desc}
+                    image={image?.childImageSharp.fluid}
                     key={i}
+                    height={isMobileView ? 'auto' : '250px'}
+                    full={false}
                 />
             })}
         </Container>

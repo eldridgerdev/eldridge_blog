@@ -1,26 +1,54 @@
 import React from 'react'
 import styled from 'styled-components';
+import tw from 'twin.macro';
 
-// @TODO: responsive width
+// @TODO: This isn't just for blogs
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px 0px 0px;
-    width: 715px;
+    padding: 20px 0px 50px 0px;
+    width: 50%;
 `
 
 const Text = styled.div`
     color: #000000;
-    line-height: 24px;
-    font-size: 18px;
-    font-family: 'Alegreya', serif;
+    font-family: 'raleway', serif;
     font-weight: 400;
+
+    ${tw`leading-tight text-base md:text-xl`}
+
+    & > h1 {
+        // font-family: 'alegreya', serif;
+        font-weight: bold;
+        // text-transform: capitalize;
+        ${tw`leading-loose text-3xl md:text-4xl`}
+    }
+
+    & > h2 {
+        ${tw`leading-loose text-3xl md:text-4xl`}
+    }
+
+    & > h3 {
+        ${tw`leading-loose text-2xl md:text-3xl`}
+    }
+
+    & > h4 {
+        ${tw`leading-loose text-xl md:text-2xl`}
+    }
+
+    & > h5 {
+        ${tw`leading-loose text-xl md:text-xl`}
+    }
 `
 
-const Section: React.FC<{ text: string }> = ({ text }) => (
+const Section: React.FC<{ text: string, title: string }> = ({ text, title }) => (
     <Container>
-        <Text dangerouslySetInnerHTML={{ __html: text }} />
+        <Text>
+            <h1>{title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: text }} />
+        </Text>
+        {/* <Text dangerouslySetInnerHTML={{ __html: text }} /> */}
     </Container>
 )
 

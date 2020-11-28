@@ -10,7 +10,9 @@ const ListContainer = () => {
                 edges {
                     node {
                         id
+                        Slug
                         published_at
+                        Hide
                         Title
                         Description
                         image {
@@ -26,7 +28,7 @@ const ListContainer = () => {
         }
     `)
 
-    const posts = data.allStrapiBlogPost.edges
+    const posts = data.allStrapiBlogPost.edges.filter((edge: any) => !edge.node.Hide)
 
     return <BlogList data={posts} />
 }

@@ -6,11 +6,15 @@ const plugins = [
           contentTypes: [
             // List of the Content Types you want to be able to request from Gatsby.
             "blog-post",
-            "category",
           ],
           singleTypes: [
-            'hero-text',
-            'logo'
+            'coming-soon',
+            'logo',
+            'four-o-four-page',
+            'about-page',
+            'index-page',
+            'blog-list-page',
+            'featured-post'
           ],
           queryLimit: 1000,
         },
