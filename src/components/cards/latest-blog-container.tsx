@@ -60,9 +60,6 @@ const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
                     Description
                     image {
                         childImageSharp {
-                            fixed (height:250) {
-                                ...GatsbyImageSharpFixed
-                            }
                             fluid {
                                 ...GatsbyImageSharpFluid
                             }
