@@ -19,6 +19,9 @@ const Text = styled.div`
     ${tw`leading-tight text-base md:text-xl`}
 
     & > h1 {
+        // font-family: 'alegreya', serif;
+        font-weight: bold;
+        // text-transform: capitalize;
         ${tw`leading-loose text-3xl md:text-4xl`}
     }
 
@@ -39,9 +42,13 @@ const Text = styled.div`
     }
 `
 
-const Section: React.FC<{ text: string }> = ({ text }) => (
+const Section: React.FC<{ text: string, title: string }> = ({ text, title }) => (
     <Container>
-        <Text dangerouslySetInnerHTML={{ __html: text }} />
+        <Text>
+            <h1>{title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: text }} />
+        </Text>
+        {/* <Text dangerouslySetInnerHTML={{ __html: text }} /> */}
     </Container>
 )
 
