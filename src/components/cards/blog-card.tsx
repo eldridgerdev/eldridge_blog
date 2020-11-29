@@ -95,12 +95,13 @@ const CardLink = styled(Link)<{ $makeLong: boolean, $height?: string }>`
     ${(props) => props.$height && `height: ${props.$height};`}
     display: flex;
     width: 100%;
-    ${ ({ $makeLong }) => $makeLong ? `
-        flex-direction: row;
-    `: `
-        flex-direction: column;
-        // height: 75vh;
-    `}
+    // ${ ({ $makeLong }) => $makeLong ? `
+    //     flex-direction: row;
+    // `: `
+    //     flex-direction: column;
+    //     // height: 75vh;
+    // `}
+    ${(props) => props.$makeLong ? tw`flex-row` : tw`flex-col`}
 
     // ${({ $makeLong }) => !$makeLong && tw`max-w-md`}
 
