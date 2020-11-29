@@ -45,7 +45,7 @@ const AboutPage = ({ data, location }: AboutPageProps) => {
   return (
     <Layout heroOverride={image} heroText={text || null} /*location={location} title={siteTitle} */>
       <SEO title={title} />
-      <BlogText text={aboutData.Page.Content} />
+      <BlogText title="About Us" text={aboutData.Page.Content} />
       {/* <h1>About us</h1>
       <p>Blah</p> */}
     </Layout>

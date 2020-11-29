@@ -22,10 +22,11 @@ const navHeaders = [
     }, {
         title: 'Blog',
         link: '/blog-post-list'
-    }, {
-        title: 'Gallery',
-        link: '/coming-soon'
     }
+    // , {
+    //     title: 'Gallery',
+    //     link: '/coming-soon'
+    // }
 ]
 
 const Nav = styled.header`
