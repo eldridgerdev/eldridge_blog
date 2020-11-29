@@ -15,7 +15,8 @@ export type BlogCardProps = {
     blogId?: string,
     height?: string,
     makeLong?: boolean,
-    full?: boolean
+    full?: boolean,
+    extraCSS?: string
 }
 
 const DefaultImage = styled.div`
@@ -91,8 +92,9 @@ const Date = styled.h2`
     font-weight: normal;
 `
 
-const CardLink = styled(Link)<{ $makeLong: boolean, $height?: string }>`
+const CardLink = styled(Link)<{ $makeLong: boolean, $height?: string, $extraCSS?: string}>`
     ${(props) => props.$height && `height: ${props.$height};`}
+    ${(props) => props.$extraCSS}
     display: flex;
     width: 100%;
     // ${ ({ $makeLong }) => $makeLong ? `
@@ -118,8 +120,8 @@ const CardLink = styled(Link)<{ $makeLong: boolean, $height?: string }>`
     transition: .4s;
     border: 1px solid rgba(0,0,0,0.2);
     margin: 0 auto;
-    ${tw`flex-row rounded overflow-hidden shadow-lg`}
-    ${(props) => props.$makeLong ? tw`flex-row` : tw`flex-col`}
+    ${tw`rounded overflow-hidden shadow-lg`}
+    // ${(props) => props.$makeLong ? tw`flex-row` : tw`flex-col`}
 `
 
 const ListItem = styled.li<{ $full: boolean }>`
@@ -139,7 +141,7 @@ const ListItem = styled.li<{ $full: boolean }>`
 // `
 
 const BlogCard = ({
-    title, description, image, blogId, date, height, makeLong=false, full=false
+    title, description, image, blogId, date, height, makeLong=false, full=false, extraCSS=''
 }: BlogCardProps) => {
     if (!height) {
         makeLong ? height='45vh' : height='70vh'
@@ -147,7 +149,7 @@ const BlogCard = ({
 
     return (
         <ListItem $full={full}>
-            <CardLink $height={height} $makeLong={makeLong} to={`/${blogId}`}>
+            <CardLink $extraCSS={extraCSS} $height={height} $makeLong={makeLong} to={`/${blogId}`}>
                 {/* <div className='rounded overflow-hidden shadow-lg'> */}
                     <DisplayImage image={image} />
                     <TextContainer>
