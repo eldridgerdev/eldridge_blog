@@ -45,8 +45,18 @@ const Text = styled.div`
         margin: 0 auto;
     }
 
+    & .image-style-align-left {
+        float: left;
+        margin-right: 20px;
+    }
+
+    & .image-style-align-right {
+        float: right;
+        margin-left: 20px;
+    }
+
     & figcaption {
-        ${tw`text-xs text-center`}
+        ${tw`text-sm text-center`}
     }
 
     & ul {
