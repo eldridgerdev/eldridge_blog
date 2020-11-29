@@ -39,7 +39,7 @@ const formatDate = (dateString: string) => {
 }
 
 const BlogList: React.FC<BlogListProps> = ({ data }) => {
-    const isMobileView = useMedia({ query: "(max-width: 1024px)" })
+    // const isMobileView = useMedia({ query: "(max-width: 1024px)" })
 
     return (
         <Container>
