@@ -40,6 +40,26 @@ const Text = styled.div`
     & > h5 {
         ${tw`leading-loose text-xl md:text-xl`}
     }
+
+    & .image-style-align-center {
+        margin: 0 auto;
+    }
+
+    & figcaption {
+        ${tw`text-xs text-center`}
+    }
+
+    & ul {
+        list-style: disc;
+        padding-left: 40px;
+        margin-top: 20px;
+    }
+
+    & ol {
+        list-style: decimal;
+        padding-left: 40px;
+        margin-top: 20px;
+    }
 `
 
 const Section: React.FC<{ text: string, title: string }> = ({ text, title }) => (
