@@ -74,7 +74,7 @@ const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
     const post = featuredPost || data.allStrapiBlogPost.edges[0].node
     const image = post.image?.childImageSharp?.fluid
 
-    const isMobileView = useMedia({ query: "(max-width: 1024px)" })
+    // const isMobileView = useMedia({ query: "(max-width: 1024px)" })
 
     const GetCard = ({ ...props }: BlogCardProps) => {
         // @TODO: LatestBlogCard is currently broken
@@ -92,8 +92,7 @@ const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
 
     // react-media isn't SSR friendly, CSS is.
     const extraCSS=`
-        flex-direction: column;
-        @media (max-width: 1024px) {
+        @media screen and (min-width: 1024px) {
             flex-direction: row;
         }
     `
@@ -106,7 +105,6 @@ const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
             image={image}
             description={post.Description}
             date={formatDate(post.published_at)}
-            makeLong={!isMobileView}
             full
         />
     )

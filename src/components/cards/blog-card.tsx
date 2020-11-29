@@ -92,19 +92,10 @@ const Date = styled.h2`
     font-weight: normal;
 `
 
-const CardLink = styled(Link)<{ $makeLong: boolean, $height?: string, $extraCSS?: string}>`
+const CardLink = styled(Link)<{ $height?: string, $extraCSS?: string }>`
     ${(props) => props.$height && `height: ${props.$height};`}
-    ${(props) => props.$extraCSS}
     display: flex;
     width: 100%;
-    // ${ ({ $makeLong }) => $makeLong ? `
-    //     flex-direction: row;
-    // `: `
-    //     flex-direction: column;
-    //     // height: 75vh;
-    // `}
-
-    // ${({ $makeLong }) => !$makeLong && tw`max-w-md`}
 
     & > img:hover {
         .blog-image {
@@ -120,8 +111,8 @@ const CardLink = styled(Link)<{ $makeLong: boolean, $height?: string, $extraCSS?
     transition: .4s;
     border: 1px solid rgba(0,0,0,0.2);
     margin: 0 auto;
-    ${tw`rounded overflow-hidden shadow-lg`}
-    // ${(props) => props.$makeLong ? tw`flex-row` : tw`flex-col`}
+    ${tw`flex-col rounded overflow-hidden shadow-lg`}
+    ${(props) => props.$extraCSS}
 `
 
 const ListItem = styled.li<{ $full: boolean }>`
@@ -149,7 +140,7 @@ const BlogCard = ({
 
     return (
         <ListItem $full={full}>
-            <CardLink $extraCSS={extraCSS} $height={height} $makeLong={makeLong} to={`/${blogId}`}>
+            <CardLink $extraCSS={extraCSS} $height={height} to={`/${blogId}`}>
                 {/* <div className='rounded overflow-hidden shadow-lg'> */}
                     <DisplayImage image={image} />
                     <TextContainer>
