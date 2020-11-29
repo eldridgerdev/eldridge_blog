@@ -101,7 +101,6 @@ const CardLink = styled(Link)<{ $makeLong: boolean, $height?: string }>`
     //     flex-direction: column;
     //     // height: 75vh;
     // `}
-    ${(props) => props.$makeLong ? tw`flex-row` : tw`flex-col`}
 
     // ${({ $makeLong }) => !$makeLong && tw`max-w-md`}
 
@@ -119,7 +118,8 @@ const CardLink = styled(Link)<{ $makeLong: boolean, $height?: string }>`
     transition: .4s;
     border: 1px solid rgba(0,0,0,0.2);
     margin: 0 auto;
-    ${tw`rounded overflow-hidden shadow-lg`}
+    ${tw`flex-row rounded overflow-hidden shadow-lg`}
+    ${(props) => props.$makeLong ? tw`flex-row` : tw`flex-col`}
 `
 
 const ListItem = styled.li<{ $full: boolean }>`
