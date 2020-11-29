@@ -9,6 +9,7 @@ type BlogListProps = {
     data: [{
         node: {
             id: string,
+            postNumber?: number,
             Slug?: string,
             published_at: string,
             Title: string,
@@ -44,7 +45,7 @@ const BlogList: React.FC<BlogListProps> = ({ data }) => {
     return (
         <Container>
             {data.map((post, i) => {
-                const { id, Slug, published_at, Title: title, Description: desc, image } = post.node
+                const { id, postNumber, Slug, published_at, Title: title, Description: desc, image } = post.node
                 return <BlogCard
                     blogId={Slug || id}
                     date={formatDate(published_at)}
@@ -52,6 +53,7 @@ const BlogList: React.FC<BlogListProps> = ({ data }) => {
                     description={desc}
                     image={image?.childImageSharp.fluid}
                     key={i}
+                    postNumber={postNumber}
                     // height={'70vh'}
                     // height={isMobileView ? 'auto' : '75vh'}
                     full={false}

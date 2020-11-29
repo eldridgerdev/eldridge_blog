@@ -16,7 +16,8 @@ export type BlogCardProps = {
     height?: string,
     makeLong?: boolean,
     full?: boolean,
-    extraCSS?: string
+    extraCSS?: string,
+    postNumber?: number | null
 }
 
 const DefaultImage = styled.div`
@@ -50,15 +51,15 @@ const TextContainer = styled.div`
     background-color: #FFFFFF;
     ${tw`min-w-0 lg:min-w-1/3`}
     
-    & > h1 {
+    & h1 {
         ${tw`text-base lg:text-xl`}
     }
 
-    & > p {
+    & p {
         ${tw`text-sm lg:text-base`}
     }
 
-    & > h2 {
+    & h2 {
         ${tw`text-xs lg:text-sm`}
     }
     ${tw`
@@ -90,6 +91,21 @@ const Description = styled.p`
 
 const Date = styled.h2`
     font-weight: normal;
+`
+
+const PostNumber = styled.div`
+    height: 40px;
+    width: 40px;
+    float: right;
+    border-radius: 50%;
+    border: 3px solid ${theme.colors.main};
+    justify-content: center;
+
+    display: flex;
+    & > h1 {
+        display: flex;
+        align-self: center;
+    }
 `
 
 const CardLink = styled(Link)<{ $height?: string, $extraCSS?: string }>`
@@ -132,7 +148,16 @@ const ListItem = styled.li<{ $full: boolean }>`
 // `
 
 const BlogCard = ({
-    title, description, image, blogId, date, height, makeLong=false, full=false, extraCSS=''
+    title,
+    description,
+    image,
+    blogId,
+    date,
+    height,
+    postNumber=null,
+    makeLong=false,
+    full=false,
+    extraCSS=''
 }: BlogCardProps) => {
     if (!height) {
         makeLong ? height='45vh' : height='70vh'
@@ -148,6 +173,7 @@ const BlogCard = ({
                         <Date>{date}</Date>
                         <Line />
                         <Description>{description}</Description>
+                        {postNumber && <PostNumber><h1>{`#${postNumber}`}</h1></PostNumber> }
                     </TextContainer>
                 {/* </div> */}
             </CardLink>

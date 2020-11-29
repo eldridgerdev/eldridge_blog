@@ -15,6 +15,7 @@ const ListContainer = () => {
                         Hide
                         Title
                         Description
+                        postNumber
                         image {
                             childImageSharp {
                                 fluid {
