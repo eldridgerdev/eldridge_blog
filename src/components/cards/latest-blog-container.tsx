@@ -90,8 +90,17 @@ const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
         // }
     }
 
+    // react-media isn't SSR friendly, CSS is.
+    const extraCSS=`
+        flex-direction: column;
+        @media (max-width: 1024px) {
+            flex-direction: row;
+        }
+    `
+
     return (
         <GetCard
+            extraCSS={extraCSS}
             blogId={post.Slug || post.id}
             title={post.Title}
             image={image}
