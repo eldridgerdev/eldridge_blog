@@ -160,7 +160,7 @@ const BlogCard = ({
     extraCSS=''
 }: BlogCardProps) => {
     if (!height) {
-        makeLong ? height='45vh' : height='70vh'
+        makeLong ? height='45vh' : height='110vh'
     }
 
     return (
