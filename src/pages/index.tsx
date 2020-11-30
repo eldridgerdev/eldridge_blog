@@ -69,7 +69,7 @@ const BlogIndex: React.FC<IndexProps> = ({ data, location }) => {
   const LatestContainer = styled.div`
     display: flex;
     width: 75%;
-    // width: 715px;
+    ${tw`w-full md:w-3/4`}
     ${tw`flex justify-center flex-wrap flex-col`}
   `
 

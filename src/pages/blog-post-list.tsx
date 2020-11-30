@@ -6,10 +6,11 @@ import SEO from "../components/seo"
 import styled from "styled-components"
 import theme from '../utils/theme'
 import CardList from '../components/cards/blog-card-list-container'
+import tw from "twin.macro"
 
 const Inner = styled.div`
     width: 75%;
-    
+    ${tw`w-full md:w-3/4`}
 `
 interface BlogListPageProps extends PageProps {
   data: {

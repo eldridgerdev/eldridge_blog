@@ -9,6 +9,7 @@ const Container = styled.div`
     align-items: flex-start;
     padding: 20px 0px 50px 0px;
     width: 50%;
+    ${tw`w-full md:w-1/2`}
 `
 
 const Text = styled.div`
@@ -22,7 +23,7 @@ const Text = styled.div`
         // font-family: 'alegreya', serif;
         font-weight: bold;
         // text-transform: capitalize;
-        ${tw`leading-loose text-3xl md:text-4xl`}
+        ${tw`mb-2 leading-tight text-3xl md:text-4xl`}
     }
 
     & > h2 {
