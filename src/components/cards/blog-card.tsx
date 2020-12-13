@@ -17,6 +17,7 @@ export type BlogCardProps = {
     makeLong?: boolean,
     full?: boolean,
     extraCSS?: string,
+    extraCardCSS?: string,
     postNumber?: number | null
 }
 
@@ -45,14 +46,10 @@ type TextContainerProps = {
     height?: string
 }
 
-const TextContainer = styled.div`
-    // ${(props: TextContainerProps) => props.height && `height: ${props.height};`}
-
+const TextContainer = styled.div<{ $extraCSS?: string }>`
     background-color: #FFFFFF;
     ${tw`min-w-0 lg:min-w-1/3`}
-    @media (min-width: 1024px) {
-        width: 40%;
-    }
+    ${(props: { $extraCSS?: string }) => props.$extraCSS && props.$extraCSS}
     
     & h1 {
         ${tw`text-base lg:text-xl`}
@@ -163,7 +160,8 @@ const BlogCard = ({
     postNumber=null,
     makeLong=false,
     full=false,
-    extraCSS=''
+    extraCSS='',
+    extraCardCSS=''
 }: BlogCardProps) => {
     if (!height) {
         makeLong ? height='45vh' : height='75vh'
@@ -174,7 +172,7 @@ const BlogCard = ({
             <CardLink $extraCSS={extraCSS} $height={height} to={`/${blogId}`}>
                 {/* <div className='rounded overflow-hidden shadow-lg'> */}
                     <DisplayImage image={image} />
-                    <TextContainer>
+                    <TextContainer $extraCSS={extraCardCSS}>
                         <Title>{title}</Title>
                         <Date>{date}</Date>
                         <Line />

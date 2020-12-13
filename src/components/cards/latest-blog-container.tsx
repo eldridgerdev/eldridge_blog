@@ -97,10 +97,18 @@ const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
             height: 12em;
         }
     `
+    const extraCardCSS=`
+        @media screen and (min-width: 1024px) { 
+            @media (min-width: 1024px) {
+                width: 40%;
+            }
+        }
+    `
 
     return (
         <GetCard
             extraCSS={extraCSS}
+            extraCardCSS={extraCardCSS}
             blogId={post.Slug || post.id}
             title={post.Title}
             image={image}
