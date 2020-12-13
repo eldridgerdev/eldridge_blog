@@ -50,6 +50,9 @@ const TextContainer = styled.div`
 
     background-color: #FFFFFF;
     ${tw`min-w-0 lg:min-w-1/3`}
+    @media (min-width: 1024px) {
+        width: 40%;
+    }
     
     & h1 {
         ${tw`text-base lg:text-xl`}
@@ -136,6 +139,9 @@ const ListItem = styled.li<{ $full: boolean }>`
     ${ (props) => !props.$full && tw`sm:w-full md:w-1/2`}
     display: flex;
     padding: 1rem;
+    @media screen and (min-width: 1024px) {
+        height: 100%;
+    }
 `
 
 // const Container = styled(({ children, $full }) => (

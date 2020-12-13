@@ -94,6 +94,7 @@ const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
     const extraCSS=`
         @media screen and (min-width: 1024px) {
             flex-direction: row;
+            height: 12em;
         }
     `
 
