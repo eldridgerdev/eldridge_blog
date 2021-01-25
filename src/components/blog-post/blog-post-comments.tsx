@@ -59,7 +59,7 @@ const Comment: React.FC<CommentType> = ({ username, commentText, created_at }) =
 }
 
 const Comments: React.FC<CommentsType> = ({ comments = [] }) => {
-    if (comments.length === 0) return;
+    if (comments.length === 0) return <></>;
     
     return (
         <Container>
