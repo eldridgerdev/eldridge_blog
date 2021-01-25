@@ -69,8 +69,16 @@ exports.createSchemaCustomization =({ actions }) => {
       Description: String!
     }
 
+    type StrapiComment implements Node {
+      username: String
+      commentText: String
+      simpleReply: String
+      created_at: String
+    }
+
     type StrapiBlogPost implements Node {
       image: File
+      comments: [StrapiComment]
     }
 
     type StrapiBlogPost implements Node {
