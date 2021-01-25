@@ -73,7 +73,7 @@ exports.createSchemaCustomization =({ actions }) => {
       username: String
       commentText: String
       simpleReply: String
-      created_at: Date
+      created_at: Date @dateformat
     }
 
     type StrapiBlogPost implements Node {
