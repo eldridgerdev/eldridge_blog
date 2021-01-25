@@ -3,7 +3,7 @@ import fetch from 'cross-fetch'
 
 const client = new ApolloClient({
     link: new HttpLink({
-        uri: `${process.env.API_URL || "http://localhost:1337"}/graphql`,
+        uri: `${process.env.REACT_APP_BACKEND_URL}/graphql`,
         fetch,
         credentials: 'same-origin'
     }),
