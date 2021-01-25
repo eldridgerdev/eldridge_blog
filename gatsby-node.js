@@ -135,7 +135,9 @@ exports.createResolvers = ({
     [name]: {
       type: 'File',
       resolve(source, args, context, info) {
+        // Uncomment for debuggint
         console.log(`---------------------------`);
+        console.log(`SOURCE: ${JSON.stringify(source)}`, null, 4);
         console.log(`URL: ${source.url}`);
         console.log(`NAME URL: ${source[name].url}`)
         return createRemoteFileNode({
