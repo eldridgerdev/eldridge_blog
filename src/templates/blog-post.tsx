@@ -6,7 +6,6 @@ import Layout from '../components/layout'
 import BlogText from '../components/blog-post/blog-post-text-section'
 import BlogComments from '../components/blog-post/blog-post-comments'
 import BlogCreateComment from '../components/blog-post/create-comment'
-import theme from '../utils/theme'
 
 // @TODO types for data
 const BlogPost: React.FC<{data: any}> = ({ data }) => {
