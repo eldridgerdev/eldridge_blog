@@ -11,7 +11,6 @@ import theme from '../utils/theme'
 // @TODO types for data
 const BlogPost: React.FC<{data: any}> = ({ data }) => {
   const { HeroImage: image,  text, Title: title, comments, strapiId } = data.strapiBlogPost
-  const displayComments = comments !== undefined && comments.length > 0;
 
   return (
     <Layout
@@ -19,8 +18,7 @@ const BlogPost: React.FC<{data: any}> = ({ data }) => {
       heroText={null}
     >
       <BlogText title={title} text={text} />
-      {displayComments && <BlogComments comments={comments} />}
-      
+      <BlogComments comments={comments} />
       <BlogCreateComment post_id={strapiId} />
     </Layout>
   )
