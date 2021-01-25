@@ -1,16 +1,5 @@
-import React from 'react'
 import styled from 'styled-components';
 import tw from 'twin.macro';
-
-// @TODO: This isn't just for blogs
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 0px 50px 0px;
-    width: 50%;
-    ${tw`w-full md:w-1/2`}
-`
 
 const Text = styled.div`
     color: #000000;
@@ -44,6 +33,7 @@ const Text = styled.div`
 
     & .image-style-align-center {
         margin: 0 auto;
+        ${tw`sm:w-full md:w-full`}
     }
 
     & .image-style-align-left {
@@ -73,14 +63,4 @@ const Text = styled.div`
     }
 `
 
-const Section: React.FC<{ text: string, title: string }> = ({ text, title }) => (
-    <Container>
-        <Text>
-            <h1>{title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: text }} />
-        </Text>
-        {/* <Text dangerouslySetInnerHTML={{ __html: text }} /> */}
-    </Container>
-)
-
-export default Section
+export default Text;

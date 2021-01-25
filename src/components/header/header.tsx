@@ -155,7 +155,7 @@ const Header: React.FC<HeaderProps> = ({ title = "Eldridge Expedition" }) => {
         <Nav>
             <LogoArea>
                 <Logo>
-                    <Image fixed={data.strapiLogo.LogoImage.childImageSharp.fixed} />
+                    <Image fixed={data.strapiLogo.LogoImage?.childImageSharp.fixed} />
                     {/* <img src={data.strapiLogo.LogoImage.publicURL} /> */}
                 </Logo>
             </LogoArea>

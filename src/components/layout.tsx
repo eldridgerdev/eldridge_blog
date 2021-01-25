@@ -2,6 +2,7 @@ import React from "react"
 import { WindowLocation } from "@reach/router"
 import { Link } from "gatsby"
 import styled from 'styled-components'
+import tw from 'twin.macro';
 
 // import { rhythm, scale } from "../utils/typography"
 import Header from './header/header'
@@ -32,6 +33,7 @@ const MainContainer = styled.main`
 
 const Blah = styled.div`
   // background-color: ${theme.colors.light}
+  ${tw`pb-7`}
 `
 
 // @TODO: Some of this stuff is first page only.
