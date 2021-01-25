@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 import theme from '../../utils/theme'
+import Line from '../line'
 import tw from 'twin.macro'
 
 // @TODO: same as LatestBlogCard
@@ -72,14 +73,6 @@ const Title = styled.h1`
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     ${tw`font-bold mb-2`}
-`
-
-const Line = styled.hr`
-    height: 0px;
-    width: 90%;
-    border-top: 1px solid ${theme.colors.secondary};
-    align-self: center;
-    ${tw`mt-2 mb-2`}
 `
 
 const Description = styled.p`

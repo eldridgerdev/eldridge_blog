@@ -46,12 +46,13 @@ const BlogList: React.FC<BlogListProps> = ({ data }) => {
         <Container>
             {data.map((post, i) => {
                 const { id, postNumber, Slug, published_at, Title: title, Description: desc, image } = post.node
+                const imageSharp = image && image.childImageSharp;
                 return <BlogCard
                     blogId={Slug || id}
                     date={formatDate(published_at)}
                     title={title}
                     description={desc}
-                    image={image?.childImageSharp.fluid}
+                    image={imageSharp && imageSharp.fluid}
                     key={i}
                     postNumber={postNumber}
                     // height={'70vh'}

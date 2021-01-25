@@ -1,3 +1,7 @@
+const colors = {
+  main: '#D96262'
+}
+
 module.exports = {
     theme: {
       minWidth: {
@@ -9,5 +13,9 @@ module.exports = {
        '3/4': '75%',
        'full': '100%',
       }
+    },
+    colors,
+    ringColor: {
+      red: colors.main
     }
   }

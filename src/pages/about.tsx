@@ -8,7 +8,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import theme from '../utils/theme'
-import BlogText from '../components/blog-post-text-section'
+import BlogText from '../components/blog-post/blog-post-text-section'
 
 interface AboutPageProps extends PageProps {
   data: {

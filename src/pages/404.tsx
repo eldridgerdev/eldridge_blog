@@ -25,7 +25,6 @@ interface NotFoundPageProps extends PageProps {
 }
 
 export const pageQuery = graphql`
-
 query FourOFourPage {
   strapiFourOFourPage {
     Page {
