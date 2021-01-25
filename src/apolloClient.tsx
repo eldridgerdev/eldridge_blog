@@ -8,7 +8,7 @@ console.log(process.env.API_URL);
 
 const client = new ApolloClient({
     link: new HttpLink({
-        uri: `${process.env.GATSBY_API_URL}/graphql`,
+        uri: `${process.env.GATSBY_REACT_APP_BACKEND_URL}/graphql`,
         fetch,
         credentials: 'same-origin'
     }),
