@@ -24,6 +24,7 @@ export const pageQuery = graphql`
       siteTitle
       heroText
       heroImage {
+        url
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
