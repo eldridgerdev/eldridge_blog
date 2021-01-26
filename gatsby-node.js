@@ -160,26 +160,4 @@ exports.createResolvers = ({
     StrapiFourOFourPage: generateResolver('image'),
     StrapiLogo: generateResolver('LogoImage')
   })
-
-//   // createResolvers({
-//   //   StrapiBlogListPage: imageResolver,
-//   //   StrapiBlogPostImage: imageResolver,
-//   //   StrapiFeaturedPostBlog _post: imageResolver,
-//   //   StrapiIndexPagePageHero: imageResolver,
-//   //   StrapiComingSoonPagePageHero: imageResolver,
-    
-//   // })
-
-//   // const ImageNodes = [
-//   //   'StrapiBlogListPageHeroImage',
-//   //   'StrapiBlogPostImage',
-//   //   'StrapiBlogListPageHeroImage',
-//   //   'StrapiFeaturedPostBlog_postImage',
-//   //   'StrapiIndexPagePageHeroImage',
-//   //   'StrapiComingSoonPagePageHeroImage'
-//   // ]
-//   // const createNodeObj = (n) => ({
-//   //   [n]: imageResolver
-//   // })
-//   // createResolvers({}.assign(...(ImageNodes.map(createNodeObj))))
 }

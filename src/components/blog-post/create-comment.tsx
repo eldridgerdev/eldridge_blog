@@ -24,7 +24,6 @@ mutation AddComment ($username: String!, $text: String!, $post_id: ID!) {
 }
 `
 
-
 // @TODO - copied from text-section, turn into component
 const Container = styled(Text)`
     ${tw`w-full md:w-1/2 pt-10`}
@@ -90,7 +89,7 @@ const CreateComment: React.FC<{post_id: string}> = ({ post_id }) => {
 
     // alert(post_id);
 
-    const onSubmit = (e: Event) => {
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         // console.log()
         e.preventDefault();
         // alert(`${process.env.REACT_APP_BACKEND_URL}`); //'Your comment has been submitted');

@@ -27,9 +27,6 @@ const MainContainer = styled.main`
   align-items: center;
   padding: 0px;
 `
-  //max-width: ${rhythm(24)};
-  // padding: ${`${rhythm(1.5)} ${rhythm(3 / 4)}`};
-// `
 
 const Blah = styled.div`
   // background-color: ${theme.colors.light}

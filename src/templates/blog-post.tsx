@@ -40,6 +40,7 @@ export const query = graphql`
         created_at
       },
       HeroImage {
+        url
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
