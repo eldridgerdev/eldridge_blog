@@ -151,6 +151,7 @@ exports.createResolvers = ({
     StrapiBlogPost: generateResolver('image'),
     StrapiBlogPost: generateResolver('HeroImage'),
     StrapiBlogListPage: generateResolver('image'),
+    StrapiBlogListPage: generateResolver('HeroImage'),
     StrapiIndexPagePage: generateResolver('HeroImage'),
     StrapiFeaturedPostBlog_post: generateResolver('image'),
     StrapiComingSoonPagePage: generateResolver('HeroImage'),
