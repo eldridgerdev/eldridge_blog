@@ -121,65 +121,64 @@ exports.createSchemaCustomization =({ actions }) => {
   createTypes(typeDefs)
 }
 
-// exports.createResolvers = ({
-//   actions,
-//   cache,
-//   createNodeId,
-//   createResolvers,
-//   store,
-//   reporter,
-// }) => {
-//   const { createNode } = actions
+exports.createResolvers = ({
+  actions,
+  cache,
+  createNodeId,
+  createResolvers,
+  store,
+  reporter,
+}) => {
+  const { createNode } = actions
 
-//   const generateResolver = (name='image') => ({
-//     [name]: {
-//       type: 'File',
-//       resolve(source, args, context, info) {
-//         return createRemoteFileNode({
-//           url: `${source[name].url}`, // for S3 upload. For local: `http://localhost:1337${source.url}`,
-//           store,
-//           cache,
-//           createNode,
-//           createNodeId,
-//           reporter,
-//         })
-//       },
-//     }
-//   })
+  const generateResolver = (name='image') => ({
+    [name]: {
+      type: 'File',
+      resolve(source, args, context, info) {
+        return createRemoteFileNode({
+          url: `${source[name].url}`, // for S3 upload. For local: `http://localhost:1337${source.url}`,
+          store,
+          cache,
+          createNode,
+          createNodeId,
+          reporter,
+        })
+      },
+    }
+  })
 
-//   createResolvers({
-//     StrapiBlogPost: generateResolver('image'),
-//     StrapiBlogPost: generateResolver('HeroImage'),
-//     StrapiBlogListPage: generateResolver('image'),
-//     StrapiBlogListPage: generateResolver('HeroImage'),
-//     StrapiIndexPagePage: generateResolver('HeroImage'),
-//     StrapiFeaturedPostBlog_post: generateResolver('image'),
-//     StrapiComingSoonPagePage: generateResolver('HeroImage'),
-//     StrapiAboutPagePagePage: generateResolver('HeroImage'),
-//     StrapiFourOFourPagePagePage: generateResolver('HeroImage'),
-//     StrapiFourOFourPage: generateResolver('image'),
-//     StrapiLogo: generateResolver('LogoImage')
-//   })
+  createResolvers({
+    StrapiBlogPost: generateResolver('image'),
+    StrapiBlogPost: generateResolver('HeroImage'),
+    StrapiBlogListPage: generateResolver('heroImage'),
+    StrapiIndexPagePage: generateResolver('HeroImage'),
+    StrapiFeaturedPostBlog_post: generateResolver('image'),
+    StrapiComingSoonPagePage: generateResolver('HeroImage'),
+    StrapiAboutPagePagePage: generateResolver('HeroImage'),
+    StrapiFourOFourPagePagePage: generateResolver('HeroImage'),
+    StrapiFourOFourPage: generateResolver('image'),
+    StrapiLogo: generateResolver('LogoImage')
+  })
 
-// //   // createResolvers({
-// //   //   StrapiBlogListPage: imageResolver,
-// //   //   StrapiBlogPostImage: imageResolver,
-// //   //   StrapiFeaturedPostBlog _post: imageResolver,
-// //   //   StrapiIndexPagePageHero: imageResolver,
-// //   //   StrapiComingSoonPagePageHero: imageResolver,
+//   // createResolvers({
+//   //   StrapiBlogListPage: imageResolver,
+//   //   StrapiBlogPostImage: imageResolver,
+//   //   StrapiFeaturedPostBlog _post: imageResolver,
+//   //   StrapiIndexPagePageHero: imageResolver,
+//   //   StrapiComingSoonPagePageHero: imageResolver,
     
-// //   // })
+//   // })
 
-// //   // const ImageNodes = [
-// //   //   'StrapiBlogListPageHeroImage',
-// //   //   'StrapiBlogPostImage',
-// //   //   'StrapiBlogListPageHeroImage',
-// //   //   'StrapiFeaturedPostBlog_postImage',
-// //   //   'StrapiIndexPagePageHeroImage',
-// //   //   'StrapiComingSoonPagePageHeroImage'
-// //   // ]
-// //   // const createNodeObj = (n) => ({
-// //   //   [n]: imageResolver
-// //   // })
-// //   // createResolvers({}.assign(...(ImageNodes.map(createNodeObj))))
-// }
+//   // const ImageNodes = [
+//   //   'StrapiBlogListPageHeroImage',
+//   //   'StrapiBlogPostImage',
+//   //   'StrapiBlogListPageHeroImage',
+//   //   'StrapiFeaturedPostBlog_postImage',
+//   //   'StrapiIndexPagePageHeroImage',
+//   //   'StrapiComingSoonPagePageHeroImage'
+//   // ]
+//   // const createNodeObj = (n) => ({
+//   //   [n]: imageResolver
+//   // })
+//   // createResolvers({}.assign(...(ImageNodes.map(createNodeObj))))
+}
