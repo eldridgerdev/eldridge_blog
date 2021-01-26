@@ -2,25 +2,26 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { createRemoteFileNode } = require('gatsby-source-filesystem')
 
-const makeRequest = (graphql, request) => new Promise((resolve, reject) => {
-  // Query for nodes to use in creating pages.
+const makeRequest = (graphql, request) =>
+  new Promise((resolve, reject) => {
+    // Query for nodes to use in creating pages.
 
-  resolve(
-    graphql(request).then(result => {
-      if (result.errors) {
-        reject(result.errors)
-      }
+    resolve(
+      graphql(request).then(result => {
+        if (result.errors) {
+          reject(result.errors)
+        }
 
-      return result
-    })
-  )
-})
+        return result
+      })
+    )
+  })
 
 // exports.createSchemaCustomization = ({ actions }) => {
 //   const { createTypes } = actions
 //   const typeDefs = `
 //     type StrapiBlogPost implements Node {
-      
+
 //     }
 //   `
 //   createTypes(typeDefs)
@@ -31,10 +32,13 @@ const makeRequest = (graphql, request) => new Promise((resolve, reject) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const publicationState = process.env.NODE_ENV === 'staging' ? 'PREVIEW' : 'LIVE';
+  const publicationState =
+    process.env.NODE_ENV === 'staging' ? 'PREVIEW' : 'LIVE'
 
   // Query for articles nodes to use in creating pages.
-  const getArticles = makeRequest(graphql, `{
+  const getArticles = makeRequest(
+    graphql,
+    `{
     allStrapiBlogPost {
       edges {
         node {
@@ -43,25 +47,24 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  }`)
-  .then(result => {
+  }`
+  ).then(result => {
     // Create pages for each article
     result.data.allStrapiBlogPost.edges.forEach(({ node }) => {
       createPage({
         path: `/${node.Slug || node.id}`,
-        component: path.resolve(`src/templates/blog-post.tsx`),
+        component: path.resolve(`src/templates/blog-post-page.tsx`),
         context: {
-          id: node.id,
-          strapiId: node.strapiId
-        }
+          postId: node.id,
+        },
       })
     })
   })
 
-  return getArticles;
+  return getArticles
 }
 
-exports.createSchemaCustomization =({ actions }) => {
+exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
     interface BlogPost {
@@ -131,7 +134,7 @@ exports.createResolvers = ({
 }) => {
   const { createNode } = actions
 
-  const generateResolver = (name='image') => ({
+  const generateResolver = (name = 'image') => ({
     [name]: {
       type: 'File',
       resolve(source, args, context, info) {
@@ -144,13 +147,15 @@ exports.createResolvers = ({
           reporter,
         })
       },
-    }
+    },
   })
 
   createResolvers({
-    StrapiBlogPost: Object.assign({},
+    StrapiBlogPost: Object.assign(
+      {},
       generateResolver('image'),
-      generateResolver('HeroImage')),
+      generateResolver('HeroImage')
+    ),
     StrapiBlogListPage: generateResolver('heroImage'),
     StrapiIndexPagePage: generateResolver('HeroImage'),
     StrapiFeaturedPostBlog_post: generateResolver('image'),
@@ -158,6 +163,6 @@ exports.createResolvers = ({
     StrapiAboutPagePagePage: generateResolver('HeroImage'),
     StrapiFourOFourPagePagePage: generateResolver('HeroImage'),
     StrapiFourOFourPage: generateResolver('image'),
-    StrapiLogo: generateResolver('LogoImage')
+    StrapiLogo: generateResolver('LogoImage'),
   })
 }

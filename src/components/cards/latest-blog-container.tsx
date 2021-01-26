@@ -1,122 +1,71 @@
-import { graphql, useStaticQuery } from 'gatsby'
-import React, { useState } from 'react'
-import { useMedia } from 'react-media'
-
-import LatestBlogCard, { LatestBlogProps } from './latest-blog-card'
+import React from 'react'
 import BlogCard, { BlogCardProps } from './blog-card'
 import styled from 'styled-components'
 import tw from 'twin.macro'
+import { useAllBlogPosts, BlogPost } from '../../hooks/use-all-posts'
 
 type Props = {
-    featuredPost?: any
+  featuredPost?: BlogPost
 }
 
 const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-    });
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
 }
 
 const Container = styled.ul`
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    ${tw`mt-4 container`}
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  ${tw`mt-4 container`}
 `
 
-// @TODO Fix fragment
-// export const blogPostFragment = graphql`
-// fragment BlogPostFragment on StrapiBlogPost {
-//     id
-//     published_at
-//     Title
-//     Description
-//     image {
-//         childImageSharp {
-//             fixed (height:250) {
-//                 ...GatsbyImageSharpFixed
-//             }
-//             fluid {
-//                 ...GatsbyImageSharpFluid
-//             }
-//         }
-//     }
-// }`
+const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null }) => {
+  const [{ node: latestPost }] = useAllBlogPosts()
 
-const LatestBlogContainer: React.FC<Props> = ({ featuredPost = null}) => {
-    const data = useStaticQuery(graphql`
-    query LatestBlog {
-        allStrapiBlogPost(sort: {fields: published_at, order: DESC}, limit: 1) {
-            edges {
-                node {
-                    id
-                    Slug
-                    published_at
-                    Title
-                    Description
-                    image {
-                        childImageSharp {
-                            fluid {
-                                ...GatsbyImageSharpFluid
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    `)
+  const post = featuredPost || latestPost
+  const image = post.image?.childImageSharp?.fluid
 
-    const post = featuredPost || data.allStrapiBlogPost.edges[0].node
-    const image = post.image?.childImageSharp?.fluid
-
-    // const isMobileView = useMedia({ query: "(max-width: 1024px)" })
-
-    const GetCard = ({ ...props }: BlogCardProps) => {
-        // @TODO: LatestBlogCard is currently broken
-        // if (isMobileView) {
-            // @TODO: Fix ul/li
-            return (
-                <Container>
-                    <BlogCard {...props}/>
-                </Container>
-            )
-        // } else {
-            // return <LatestBlogCard {...props} />
-        // }
-    }
-
-    // react-media isn't SSR friendly, CSS is.
-    const extraCSS=`
-        @media screen and (min-width: 1024px) {
-            flex-direction: row;
-            height: 12em;
-        }
-    `
-    const extraCardCSS=`
-        @media screen and (min-width: 1024px) { 
-            @media (min-width: 1024px) {
-                width: 40%;
-            }
-        }
-    `
-
+  const GetCard = ({ ...props }: BlogCardProps) => {
     return (
-        <GetCard
-            extraCSS={extraCSS}
-            extraCardCSS={extraCardCSS}
-            blogId={post.Slug || post.id}
-            title={post.Title}
-            image={image}
-            description={post.Description}
-            date={formatDate(post.published_at)}
-            full
-        />
+      <Container>
+        <BlogCard {...props} />
+      </Container>
     )
+  }
+
+  // react-media isn't SSR friendly, CSS is.
+  const extraCSS = `
+    @media screen and (min-width: 1024px) {
+        flex-direction: row;
+        height: 12em;
+    }
+  `
+  const extraCardCSS = `
+    @media screen and (min-width: 1024px) { 
+        @media (min-width: 1024px) {
+            width: 40%;
+        }
+    }
+  `
+
+  return (
+    <GetCard
+      extraCSS={extraCSS}
+      extraCardCSS={extraCardCSS}
+      blogId={post.Slug || post.id}
+      title={post.Title}
+      image={image}
+      description={post.Description}
+      date={formatDate(post.published_at)}
+      full
+    />
+  )
 }
 
 export default LatestBlogContainer

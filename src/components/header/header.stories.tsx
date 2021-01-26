@@ -3,7 +3,7 @@ import React from 'react'
 import Header from './header'
 
 export default {
-    title: "Header"
+  title: 'Header',
 }
 
-export const normal = () => <Header />
+export const normal = (): JSX.Element => <Header />
