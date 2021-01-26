@@ -148,8 +148,9 @@ exports.createResolvers = ({
   })
 
   createResolvers({
-    StrapiBlogPost: generateResolver('image'),
-    StrapiBlogPost: generateResolver('HeroImage'),
+    StrapiBlogPost: Object.assign({},
+      generateResolver('image'),
+      generateResolver('HeroImage')),
     StrapiBlogListPage: generateResolver('heroImage'),
     StrapiIndexPagePage: generateResolver('HeroImage'),
     StrapiFeaturedPostBlog_post: generateResolver('image'),
