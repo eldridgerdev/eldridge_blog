@@ -17,6 +17,7 @@ const ListContainer = () => {
                         Description
                         postNumber
                         image {
+                            url
                             childImageSharp {
                                 fluid {
                                     ...GatsbyImageSharpFluid
