@@ -1,26 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
-import { useMedia } from 'react-media'
 
 import BlogCard from './blog-card'
-
-type BlogListProps = {
-    data: [{
-        node: {
-            id: string,
-            Slug?: string,
-            published_at: string,
-            Title: string,
-            Description: string,
-            image?: {
-                childImageSharp: {
-                    fluid: any
-                }
-            }
-        }
-    }]
-}
+import { useAllBlogPosts } from '../../hooks/use-all-posts'
 
 const Container = styled.ul`
     display: flex;
@@ -38,21 +21,21 @@ const formatDate = (dateString: string) => {
     });
 }
 
-const BlogList: React.FC<BlogListProps> = ({ data }) => {
-    const isMobileView = useMedia({ query: "(max-width: 1024px)" })
-
+const BlogList: React.FC = () => {
+    const posts = useAllBlogPosts();
     return (
         <Container>
-            {data.map((post, i) => {
-                const { id, Slug, published_at, Title: title, Description: desc, image } = post.node
+            {posts.map((post, i) => {
+                const { id, postNumber, Slug, published_at, Title: title, Description: desc, image } = post.node
+                const imageSharp = image && image.childImageSharp;
                 return <BlogCard
                     blogId={Slug || id}
                     date={formatDate(published_at)}
                     title={title}
                     description={desc}
-                    image={image?.childImageSharp.fluid}
+                    image={imageSharp && imageSharp.fluid}
                     key={i}
-                    height={isMobileView ? 'auto' : '250px'}
+                    postNumber={postNumber}
                     full={false}
                 />
             })}

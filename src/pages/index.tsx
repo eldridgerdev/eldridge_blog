@@ -69,7 +69,7 @@ const BlogIndex: React.FC<IndexProps> = ({ data, location }) => {
   const LatestContainer = styled.div`
     display: flex;
     width: 75%;
-    // width: 715px;
+    ${tw`w-full md:w-3/4`}
     ${tw`flex justify-center flex-wrap flex-col`}
   `
 
@@ -80,7 +80,7 @@ const BlogIndex: React.FC<IndexProps> = ({ data, location }) => {
     line-height: 49px;
     font-size: 36px;
     align-self: center;
-    ${tw`text-3xl sm:text-3xl md:text-4xl`}
+    ${tw`mt-3 text-3xl sm:text-3xl md:text-4xl`}
   `
   const MorePosts = styled(Link)`
     // color: ${theme.colors.trinary};
