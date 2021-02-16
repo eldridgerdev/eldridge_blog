@@ -1,5 +1,5 @@
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 const CMSSettings = require('./CMSSettings/strapi/gatsby-config')
@@ -14,7 +14,7 @@ module.exports = {
     description: `A blog for our travels`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
-      twitter: 'temp'
+      twitter: 'temp',
     },
   },
   plugins: [
@@ -63,7 +63,7 @@ module.exports = {
           `alegreya\:400,700`,
           `raleway\:400,400i,700,700i`,
           `ubuntu mono\:400,700,800`,
-          `lato\:400,700`
+          `lato\:400,700`,
         ],
         display: 'swap',
       },
@@ -80,15 +80,16 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: `UA-134987693-1`,
-        head: true
+        trackingIds: [`254434796`],
+        // trackingId: `UA-134987693-1`,
+        // head: true
       },
     },
     {
       resolve: `gatsby-plugin-styled-components`,
-      options: {}
+      options: {},
     },
     // {
     //   resolve: 'gatsby-background-image-es5',
