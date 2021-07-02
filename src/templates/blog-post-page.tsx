@@ -4,7 +4,11 @@ import Layout from '../components/layout'
 import TextSection from '../components/text-section'
 import BlogComments from '../components/blog-post/comments/comments-list'
 import BlogCreateComment from '../components/blog-post/comments/create-comment'
-import { useAllBlogPosts } from '../hooks/use-all-posts'
+import {
+  useAllBlogPosts,
+  BlogContent,
+  StrapiComponent,
+} from '../hooks/use-all-posts'
 import { navigate } from 'gatsby'
 
 interface BlogPostProps {
@@ -12,6 +16,13 @@ interface BlogPostProps {
     postId: string
   }
 }
+
+const defaultContent = (text: string): BlogContent => [
+  {
+    strapi_component: StrapiComponent.OLD_TEXT,
+    Text: text,
+  },
+]
 
 const BlogPost: React.FC<BlogPostProps> = props => {
   const allPosts = useAllBlogPosts()
@@ -22,11 +33,21 @@ const BlogPost: React.FC<BlogPostProps> = props => {
     return null
   }
 
-  const { HeroImage: hero, text, Title: title, comments, strapiId } = post.node
+  const {
+    HeroImage: hero,
+    text,
+    Title: title,
+    comments,
+    strapiId,
+    BlogContent: content,
+  } = post.node
+
+  const blogContent =
+    content && content.length > 0 ? content : defaultContent(text)
 
   return (
     <Layout heroOverride={hero?.childImageSharp.fluid} heroText={null}>
-      <TextSection title={title} text={text} />
+      <TextSection title={title} content={blogContent} />
       <BlogComments comments={comments} />
       <BlogCreateComment post_id={strapiId} />
     </Layout>

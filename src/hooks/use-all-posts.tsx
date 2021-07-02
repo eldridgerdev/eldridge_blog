@@ -13,6 +13,30 @@ export type CommentType = {
   created_at: string
 }
 
+export enum StrapiComponent {
+  OLD_TEXT = 'text',
+  IMAGE = 'posts.blog-post-image',
+  TEXT = 'posts.blog-post-text',
+  AFFILIATE = 'posts.affiliate-link',
+}
+
+export enum ImageWidthOptions {
+  SMALL = 'FiftyPercent',
+  MEDIUM = 'SeventyFivePercent',
+  LARGE = 'OneHundredPercent',
+}
+
+export type BlogContentItem = {
+  strapi_component: StrapiComponent
+  Image?: FluidImageType
+  Text?: string
+  ImageCaption?: string
+  AffiliateLinkText?: string
+  ImageWidth?: ImageWidthOptions
+}
+
+export type BlogContent = [BlogContentItem]
+
 export type BlogPost = {
   id: string
   strapiId: string
@@ -26,6 +50,7 @@ export type BlogPost = {
   image?: FluidImageType
   HeroImage?: FluidImageType
   text: string
+  BlogContent?: BlogContent
 }
 
 export type EdgeType = {
@@ -53,6 +78,20 @@ export const useAllBlogPosts = (): EdgeType[] => {
             Description
             postNumber
             text
+            BlogContent {
+              strapi_component
+              Text
+              AffiliateLinkText
+              ImageCaption
+              ImageWidth
+              Image {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
             comments {
               username
               commentText
