@@ -144,7 +144,7 @@ exports.createResolvers = ({
     [name]: {
       type: 'File',
       resolve(source, args, context, info) {
-        const remoteUrl = source[name]?.url
+        const remoteUrl = source[name] && source[name].url
 
         if (test) {
           console.log('_______________________________________________________')
