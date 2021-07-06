@@ -6,7 +6,7 @@ const CMSSettings = require('./CMSSettings/strapi/gatsby-config')
 
 module.exports = {
   siteMetadata: {
-    title: `Eldridge Blog`,
+    title: `Eldridge Expedition`,
     author: {
       name: `Ryan Eldridge`,
       summary: `blah`,

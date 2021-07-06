@@ -5,9 +5,9 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql, PageProps } from "gatsby"
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { useStaticQuery, graphql, PageProps } from 'gatsby'
 
 // import GlobalStyles from '../global-style'
 
@@ -24,8 +24,8 @@ type SEOProps = {
 interface SEOQueryProps {
   site: {
     siteMetadata: {
-      title: string,
-      description: string,
+      title: string
+      description: string
       social: {
         twitter: string
       }
@@ -37,7 +37,7 @@ const SEO: React.FC<SEOProps> = ({
   description = defaultProps.description,
   lang = defaultProps.lang,
   meta = defaultProps.meta,
-  title
+  title,
 }) => {
   const { site }: SEOQueryProps = useStaticQuery(
     graphql`
