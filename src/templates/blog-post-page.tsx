@@ -10,6 +10,7 @@ import {
   StrapiComponent,
 } from '../hooks/use-all-posts'
 import { navigate } from 'gatsby'
+import SEO from '../components/seo'
 
 interface BlogPostProps {
   pageContext: {
@@ -47,9 +48,11 @@ const BlogPost: React.FC<BlogPostProps> = props => {
 
   return (
     <Layout heroOverride={hero?.childImageSharp.fluid} heroText={null}>
-      <TextSection title={title} content={blogContent} />
-      <BlogComments comments={comments} />
-      <BlogCreateComment post_id={strapiId} />
+      <SEO title={title}>
+        <TextSection title={title} content={blogContent} />
+        <BlogComments comments={comments} />
+        <BlogCreateComment post_id={strapiId} />
+      </SEO>
     </Layout>
   )
 }
