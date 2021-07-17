@@ -41,7 +41,7 @@ const Layout: React.FC<LayoutProps> = ({
           {/* <HeroNotif /> */}
           <MainContainer className="mx-5">{children}</MainContainer>
         </ContentContainer>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   )

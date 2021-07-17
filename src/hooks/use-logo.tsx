@@ -26,6 +26,5 @@ export const useLogo = (): FixedObject => {
     }
   `)
 
-  console.error(data)
   return data.strapiLogo.LogoImage?.childImageSharp.fixed
 }

@@ -14,8 +14,8 @@ import {
 } from '../hooks/use-all-posts'
 
 interface SectionProps {
-  title: string
-  content: BlogContent
+  title?: string
+  content?: BlogContent
 }
 
 const TextSection = styled(Text)`
@@ -125,10 +125,16 @@ const renderImage = ({ image, caption, width }: ImageProps) => (
 )
 
 const renderText = (content: BlogContent) => {
+  const defaultContent = (text: string, i: number) => (
+    <BlogTextSection key={i} dangerouslySetInnerHTML={{ __html: text }} />
+  )
   return (
     <div>
       {content &&
         content.map((item, i) => {
+          if (typeof item === 'string') {
+            return defaultContent(item, i)
+          }
           switch (item.strapi_component) {
             case StrapiComponent.IMAGE: {
               if (!item.Image || !item.Image.childImageSharp) {
@@ -160,11 +166,7 @@ const renderText = (content: BlogContent) => {
               if (!item.Text) {
                 return
               }
-              return (
-                <BlogTextSection key={i}>
-                  <div dangerouslySetInnerHTML={{ __html: item.Text }} />
-                </BlogTextSection>
-              )
+              return defaultContent(item.Text, i)
             }
           }
         })}
@@ -173,12 +175,16 @@ const renderText = (content: BlogContent) => {
   )
 }
 
+const renderTitle = (title: string) => (
+  <Text>
+    <h1>{title}</h1>
+  </Text>
+)
+
 const Section: React.FC<SectionProps> = ({ title, content }) => (
   <Container>
-    <Text>
-      <h1>{title}</h1>
-    </Text>
-    {renderText(content)}
+    {title && renderTitle(title)}
+    {content && renderText(content)}
     <SectionLine />
     {/* <Text dangerouslySetInnerHTML={{ __html: text }} /> */}
   </Container>

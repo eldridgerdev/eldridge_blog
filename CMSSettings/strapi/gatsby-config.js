@@ -11,6 +11,7 @@ const plugins = [
       singleTypes: [
         'coming-soon',
         'logo',
+        'contact-us-page',
         'four-o-four-page',
         'about-page',
         'index-page',
