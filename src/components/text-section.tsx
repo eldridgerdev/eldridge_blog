@@ -92,7 +92,7 @@ const AffiliateLinks = ({ linkText }: AffiliateLinkProps) => (
       <Text>
         <p>
           <i>
-            We earn a small commision if you purchase a recommended product
+            We earn a small commission if you purchase a recommended product
             through our affiliate link
           </i>
         </p>
