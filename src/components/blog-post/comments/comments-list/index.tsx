@@ -1,23 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
-import tw from 'twin.macro'
 
-import theme from '../../../utils/theme'
-import Text from '../../text'
-import Comment, { CommentProps } from './comment'
+import Comment from '../comment'
+import { Container } from './styled'
+import { CommentsProps } from './types'
 
-interface Comments {
-  comments?: [CommentProps]
-}
-
-const Container = styled(Text)`
-  ${tw`rounded w-full md:w-1/2`}// background-color: ${theme.colors.secondary};
-    // border: 1px solid ${theme.colors.main};
-`
-
-const Comments: React.FC<Comments> = ({ comments = [] }) => {
+const Comments: React.FC<CommentsProps> = ({ comments = [] }) => {
   if (comments.length === 0) return <></>
 
+  // @TODO: no h1 for SEO
   return (
     <Container>
       <h1>Comments</h1>

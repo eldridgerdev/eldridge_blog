@@ -4,7 +4,7 @@ import { graphql, PageProps } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import TextSection from '../components/text-section'
-import ContactForm from '../components/forms/ContactForm'
+import ContactForm from '../components/forms/contact-form'
 
 interface ContactPageProps extends PageProps {
   data: {
