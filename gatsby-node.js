@@ -79,6 +79,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       Text: String
       ImageCaption: String
       AffiliateLinkText: String
+      ImageWidth: String
     }
 
     type StrapiComment implements Node {
