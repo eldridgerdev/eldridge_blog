@@ -32,3 +32,7 @@ export const Submit = styled.button`
   ${tw`font-bold py-3 px-5 border rounded shadow w-1/2 self-center`}
   ${tw`focus:ring-2 ring-opacity-50 ring-black`}
 `
+
+export const HiddenP = styled.p`
+  ${tw`invisible`}
+`
