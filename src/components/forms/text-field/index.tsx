@@ -30,6 +30,7 @@ export default function TextField({
       {labelSubText && <LabelSubtext>{labelSubText}</LabelSubtext>}
       {type !== 'textarea' && (
         <InputField
+          name={name}
           type={type}
           id={id}
           onChange={e => onChange(e.target.value, e)}
@@ -38,6 +39,7 @@ export default function TextField({
       )}
       {type === 'textarea' && (
         <TextAreaField
+          name={name}
           id={id}
           onChange={e => onChange(e.target.value, e)}
           required={required}
