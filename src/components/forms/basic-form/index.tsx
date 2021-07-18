@@ -20,13 +20,13 @@ const defaultState = {
 }
 
 const NetlifyInput = () => (
-  // <input type="hidden" name="form-name" value="contact" />
-  <HiddenP>
-    <label>
-      Don’t fill this out if you’re human:{' '}
-      <input name="bot-field" value="contact" />
-    </label>
-  </HiddenP>
+  <input type="hidden" name="form-name" value="contact" />
+  // <HiddenP>
+  //   <label>
+  //     Don’t fill this out if you’re human:{' '}
+  //     <input name="bot-field" value="contact" />
+  //   </label>
+  // </HiddenP>
 )
 
 const FormComponent: React.FC<FormComponentProps> = ({
@@ -63,23 +63,37 @@ const FormComponent: React.FC<FormComponentProps> = ({
       })
     }
 
-    // if (netlifyPost) {
-    //   const response = await window.fetch('/api/form', {
-    //     method: 'POST',
-    //     headers: {
-    //       'content-type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       variables: {
-    //         username,
-    //         text: message,
-    //         post_id,
-    //         email,
-    //       },
-    //     }),
-    //   })
-    //   setServerResponse(response)
-    // }
+    if (netlifyPost) {
+      function encode(data: any) {
+        return Object.keys(data)
+          .map(
+            key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+          )
+          .join('&')
+      }
+
+      fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: encode({
+          'form-name': netlifyPostName,
+          username: values.username,
+          text: values.message,
+          email: values.email,
+        }),
+        // body: JSON.stringify({
+        //   variables: {
+        //     username,
+        //     text: message,
+        //     post_id,
+        //     email,
+        //   },
+        // }),
+      })
+      // setServerResponse(response)
+    }
 
     setValues(prev => ({
       ...prev,
@@ -107,7 +121,7 @@ const FormComponent: React.FC<FormComponentProps> = ({
           {/* @TODO: Use a styled <p> or something instead of h1 for SEO */}
           <h1>{titleText}</h1>
           <Form {...formProps}>
-            {formProps['data-netlify'] && formProps.name && <NetlifyInput />}
+            {netlifyPost && <NetlifyInput />}
             <TextField
               label="Name"
               type="text"
