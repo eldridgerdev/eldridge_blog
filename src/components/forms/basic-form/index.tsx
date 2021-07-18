@@ -20,9 +20,11 @@ const defaultState = {
 }
 
 const NetlifyInput = () => (
+  // <input type="hidden" name="form-name" value="contact" />
   <HiddenP>
     <label>
-      Don’t fill this out if you’re human: <input name="bot-field" />
+      Don’t fill this out if you’re human:{' '}
+      <input name="bot-field" value="contact" />
     </label>
   </HiddenP>
 )
@@ -105,7 +107,7 @@ const FormComponent: React.FC<FormComponentProps> = ({
           {/* @TODO: Use a styled <p> or something instead of h1 for SEO */}
           <h1>{titleText}</h1>
           <Form {...formProps}>
-            {/* {formProps['data-netlify'] && formProps.name && <NetlifyInput />} */}
+            {formProps['data-netlify'] && formProps.name && <NetlifyInput />}
             <TextField
               label="Name"
               type="text"
