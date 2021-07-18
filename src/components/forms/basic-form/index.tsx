@@ -20,13 +20,15 @@ const defaultState = {
 }
 
 const NetlifyInput = () => (
-  <input type="hidden" name="form-name" value="contact" />
-  // <HiddenP>
-  //   <label>
-  //     Don’t fill this out if you’re human:{' '}
-  //     <input name="bot-field" value="contact" />
-  //   </label>
-  // </HiddenP>
+  <>
+    <input type="hidden" name="form-name" value="contact" />
+    <HiddenP>
+      <label>
+        Don’t fill this out if you’re human:{' '}
+        <input name="bot-field" value="contact" />
+      </label>
+    </HiddenP>
+  </>
 )
 
 const FormComponent: React.FC<FormComponentProps> = ({
@@ -79,8 +81,8 @@ const FormComponent: React.FC<FormComponentProps> = ({
         },
         body: encode({
           'form-name': netlifyPostName,
-          username: values.username,
-          text: values.message,
+          name: values.username,
+          message: values.message,
           email: values.email,
         }),
         // body: JSON.stringify({
