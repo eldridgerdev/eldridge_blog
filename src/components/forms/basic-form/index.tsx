@@ -92,7 +92,7 @@ const FormComponent: React.FC<FormComponentProps> = ({
   }
 
   if (netlifyPost) {
-    formProps.method = 'post'
+    formProps.method = 'POST'
     formProps['netlify-honeypot'] = 'bot-field'
     formProps['data-netlify'] = 'true'
     formProps.name = netlifyPostName || 'contact'
@@ -105,7 +105,7 @@ const FormComponent: React.FC<FormComponentProps> = ({
           {/* @TODO: Use a styled <p> or something instead of h1 for SEO */}
           <h1>{titleText}</h1>
           <Form {...formProps}>
-            {formProps['data-netlify'] && formProps.name && <NetlifyInput />}
+            {/* {formProps['data-netlify'] && formProps.name && <NetlifyInput />} */}
             <TextField
               label="Name"
               type="text"

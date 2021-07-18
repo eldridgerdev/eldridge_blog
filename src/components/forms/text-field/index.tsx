@@ -27,7 +27,7 @@ export default function TextField({
   return (
     <InputContainer>
       {label && <Label htmlFor={id}>{label}</Label>}
-      {labelSubText && <LabelSubtext>labelSubText</LabelSubtext>}
+      {labelSubText && <LabelSubtext>{labelSubText}</LabelSubtext>}
       {type !== 'textarea' && (
         <InputField
           type={type}
