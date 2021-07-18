@@ -81,7 +81,6 @@ const FormComponent: React.FC<FormComponentProps> = ({
         },
         body: encode({
           'form-name': netlifyPostName,
-          ['bot-field']: 'test',
           name: values.username,
           message: values.message,
           email: values.email,
