@@ -79,6 +79,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       Text: String
       ImageCaption: String
       AffiliateLinkText: String
+      ImageWidth: String
     }
 
     type StrapiComment implements Node {
@@ -86,6 +87,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       commentText: String
       simpleReply: String
       created_at: Date @dateformat
+      email: String
     }
 
     type StrapiFeaturedPost implements Node {
@@ -117,6 +119,13 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     
     type StrapiFourOFourPage implements Node {
+      image: File
+    }
+    type StrapiContactUsPagePagePage implements Node {
+      HeroImage: File
+    }
+    
+    type StrapiContactUsPage implements Node {
       image: File
     }
     type StrapiComingSoonPagePage implements Node {
@@ -185,6 +194,8 @@ exports.createResolvers = ({
     StrapiAboutPagePagePage: generateResolver('HeroImage'),
     StrapiFourOFourPagePagePage: generateResolver('HeroImage'),
     StrapiFourOFourPage: generateResolver('image'),
+    StrapiContactUsPagePagePage: generateResolver('HeroImage'),
+    StrapiContactUsPage: generateResolver('image'),
     StrapiLogo: generateResolver('LogoImage'),
   })
 }

@@ -26,8 +26,8 @@ const navHeaders = [
     link: '/blog-post-list',
   },
   {
-    title: 'Gallery',
-    link: '/coming-soon',
+    title: 'Contact Us',
+    link: '/contact',
   },
 ]
 

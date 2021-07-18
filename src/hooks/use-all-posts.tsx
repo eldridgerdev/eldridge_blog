@@ -35,7 +35,7 @@ export type BlogContentItem = {
   ImageWidth?: ImageWidthOptions
 }
 
-export type BlogContent = [BlogContentItem]
+export type BlogContent = [BlogContentItem | string]
 
 export type BlogPost = {
   id: string

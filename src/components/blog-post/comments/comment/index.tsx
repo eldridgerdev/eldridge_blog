@@ -1,29 +1,9 @@
 import moment from 'moment'
 import React from 'react'
-import styled from 'styled-components'
-import tw from 'twin.macro'
-import Line from '../../line/line'
-import { CommentType } from '../../../hooks/use-all-posts'
 
-export type CommentProps = CommentType
-
-const Username = styled.span`
-  font-family: 'lato', sans-serif;
-  font-weight: 800;
-  ${tw`text-base uppercase`}
-`
-const Timestamp = styled.span`
-  font-family: 'lato', sans-serif;
-  ${tw`text-xs uppercase`}
-`
-
-const CommentHeader = styled.div`
-  ${tw`leading-3`}
-`
-
-const CommentContainer = styled.div`
-  ${tw`py-3`}
-`
+import Line from '../../../line/line'
+import { Username, Timestamp, CommentHeader, CommentContainer } from './styled'
+import { CommentProps } from './types'
 
 const Comment: React.FC<CommentProps> = ({
   username,
