@@ -5,7 +5,9 @@ import Text from '../../../text'
 import { AffiliateLinkContainer, AffiliateLinkRow } from './styled'
 import { AffiliateLinkProps } from './types'
 
-export default function AffiliateLinks({ linkText }: AffiliateLinkProps) {
+export default function AffiliateLinks({ linkText, hide }: AffiliateLinkProps) {
+  if (hide) return null
+
   return (
     <AffiliateLinkContainer>
       <AffiliateLinkRow>

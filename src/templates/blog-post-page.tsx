@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Layout from '../components/layout'
-import TextSection from '../components/text-section'
+import TextSection from '../components/blog-post/sections/text-section'
 import BlogComments from '../components/blog-post/comments/comments-list'
 import BlogCreateComment from '../components/blog-post/comments/create-comment'
 import {

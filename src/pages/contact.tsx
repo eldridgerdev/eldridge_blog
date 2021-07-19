@@ -1,30 +1,14 @@
 import React from 'react'
-import { graphql, PageProps } from 'gatsby'
+import { graphql } from 'gatsby'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import TextSection from '../components/text-section'
-import ContactForm from '../components/forms/contact-form'
-
-interface ContactPageProps extends PageProps {
-  data: {
-    strapiContactUsPage: {
-      Page: {
-        Content: string
-        Page: {
-          SiteTitle: string
-          HeroText: string
-          HeroImage: any
-        }
-      }
-    }
-  }
-}
+import ContactUs from '../components/pages/contact'
+import { ContactPageProps } from '../components/pages/contact/types'
 
 export const pageQuery = graphql`
   query ContactUsPage {
     strapiContactUsPage {
       Page {
+        Content
         Page {
           SiteTitle
           HeroText
@@ -36,7 +20,6 @@ export const pageQuery = graphql`
             }
           }
         }
-        Content
       }
       image {
         childImageSharp {
@@ -48,22 +31,9 @@ export const pageQuery = graphql`
     }
   }
 `
-const EMAIL_SUBTEXT = 'Enter your email address so we can get back to you.'
 
-const ContactUsPage = ({ data, location }: ContactPageProps) => {
-  const page = data.strapiContactUsPage.Page
-  const pageData = page.Page
-  const content = page.Content
-
-  const { SiteTitle: title, HeroText: text, HeroImage: image } = pageData
-
-  return (
-    <Layout heroText={text} heroOverride={image?.childImageSharp?.fluid}>
-      <SEO title={title} />
-      <TextSection content={[content]}></TextSection>
-      <ContactForm />
-    </Layout>
-  )
+const ContactUsPage = (props: ContactPageProps) => {
+  ;<ContactUs {...props} />
 }
 
 export default ContactUsPage

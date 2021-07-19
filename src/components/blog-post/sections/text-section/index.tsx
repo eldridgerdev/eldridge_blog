@@ -15,10 +15,11 @@ import { SectionProps } from './types'
 
 // @TODO: text-section doesn't seem to be the best descriptor. Rethink this.
 
+const defaultContent = (text: string, i?: number) => (
+  <BlogTextSection key={i} dangerouslySetInnerHTML={{ __html: text }} />
+)
+
 const renderText = (content: BlogContent) => {
-  const defaultContent = (text: string, i: number) => (
-    <BlogTextSection key={i} dangerouslySetInnerHTML={{ __html: text }} />
-  )
   return (
     <>
       {content &&
@@ -50,7 +51,11 @@ const renderText = (content: BlogContent) => {
               }
 
               return (
-                <AffiliateLinks key={i} linkText={item.AffiliateLinkText} />
+                <AffiliateLinks
+                  key={i}
+                  linkText={item.AffiliateLinkText}
+                  hide={item.Hide}
+                />
               )
             }
             default: {
@@ -72,10 +77,14 @@ const renderTitle = (title: string) => (
   </Text>
 )
 
-const Section: React.FC<SectionProps> = ({ title, content }) => (
+const Section: React.FC<SectionProps> = ({
+  title,
+  content = [],
+  text = '',
+}) => (
   <Container>
     {title && renderTitle(title)}
-    {content && renderText(content)}
+    {content && content.length > 0 ? renderText(content) : defaultContent(text)}
     <SectionLine />
   </Container>
 )

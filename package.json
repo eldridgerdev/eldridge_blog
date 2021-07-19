@@ -39,6 +39,7 @@
     "gatsby-remark-responsive-iframe": "^4.6.0",
     "gatsby-remark-smartypants": "^4.6.0",
     "gatsby-source-filesystem": "^3.9.0",
+    "gatsby-source-graphql": "^3.9.0",
     "gatsby-source-strapi": "1.0.0-alpha.0",
     "gatsby-transformer-cloudinary": "^2.2.4",
     "gatsby-transformer-remark": "^4.6.0",

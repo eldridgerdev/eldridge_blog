@@ -33,9 +33,10 @@ export type BlogContentItem = {
   ImageCaption?: string
   AffiliateLinkText?: string
   ImageWidth?: ImageWidthOptions
+  Hide?: boolean
 }
 
-export type BlogContent = [BlogContentItem | string]
+export type BlogContent = BlogContentItem[]
 
 export type BlogPost = {
   id: string
@@ -82,6 +83,7 @@ export const useAllBlogPosts = (): EdgeType[] => {
               strapi_component
               Text
               AffiliateLinkText
+              Hide
               ImageCaption
               ImageWidth
               Image {
