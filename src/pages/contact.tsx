@@ -32,8 +32,6 @@ export const pageQuery = graphql`
   }
 `
 
-const ContactUsPage = (props: ContactPageProps) => {
-  ;<ContactUs {...props} />
-}
+const ContactUsPage = (props: ContactPageProps) => <ContactUs {...props} />
 
 export default ContactUsPage
