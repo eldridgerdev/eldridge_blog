@@ -37,13 +37,11 @@ const renderText = (content: BlogContent) => {
 
               return (
                 <Text key={i}>
-                  <Container>
-                    <BlogImage
-                      image={item.Image.childImageSharp.fluid}
-                      caption={item.ImageCaption}
-                      width={width}
-                    />
-                  </Container>
+                  <BlogImage
+                    image={item.Image.childImageSharp.fluid}
+                    caption={item.ImageCaption}
+                    width={width}
+                  />
                 </Text>
               )
             }
