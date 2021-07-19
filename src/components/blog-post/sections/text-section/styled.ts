@@ -5,6 +5,7 @@ import Text from '../../../text'
 import Line from '../../../line/line'
 import theme from '../../../../utils/theme'
 
+// @TODO: rename this, it's interfering with the component
 export const TextSection = styled(Text)`
   width: 100%;
   ${tw`flex-auto`}

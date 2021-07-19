@@ -1,24 +1,21 @@
-import React from "react"
-import { Link, graphql, PageProps, useStaticQuery } from "gatsby"
+import React from 'react'
+import { Link, graphql, PageProps, useStaticQuery } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import postcssConfig from "../../postcss.config"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import postcssConfig from '../../postcss.config'
 import BlogCard from '../components/cards/blog-card'
 import LatestBlog from '../components/cards/latest-blog-container'
-import tw from "twin.macro"
-import styled from "styled-components"
-import theme from "../utils/theme"
+import tw from 'twin.macro'
+import styled from 'styled-components'
+import theme from '../utils/theme'
+import { PageType } from '../page-helpers/types'
 
 type DataType = {
   strapiIndexPage: {
-    Page: {
-      SiteTitle: string,
-      HeroText: string,
-      HeroImage: any
-    }
+    Page: PageType
   }
   strapiFeaturedPost: any
 }
@@ -40,26 +37,26 @@ export const pageQuery = graphql`
     }
 
     strapiFeaturedPost {
-        blog_post {
-            id
-            Slug
-            published_at
-            Title
-            Description
-            image {
-                childImageSharp {
-                    fluid {
-                        ...GatsbyImageSharpFluid
-                    }
-                }
+      blog_post {
+        id
+        Slug
+        published_at
+        Title
+        Description
+        image {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
             }
+          }
         }
+      }
     }
   }
 `
 
 type IndexProps = {
-  data: DataType,
+  data: DataType
   location: any
 }
 
@@ -102,7 +99,7 @@ const BlogIndex: React.FC<IndexProps> = ({ data, location }) => {
 
   const MoreIcon = () => (
     // <IconContainer>
-      <FontAwesomeIcon icon={faAngleDoubleRight} />
+    <FontAwesomeIcon icon={faAngleDoubleRight} />
     // </IconContainer>
   )
 
@@ -112,14 +109,17 @@ const BlogIndex: React.FC<IndexProps> = ({ data, location }) => {
 
   return (
     <>
-      <Layout heroOverride={image} heroText={pageData.HeroText} >
+      <Layout heroOverride={image} heroText={pageData.HeroText}>
         <SEO title={pageData.SiteTitle} />
         <LatestContainer>
-          <LatestText>{
-            featuredPost ? 'Featured Post' : 'Latest Adventure'
-          }</LatestText>
+          <LatestText>
+            {featuredPost ? 'Featured Post' : 'Latest Adventure'}
+          </LatestText>
           <LatestBlog featuredPost={featuredPost} />
-          <MorePosts to='/blog-post-list'>More Posts<MoreIcon /></MorePosts>
+          <MorePosts to="/blog-post-list">
+            More Posts
+            <MoreIcon />
+          </MorePosts>
         </LatestContainer>
       </Layout>
     </>

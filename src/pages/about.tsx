@@ -1,31 +1,10 @@
+import { graphql } from 'gatsby'
 import React from 'react'
-import { graphql, PageProps } from 'gatsby'
-import { FluidObject } from 'gatsby-image'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import TextSection from '../components/text-section'
+import About from '../components/pages/about'
+import { AboutPageProps } from '../components/pages/about/types'
 
-interface AboutPageProps extends PageProps {
-  data: {
-    strapiAboutPage: {
-      Page: {
-        Content: string
-        Page: {
-          SiteTitle: string
-          HeroText: string
-          HeroImage?: {
-            childImageSharp: {
-              fluid: FluidObject
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-export const pageQuery = graphql`
+export const query = graphql`
   query getAboutPage {
     strapiAboutPage {
       Page {
@@ -45,23 +24,8 @@ export const pageQuery = graphql`
     }
   }
 `
-
-const AboutPage = ({ data, location }: AboutPageProps): JSX.Element => {
-  const aboutData = data.strapiAboutPage
-  const image = aboutData.Page.Page.HeroImage?.childImageSharp.fluid
-  const { SiteTitle: title, HeroText: text } = aboutData.Page.Page
-
-  return (
-    <Layout
-      heroOverride={image}
-      heroText={text || null} /*location={location} title={siteTitle} */
-    >
-      <SEO title={title} />
-      <TextSection title="About Us" text={aboutData.Page.Content} />
-      {/* <h1>About us</h1>
-      <p>Blah</p> */}
-    </Layout>
-  )
+const AboutPage = (props: AboutPageProps): JSX.Element => {
+  return <About {...props} />
 }
 
 export default AboutPage
