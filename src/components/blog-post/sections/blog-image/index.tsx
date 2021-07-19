@@ -4,7 +4,7 @@ import Image from 'gatsby-image'
 import { ImageContainer } from './styled'
 import { ImageProps } from './types'
 
-export default function BlogImage({ image, caption, width }: ImageProps) {
+export default function BlogImage({ image, caption = '', width }: ImageProps) {
   return (
     <ImageContainer $width={width}>
       <br />
@@ -14,7 +14,7 @@ export default function BlogImage({ image, caption, width }: ImageProps) {
           imgStyle={{
             objectPosition: 'left center',
           }}></Image>
-        <figcaption>{caption}</figcaption>
+        {caption && <figcaption>{caption}</figcaption>}
       </figure>
       <br />
     </ImageContainer>
