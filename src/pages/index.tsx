@@ -28,7 +28,7 @@ export const pageQuery = graphql`
         HeroText
         HeroImage {
           childImageSharp {
-            fluid {
+            fluid(quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -45,7 +45,7 @@ export const pageQuery = graphql`
         Description
         image {
           childImageSharp {
-            fluid {
+            fluid(quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
