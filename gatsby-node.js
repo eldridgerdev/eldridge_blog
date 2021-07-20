@@ -83,10 +83,15 @@ exports.createSchemaCustomization = ({ actions }) => {
       Hide: Boolean
     }
 
+    type StrapiCommentReply implements Node {
+      username: String!
+      text: String!
+    }
+
     type StrapiComment implements Node {
       username: String
       commentText: String
-      simpleReply: String
+      reply: StrapiCommentReply
       created_at: Date @dateformat
       email: String
     }
