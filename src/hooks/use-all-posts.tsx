@@ -7,10 +7,17 @@ export type FluidImageType = {
   }
 }
 
+export type ReplyType = {
+  username: string
+  text: string
+}
+
 export type CommentType = {
   username: string
   commentText: string
-  created_at: string
+  created_at?: string
+  reply?: ReplyType
+  updated_at?: string
 }
 
 export enum StrapiComponent {
@@ -98,6 +105,11 @@ export const useAllBlogPosts = (): EdgeType[] => {
               username
               commentText
               created_at
+              updated_at
+              reply {
+                username
+                text
+              }
             }
             image {
               childImageSharp {
