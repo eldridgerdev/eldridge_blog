@@ -95,7 +95,7 @@ export const useAllBlogPosts = (): EdgeType[] => {
               ImageWidth
               Image {
                 childImageSharp {
-                  fluid {
+                  fluid(quality: 100) {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -113,14 +113,14 @@ export const useAllBlogPosts = (): EdgeType[] => {
             }
             image {
               childImageSharp {
-                fluid {
+                fluid(quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }
             }
             HeroImage {
               childImageSharp {
-                fluid {
+                fluid(quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }
