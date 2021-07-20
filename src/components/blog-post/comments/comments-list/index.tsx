@@ -12,13 +12,15 @@ const Comments: React.FC<CommentsProps> = ({ comments = [] }) => {
     <Container>
       <h1>Comments</h1>
       {comments.map((comment, i) => {
-        const { username, commentText, created_at } = comment
+        const { username, commentText, created_at, reply, updated_at } = comment
         return (
           <Comment
             key={i}
             username={username}
             commentText={commentText}
             created_at={created_at}
+            reply={reply}
+            updated_at={updated_at}
           />
         )
       })}
