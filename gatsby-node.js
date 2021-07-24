@@ -72,7 +72,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     interface BlogPost {
       Title: String!
       Description: String!
-      meta: Meta
+      metaGroup: Meta
     }
 
     interface Meta {
@@ -123,11 +123,11 @@ exports.createSchemaCustomization = ({ actions }) => {
       comments: [StrapiComment]
       categories: [StrapiCategory]
       HeroImage: File
-      meta: Meta
+      metaGroup: Meta
     }
 
     type StrapiIndexPage implements Node {
-      meta: Meta
+      metaGroup: Meta
     }
 
     type StrapiIndexPagePage implements Node {
@@ -140,17 +140,17 @@ exports.createSchemaCustomization = ({ actions }) => {
     
     type StrapiBlogListPage implements Node {
       heroImage: File
-      meta: Meta
+      metaGroup: Meta
     }
     type StrapiAboutPagePage implements Node {
-      meta: Meta
+      metaGroup: Meta
     }
     type StrapiAboutPagePagePage implements Node {
       HeroImage: File
     }
 
     type StrapiFourOFourPagePage implements Node {
-      meta: Meta
+      metaGroup: Meta
     }
     type StrapiFourOFourPagePagePage implements Node {
       HeroImage: File
@@ -158,7 +158,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     
     type StrapiFourOFourPage implements Node {
       image: File
-      meta: Meta
+      metaGroup: Meta
     }
     type StrapiContactUsPagePagePage implements Node {
       HeroImage: File
@@ -166,10 +166,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     
     type StrapiContactUsPage implements Node {
       image: File
-      meta: Meta
+      metaGroup: Meta
     }
     type StrapiComingSoonPage implements Node {
-      meta: Meta
+      metaGroup: Meta
     }
     type StrapiComingSoonPagePage implements Node {
       HeroImage: File

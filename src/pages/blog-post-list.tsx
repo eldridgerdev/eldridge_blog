@@ -17,7 +17,7 @@ export const pageQuery = graphql`
           }
         }
       }
-      meta {
+      metaGroup {
         title
         description
       }

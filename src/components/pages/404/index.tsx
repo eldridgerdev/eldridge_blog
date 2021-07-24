@@ -10,11 +10,12 @@ import { HomeButton, HomeText } from './styled'
 
 const NotFoundPage = ({ data, location }: NotFoundPageProps) => {
   const pageData = data.strapiFourOFourPage.Page.Page
+  const meta = data.strapiFourOFourPage.Page.metaGroup
   const { SiteTitle: title, HeroText: text, HeroImage: image } = pageData
 
   return (
     <Layout heroText={text} heroOverride={image?.childImageSharp.fluid}>
-      <SEO title={title} />
+      <SEO title={meta?.title || title} description={meta?.description} />
       <h1>Not Found</h1>
       <p>
         {data.strapiFourOFourPage.Page.Content || 'This page does not exist.'}

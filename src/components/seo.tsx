@@ -46,9 +46,6 @@ const SEO: React.FC<SEOProps> = ({
           siteMetadata {
             title
             description
-            social {
-              twitter
-            }
           }
         }
       }

@@ -20,7 +20,7 @@ export const query = graphql`
             }
           }
         }
-        meta {
+        metaGroup {
           title
           description
         }

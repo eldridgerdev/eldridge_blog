@@ -17,7 +17,7 @@ export const useAllBlogPosts = (): EdgeType[] => {
             Description
             postNumber
             text
-            meta {
+            metaGroup {
               title
               description
             }

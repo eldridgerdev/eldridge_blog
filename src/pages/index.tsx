@@ -11,11 +11,12 @@ import LatestBlog from '../components/cards/latest-blog-container'
 import tw from 'twin.macro'
 import styled from 'styled-components'
 import theme from '../utils/theme'
-import { PageType } from '../page-helpers/types'
+import { MetaType, PageType } from '../page-helpers/types'
 
 type DataType = {
   strapiIndexPage: {
     Page: PageType
+    metaGroup: MetaType
   }
   strapiFeaturedPost: any
 }
@@ -34,7 +35,7 @@ export const pageQuery = graphql`
           }
         }
       }
-      meta {
+      metaGroup {
         title
         description
       }
@@ -109,12 +110,16 @@ const BlogIndex: React.FC<IndexProps> = ({ data, location }) => {
 
   const featuredPost = data.strapiFeaturedPost.blog_post
   const pageData = data.strapiIndexPage.Page
+  const meta = data.strapiIndexPage.metaGroup
   const image = pageData.HeroImage?.childImageSharp.fluid
 
   return (
     <>
       <Layout heroOverride={image} heroText={pageData.HeroText}>
-        <SEO title={pageData.SiteTitle} />
+        <SEO
+          title={meta.title || pageData.SiteTitle}
+          description={meta.description}
+        />
         <LatestContainer>
           <LatestText>
             {featuredPost ? 'Featured Post' : 'Latest Adventure'}

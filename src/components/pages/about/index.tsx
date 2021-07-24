@@ -18,8 +18,8 @@ const About = ({ data, location }: AboutPageProps): JSX.Element => {
       heroText={text || null} /*location={location} title={siteTitle} */
     >
       <SEO
-        title={pageData.meta?.title || title}
-        description={pageData.meta?.description}
+        title={pageData.metaGroup?.title || title}
+        description={pageData.metaGroup?.description}
       />
       <TextSection title="About Us" text={aboutData.Page.Content} />
       {/* <h1>About us</h1>
