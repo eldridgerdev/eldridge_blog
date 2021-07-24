@@ -117,8 +117,8 @@ const BlogIndex: React.FC<IndexProps> = ({ data, location }) => {
     <>
       <Layout heroOverride={image} heroText={pageData.HeroText}>
         <SEO
-          title={meta.title || pageData.SiteTitle}
-          description={meta.description}
+          title={meta?.title || pageData.SiteTitle}
+          description={meta?.description}
         />
         <LatestContainer>
           <LatestText>

@@ -10,6 +10,7 @@ const Categories: React.FC<CategoryListProps> = ({
   selectedItem,
   makeSelection = () => {},
 }) => {
+  // @TODO: pass categories as props and move this up so that I can reuse this w/o graphql
   const categories = useAllCategories()
 
   if (categories.length <= 1) {
