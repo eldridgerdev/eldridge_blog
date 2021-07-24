@@ -123,6 +123,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       comments: [StrapiComment]
       categories: [StrapiCategory]
       HeroImage: File
+      meta: Meta
     }
 
     type StrapiIndexPage implements Node {
