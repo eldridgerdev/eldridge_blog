@@ -1,4 +1,4 @@
-import { ImageWidthOptions } from '../../../../hooks/use-all-posts'
+import { ImageWidthOptions } from '../../../../hooks/use-all-posts/types'
 
 export default function getWidth(width?: ImageWidthOptions) {
   switch (width) {

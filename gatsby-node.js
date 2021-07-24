@@ -72,6 +72,20 @@ exports.createSchemaCustomization = ({ actions }) => {
     interface BlogPost {
       Title: String!
       Description: String!
+      metaGroup: Meta
+    }
+
+    interface Meta {
+      title: String
+      description: String
+    }
+
+    interface Social {
+      twitter: String
+    }
+
+    type SiteSiteMetadata implements Node {
+      social: Social
     }
 
     type StrapiBlogPostBlogContent implements Node {
@@ -96,6 +110,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       email: String
     }
 
+    type StrapiCategory implements Node {
+      text: String!
+    }
+
     type StrapiFeaturedPost implements Node {
       blog_post: StrapiFeaturedPostBlog_post!
     }
@@ -103,7 +121,13 @@ exports.createSchemaCustomization = ({ actions }) => {
     type StrapiBlogPost implements Node {
       image: File
       comments: [StrapiComment]
+      categories: [StrapiCategory]
       HeroImage: File
+      metaGroup: Meta
+    }
+
+    type StrapiIndexPage implements Node {
+      metaGroup: Meta
     }
 
     type StrapiIndexPagePage implements Node {
@@ -116,9 +140,17 @@ exports.createSchemaCustomization = ({ actions }) => {
     
     type StrapiBlogListPage implements Node {
       heroImage: File
+      metaGroup: Meta
+    }
+    type StrapiAboutPagePage implements Node {
+      metaGroup: Meta
     }
     type StrapiAboutPagePagePage implements Node {
       HeroImage: File
+    }
+
+    type StrapiFourOFourPagePage implements Node {
+      metaGroup: Meta
     }
     type StrapiFourOFourPagePagePage implements Node {
       HeroImage: File
@@ -126,6 +158,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     
     type StrapiFourOFourPage implements Node {
       image: File
+      metaGroup: Meta
     }
     type StrapiContactUsPagePagePage implements Node {
       HeroImage: File
@@ -133,6 +166,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     
     type StrapiContactUsPage implements Node {
       image: File
+      metaGroup: Meta
+    }
+    type StrapiComingSoonPage implements Node {
+      metaGroup: Meta
     }
     type StrapiComingSoonPagePage implements Node {
       HeroImage: File

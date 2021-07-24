@@ -20,6 +20,10 @@ export const pageQuery = graphql`
             }
           }
         }
+        metaGroup {
+          title
+          description
+        }
       }
     }
   }

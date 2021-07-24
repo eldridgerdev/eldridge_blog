@@ -20,6 +20,10 @@ export const query = graphql`
             }
           }
         }
+        metaGroup {
+          title
+          description
+        }
       }
       image {
         childImageSharp {

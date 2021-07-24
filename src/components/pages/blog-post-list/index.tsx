@@ -8,6 +8,7 @@ import { Inner } from './styled'
 
 const BlogPosts: React.FC<BlogListPageProps> = ({ data, location }) => {
   const blogListData = data.strapiBlogListPage
+  const meta = data.strapiBlogListPage.metaGroup
   const image = blogListData.heroImage?.childImageSharp.fluid
   const { siteTitle: title, heroText: text } = blogListData
 

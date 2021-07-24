@@ -7,6 +7,7 @@ const plugins = [
         // List of the Content Types you want to be able to request from Gatsby.
         'blog-post',
         'comment',
+        'category',
       ],
       singleTypes: [
         'coming-soon',

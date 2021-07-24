@@ -86,8 +86,8 @@ const NavButton = styled.a`
     color: ${theme.colors.selectedHeader};
   }
   margin-right: 50px;
-  align-self: center;
   ${tw`
+        self-center
         font-semibold block text-lg
         mr-0 md:mr-10
     `}

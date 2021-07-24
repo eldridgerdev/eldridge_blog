@@ -9,13 +9,14 @@ import ContactForm from '../../forms/contact-form'
 const ContactUs = ({ data, location }: ContactPageProps) => {
   const page = data.strapiContactUsPage.Page
   const pageData = page.Page
+  const meta = page.metaGroup
   const content = page.Content
 
   const { SiteTitle: title, HeroText: text, HeroImage: image } = pageData
 
   return (
     <Layout heroText={text} heroOverride={image?.childImageSharp?.fluid}>
-      <SEO title={title} />
+      <SEO title={meta?.title || title} description={meta?.description} />
       <TextSection text={content}></TextSection>
       <ContactForm />
     </Layout>

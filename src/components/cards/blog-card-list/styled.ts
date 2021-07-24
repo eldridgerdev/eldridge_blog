@@ -2,10 +2,5 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 
 export const Container = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  ${tw`mt-4 container`}
+  ${tw`m-0 p-0 list-none flex flex-wrap mt-4 container transition-all justify-center`}
 `
