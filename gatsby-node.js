@@ -142,9 +142,11 @@ exports.createSchemaCustomization = ({ actions }) => {
       heroImage: File
       meta: Meta
     }
+    type StrapiAboutPagePage implements Node {
+      meta: Meta
+    }
     type StrapiAboutPagePagePage implements Node {
       HeroImage: File
-      meta: Meta
     }
 
     type StrapiFourOFourPagePage implements Node {
