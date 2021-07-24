@@ -8,7 +8,7 @@ import {
   BlogContent,
   StrapiComponent,
   ImageWidthOptions,
-} from '../../../../hooks/use-all-posts'
+} from '../../../../hooks/use-all-posts/types'
 
 import { SectionLine, Container, BlogTextSection } from './styled'
 import { SectionProps } from './types'

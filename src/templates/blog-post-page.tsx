@@ -1,15 +1,12 @@
 import React from 'react'
+import { navigate } from 'gatsby'
 
 import Layout from '../components/layout'
 import TextSection from '../components/blog-post/sections/text-section'
 import BlogComments from '../components/blog-post/comments/comments-list'
 import BlogCreateComment from '../components/blog-post/comments/create-comment'
-import {
-  useAllBlogPosts,
-  BlogContent,
-  StrapiComponent,
-} from '../hooks/use-all-posts'
-import { navigate } from 'gatsby'
+import { BlogContent, StrapiComponent } from '../hooks/use-all-posts/types'
+import { useAllBlogPosts } from '../hooks/use-all-posts'
 import SEO from '../components/seo'
 
 interface BlogPostProps {
@@ -39,8 +36,10 @@ const BlogPost: React.FC<BlogPostProps> = props => {
     text,
     Title: title,
     comments,
+    Description: description,
     strapiId,
     BlogContent: content,
+    meta = {},
   } = post.node
 
   const blogContent =
@@ -48,7 +47,10 @@ const BlogPost: React.FC<BlogPostProps> = props => {
 
   return (
     <Layout heroOverride={hero?.childImageSharp.fluid} heroText={null}>
-      <SEO title={title} />
+      <SEO
+        title={meta.title || title}
+        description={meta.description || description}
+      />
       <TextSection title={title} content={blogContent} />
       <BlogComments comments={comments} />
       <BlogCreateComment post_id={strapiId} />

@@ -82,10 +82,25 @@ export const CardLink = styled(Link)<CardLinkProps>`
 
 export const ListItem = styled.li<ListItemProps>`
   ${tw`w-full mb-4 px-2`}
-  ${(props: ListItemProps) => !props.$full && tw`sm:w-full md:w-1/2`}
+  ${props => !props.$full && tw`sm:w-full md:w-1/2`}
   display: flex;
   padding: 1rem;
   @media screen and (min-width: 1024px) {
     height: 100%;
+  }
+
+  &.card-enter {
+    opacity: 0;
+  }
+  &.card-enter-active {
+    opacity: 1;
+    transition: opacity 800ms ease-in;
+  }
+  &.card-exit {
+    opacity: 1;
+  }
+  &.card-exit-active {
+    opacity: 0;
+    transition: opacity 100ms ease-in;
   }
 `

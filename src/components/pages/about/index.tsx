@@ -8,15 +8,19 @@ import { AboutPageProps } from './types'
 
 const About = ({ data, location }: AboutPageProps): JSX.Element => {
   const aboutData = data.strapiAboutPage
-  const image = aboutData.Page.Page.HeroImage?.childImageSharp.fluid
-  const { SiteTitle: title, HeroText: text } = aboutData.Page.Page
+  const pageData = aboutData.Page
+  const image = pageData.Page.HeroImage?.childImageSharp.fluid
+  const { SiteTitle: title, HeroText: text } = pageData.Page
 
   return (
     <Layout
       heroOverride={image}
       heroText={text || null} /*location={location} title={siteTitle} */
     >
-      <SEO title={title} />
+      <SEO
+        title={pageData.meta?.title || title}
+        description={pageData.meta?.description}
+      />
       <TextSection title="About Us" text={aboutData.Page.Content} />
       {/* <h1>About us</h1>
       <p>Blah</p> */}

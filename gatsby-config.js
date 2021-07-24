@@ -9,12 +9,11 @@ module.exports = {
     title: `Eldridge Expedition`,
     author: {
       name: `Ryan Eldridge`,
-      summary: `blah`,
     },
     description: `A blog for our travels`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    siteUrl: `http://www.eldridgeexpedition.com`,
     social: {
-      twitter: 'temp',
+      twitter: null,
     },
   },
   plugins: [
