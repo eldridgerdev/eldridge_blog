@@ -21,4 +21,8 @@ export type DisplayImageProps = {
 
 export type TextContainerProps = { $extraCSS?: string }
 export type CardLinkProps = { $height?: string; $extraCSS?: string }
-export type ListItemProps = { $full: boolean }
+export type ListItemProps = {
+  $full: boolean
+  $state?: string
+  $duration?: number
+}

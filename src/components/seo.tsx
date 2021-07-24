@@ -57,6 +57,46 @@ const SEO: React.FC<SEOProps> = ({
 
   const metaDescription = description || site.siteMetadata.description
 
+  const metaProperties = [
+    {
+      name: `description`,
+      content: metaDescription,
+    },
+    {
+      property: `og:title`,
+      content: title,
+    },
+    {
+      property: `og:description`,
+      content: metaDescription,
+    },
+    {
+      property: `og:type`,
+      content: `website`,
+    },
+  ]
+
+  if (site.siteMetadata?.social?.twitter) {
+    metaProperties.push(
+      {
+        name: `twitter:card`,
+        content: `summary`,
+      },
+      {
+        name: `twitter:creator`,
+        content: site.siteMetadata.social.twitter,
+      },
+      {
+        name: `twitter:title`,
+        content: title,
+      },
+      {
+        name: `twitter:description`,
+        content: metaDescription,
+      }
+    )
+  }
+
   return (
     <Helmet
       htmlAttributes={{
@@ -64,40 +104,7 @@ const SEO: React.FC<SEOProps> = ({
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.social.twitter,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
+      meta={metaProperties.concat(meta)}
     />
   )
 }

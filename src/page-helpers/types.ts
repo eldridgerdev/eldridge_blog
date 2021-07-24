@@ -1,11 +1,16 @@
 import { FluidObject } from 'gatsby-image'
-import { BlogContent } from '../hooks/use-all-posts'
 
 //@TODO: find a better location for this
+
+export type MetaType = {
+  title?: string
+  description?: string
+}
 
 export type TextPageType = {
   Content: string
   Page: PageType
+  meta: MetaType
 }
 
 export type PageType = {

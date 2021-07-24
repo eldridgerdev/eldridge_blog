@@ -50,7 +50,7 @@ const BlogCard = ({
   }
 
   return (
-    <ListItem $full={full}>
+    <ListItem $full={full} $duration={500} $state="entering">
       <CardLink $extraCSS={extraCSS} $height={height} to={`/${blogId}`}>
         {/* <div className='rounded overflow-hidden shadow-lg'> */}
         <DisplayImage image={image} />
