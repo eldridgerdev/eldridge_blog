@@ -25,6 +25,7 @@ export const useAllBlogPosts = (): EdgeType[] => {
               strapi_component
               Text
               AffiliateLinkText
+              BlockText
               Hide
               ImageCaption
               ImageWidth
