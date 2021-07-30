@@ -32,15 +32,32 @@ export enum ImageWidthOptions {
   LARGE = 'OneHundredPercent',
 }
 
-export type BlogContentItem = {
-  strapi_component: StrapiComponent
-  Image?: FluidImageType
-  Text?: string
-  ImageCaption?: string
+export type BlogContentAffiliateItem = {
   AffiliateLinkText?: string
-  ImageWidth?: ImageWidthOptions
   Hide?: boolean
+  BlockText?: string
 }
+
+export type BlogContentImageItem = {
+  Image?: FluidImageType
+  ImageCaption?: string
+  ImageWidth?: ImageWidthOptions
+}
+
+export type BlogContentTextItem = {
+  Text?: string
+}
+
+export type BlogContentCommonItem = {
+  strapi_component: StrapiComponent
+}
+
+export type BlogContentOption =
+  | BlogContentTextItem
+  | BlogContentImageItem
+  | BlogContentAffiliateItem
+
+export type BlogContentItem = BlogContentCommonItem & BlogContentOption
 
 export type BlogContent = BlogContentItem[]
 
