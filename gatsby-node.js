@@ -93,6 +93,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       Text: String
       ImageCaption: String
       AffiliateLinkText: String
+      BlockText: String
       ImageWidth: String
       Hide: Boolean
     }

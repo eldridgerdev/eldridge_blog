@@ -55,6 +55,7 @@ const renderText = (content: BlogContent) => {
                   key={i}
                   linkText={item.AffiliateLinkText}
                   hide={item.Hide}
+                  blockText={item.BlockText}
                 />
               )
             }
