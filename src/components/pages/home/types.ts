@@ -1,10 +1,14 @@
 import { PageProps } from 'gatsby'
-import { TextPageType } from '../../../page-helpers/types'
+import { MetaType, PageType } from '../../../page-helpers/types'
 
-export interface NotFoundPageProps extends PageProps {
+// @TODO: Update featured post
+export interface HomePageProps extends PageProps {
   data: {
-    strapiFourOFourPage: {
-      Page: TextPageType
+    strapiIndexPage: {
+      Page: PageType
+      metaGroup: MetaType
+      description: string
     }
+    strapiFeaturedPost: any
   }
 }

@@ -1,31 +1,52 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 
+import { HomePageProps } from './types'
+import { LatestContainer, LatestText, MorePosts } from './styled'
 import Layout from '../../layout'
 import SEO from '../../seo'
-import theme from '../../../utils/theme'
-import { NotFoundPageProps } from './types'
-import { HomeButton, HomeText } from './styled'
+import LatestBlog from '../../cards/latest-blog-container'
+import Text from '../../text'
+import { Container } from '../../blog-post/sections/text-section/styled'
 
-const NotFoundPage = ({ data, location }: NotFoundPageProps) => {
-  const pageData = data.strapiFourOFourPage.Page.Page
-  const { SiteTitle: title, HeroText: text, HeroImage: image } = pageData
+const MoreIcon = () => (
+  // <IconContainer>
+  <FontAwesomeIcon icon={faAngleDoubleRight} />
+  // </IconContainer>
+)
 
+const BlogIndex: React.FC<HomePageProps> = ({ data }) => {
+  const featuredPost = data.strapiFeaturedPost.blog_post
+  const pageData = data.strapiIndexPage.Page
+  const meta = data.strapiIndexPage.metaGroup
+  const image = pageData.HeroImage?.childImageSharp.fluid
   return (
-    <Layout heroText={text} heroOverride={image?.childImageSharp.fluid}>
-      <SEO title={title} />
-      <h1>Not Found</h1>
-      <p>
-        {data.strapiFourOFourPage.Page.Content || 'This page does not exist.'}
-      </p>
-      <HomeButton to="/">
-        <HomeText>
-          <FontAwesomeIcon icon={faHome} style={{ color: theme.colors.main }} />
-        </HomeText>
-      </HomeButton>
-    </Layout>
+    <>
+      <Layout heroOverride={image} heroText={pageData.HeroText}>
+        <SEO
+          title={meta?.title || pageData.SiteTitle}
+          description={meta?.description}
+        />
+        {/* @TODO: move container comp to more global location */}
+        <Container>
+          <Text>
+            <h1>{data.strapiIndexPage.description}</h1>
+          </Text>
+        </Container>
+        <LatestContainer>
+          <LatestText>
+            {featuredPost ? 'Featured Post' : 'Latest Adventure'}
+          </LatestText>
+          <LatestBlog featuredPost={featuredPost} />
+          <MorePosts to="/blog-post-list">
+            More Posts
+            <MoreIcon />
+          </MorePosts>
+        </LatestContainer>
+      </Layout>
+    </>
   )
 }
 
-export default NotFoundPage
+export default BlogIndex
