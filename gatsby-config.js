@@ -11,7 +11,7 @@ module.exports = {
       name: `Ryan Eldridge`,
     },
     description: `A blog for our travels`,
-    siteUrl: `http://www.eldridgeexpedition.com`,
+    siteUrl: `https://www.eldridgeexpedition.com`,
     social: {
       twitter: null,
     },
