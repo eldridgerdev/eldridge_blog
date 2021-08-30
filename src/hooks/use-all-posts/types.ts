@@ -75,6 +75,7 @@ export type BlogPost = {
   HeroImage?: FluidImageType
   text: string
   BlogContent?: BlogContent
+  ppreviewOnly?: boolean
   categories: [
     {
       text: string

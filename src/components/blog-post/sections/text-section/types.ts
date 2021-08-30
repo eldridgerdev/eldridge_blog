@@ -1,4 +1,4 @@
-import { BlogContent } from '../../../../hooks/use-all-posts'
+import { BlogContent } from '../../../../hooks/use-all-posts/types'
 
 export interface SectionProps {
   title?: string

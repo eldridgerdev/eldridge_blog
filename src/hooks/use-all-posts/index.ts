@@ -17,6 +17,7 @@ export const useAllBlogPosts = (): EdgeType[] => {
             Description
             postNumber
             text
+            ppreviewOnly
             metaGroup {
               title
               description
@@ -70,7 +71,13 @@ export const useAllBlogPosts = (): EdgeType[] => {
     }
   `)
 
-  return data.allStrapiBlogPost.edges.filter(
-    (edge: EdgeType) => !edge.node.Hide
-  )
+  return data.allStrapiBlogPost.edges.filter((edge: EdgeType) => {
+    const hide = edge.node.Hide
+
+    if (process.env.PUBLICATION_STATE !== 'preview') {
+      return !edge.node.ppreviewOnly && !hide
+    }
+
+    return !hide
+  })
 }

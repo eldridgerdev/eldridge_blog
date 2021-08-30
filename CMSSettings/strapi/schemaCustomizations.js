@@ -48,7 +48,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type StrapiFeaturedPost implements Node {
       blog_post: StrapiFeaturedPostBlog_post!
-    }
+    } 
 
     type StrapiBlogPost implements Node {
       image: File
@@ -56,6 +56,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       categories: [StrapiCategory]
       HeroImage: File
       metaGroup: Meta
+      ppreviewOnly: Boolean
     }
 
     type StrapiIndexPage implements Node {
