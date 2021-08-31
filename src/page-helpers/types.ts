@@ -1,4 +1,4 @@
-import { FluidObject } from 'gatsby-image'
+import { FixedObject, FluidObject } from 'gatsby-image'
 
 //@TODO: find a better location for this
 
@@ -19,6 +19,7 @@ export type PageType = {
   HeroImage?: {
     childImageSharp: {
       fluid: FluidObject
+      fixed: FixedObject
     }
   }
 }

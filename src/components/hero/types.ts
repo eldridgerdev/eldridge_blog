@@ -1,4 +1,4 @@
-import { FluidObject, GatsbyImageFluidProps } from 'gatsby-image'
+import { FixedObject, FluidObject, GatsbyImageFluidProps } from 'gatsby-image'
 
 export interface HeroImageStyledProps {
   url: string
@@ -6,12 +6,12 @@ export interface HeroImageStyledProps {
 
 export type HeroTextProps = {
   text: string
-  img?: FluidObject
+  img?: FluidObject | FixedObject
   title?: string
 }
 
 export type HeroProps = {
-  image?: FluidObject
+  image?: FluidObject | FixedObject
   text?: string | null
 }
 

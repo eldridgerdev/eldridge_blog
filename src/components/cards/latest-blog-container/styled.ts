@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import tw from 'twin.macro'
+import theme from '../../../utils/theme'
 
 export const Container = styled.ul`
   display: flex;
@@ -23,4 +24,17 @@ export const extraCardCSS = `
             width: 40%;
         }
     }
+`
+export const LatestText = styled.li`
+  // color: ${theme.colors.trinary};
+  color: ${theme.colors.selectedHeader};
+  font-weight: 400;
+  line-height: 49px;
+  font-size: 36px;
+  align-self: center;
+  ${tw`flex mx-auto mt-3 text-3xl sm:text-3xl md:text-4xl`}
+`
+
+export const ListItem = styled.li`
+  ${tw`w-full sm:w-full md:w-1/2`}
 `

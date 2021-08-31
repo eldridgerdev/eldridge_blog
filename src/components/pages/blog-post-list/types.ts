@@ -1,5 +1,5 @@
 import { PageProps } from 'gatsby'
-import { FluidObject } from 'gatsby-image'
+import { FixedObject, FluidObject } from 'gatsby-image'
 import { MetaType } from '../../../page-helpers/types'
 
 export interface BlogListPageProps extends PageProps {
@@ -8,6 +8,7 @@ export interface BlogListPageProps extends PageProps {
       heroImage?: {
         childImageSharp: {
           fluid: FluidObject
+          fixed?: FixedObject
         }
       }
       heroText?: string

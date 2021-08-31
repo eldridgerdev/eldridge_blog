@@ -2,24 +2,16 @@ import { Link } from 'gatsby'
 import tw from 'twin.macro'
 import styled from 'styled-components'
 import theme from '../../../utils/theme'
+import { LatestContainerProps } from './types'
 
 // @TODO responsive width
-export const LatestContainer = styled.div`
+export const LatestContainer = styled.div<LatestContainerProps>`
   display: flex;
   width: 75%;
-  ${tw`w-full md:w-3/4`}
-  ${tw`flex justify-center flex-wrap flex-col`}
+  ${tw`flex w-full md:w-3/4 justify-center flex-wrap flex-col`}
+  ${props => props.$multipost && tw`md:w-11/12`}
 `
 
-export const LatestText = styled.span`
-  // color: ${theme.colors.trinary};
-  color: ${theme.colors.selectedHeader};
-  font-weight: 400;
-  line-height: 49px;
-  font-size: 36px;
-  align-self: center;
-  ${tw`mt-3 text-3xl sm:text-3xl md:text-4xl`}
-`
 export const MorePosts = styled(Link)`
   // color: ${theme.colors.trinary};
   &:hover {

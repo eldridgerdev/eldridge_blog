@@ -1,8 +1,9 @@
-import { FluidObject } from 'gatsby-image'
+import { FixedObject, FluidObject } from 'gatsby-image'
 
-export type FluidImageType = {
+export type imageType = {
   childImageSharp: {
-    fluid: FluidObject
+    fluid?: FluidObject
+    fixed?: FixedObject
   }
 }
 
@@ -39,7 +40,7 @@ export type BlogContentAffiliateItem = {
 }
 
 export type BlogContentImageItem = {
-  Image?: FluidImageType
+  Image?: imageType
   ImageCaption?: string
   ImageWidth?: ImageWidthOptions
 }
@@ -71,8 +72,8 @@ export type BlogPost = {
   Description: string
   postNumber: number
   comments: [CommentType]
-  image?: FluidImageType
-  HeroImage?: FluidImageType
+  image?: imageType
+  HeroImage?: imageType
   text: string
   BlogContent?: BlogContent
   ppreviewOnly?: boolean

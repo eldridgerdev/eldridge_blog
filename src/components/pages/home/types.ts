@@ -8,7 +8,12 @@ export interface HomePageProps extends PageProps {
       Page: PageType
       metaGroup: MetaType
       description: string
+      multiPost: boolean
     }
     strapiFeaturedPost: any
   }
+}
+
+export interface LatestContainerProps {
+  $multipost?: boolean
 }
