@@ -1,4 +1,4 @@
-import { CommentType } from '../../../../hooks/use-all-posts'
+import { CommentType } from '../../../../hooks/use-all-posts/types'
 
 export type CommentProps = CommentType
 

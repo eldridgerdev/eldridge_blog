@@ -1,7 +1,8 @@
-import { FluidObject } from 'gatsby-image'
+import { FixedObject, FluidObject } from 'gatsby-image'
 
 export type BlogCardProps = {
-  image?: FluidObject
+  fluidImage?: FluidObject
+  fixedImage?: FixedObject
   title: string
   description: string
   date: string
@@ -15,7 +16,8 @@ export type BlogCardProps = {
 }
 
 export type DisplayImageProps = {
-  image?: FluidObject
+  fixedImage?: FixedObject
+  fluidImage?: FluidObject
   className?: string
 }
 

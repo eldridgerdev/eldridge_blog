@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 
 import { HomePageProps } from './types'
-import { LatestContainer, LatestText, MorePosts } from './styled'
+import { LatestContainer, MorePosts } from './styled'
 import Layout from '../../layout'
 import SEO from '../../seo'
 import LatestBlog from '../../cards/latest-blog-container'
@@ -21,6 +21,8 @@ const BlogIndex: React.FC<HomePageProps> = ({ data }) => {
   const pageData = data.strapiIndexPage.Page
   const meta = data.strapiIndexPage.metaGroup
   const image = pageData.HeroImage?.childImageSharp.fluid
+  const multiPost = data.strapiIndexPage.multiPost
+
   return (
     <>
       <Layout heroOverride={image} heroText={pageData.HeroText}>
@@ -34,11 +36,9 @@ const BlogIndex: React.FC<HomePageProps> = ({ data }) => {
             <h1>{data.strapiIndexPage.description}</h1>
           </Text>
         </Container>
-        <LatestContainer>
-          <LatestText>
-            {featuredPost ? 'Featured Post' : 'Latest Adventure'}
-          </LatestText>
-          <LatestBlog featuredPost={featuredPost} />
+
+        <LatestContainer $multipost={multiPost}>
+          <LatestBlog multiPost={multiPost} featuredPost={featuredPost} />
           <MorePosts to="/blog-post-list">
             More Posts
             <MoreIcon />
