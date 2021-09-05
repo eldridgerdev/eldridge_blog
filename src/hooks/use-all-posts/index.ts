@@ -18,10 +18,6 @@ export const useAllBlogPosts = (): EdgeType[] => {
             postNumber
             text
             ppreviewOnly
-            metaGroup {
-              title
-              description
-            }
             BlogContent {
               strapi_component
               Text
