@@ -1,18 +1,18 @@
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
-    interface BlogPost {
+    type BlogPost {
       Title: String!
       Description: String!
       metaGroup: Meta
     }
 
-    interface Meta {
+    type Meta {
       title: String
       description: String
     }
 
-    interface Social {
+    type Social {
       twitter: String
     }
 
