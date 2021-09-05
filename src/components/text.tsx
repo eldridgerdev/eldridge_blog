@@ -11,6 +11,7 @@ const Text = styled.div`
 
   & a {
     color: ${theme.colors.main};
+    font-weight: bold;
   }
 
   & a:hover {

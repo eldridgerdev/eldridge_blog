@@ -105,15 +105,16 @@ const LatestBlogContainer: React.FC<LatestBlogContainerProps> = ({
   }
   // @TODO: Clean up, this is messy
   if (nextPost || previousPost) {
+    const isSingle = !(nextPost && previousPost)
     return (
       <Container>
         {previousPost && (
-          <ListItem>
+          <ListItem $full={isSingle}>
             <PreviousPost />
           </ListItem>
         )}
         {nextPost && (
-          <ListItem>
+          <ListItem $full={isSingle}>
             <NextPost />
           </ListItem>
         )}
@@ -124,10 +125,10 @@ const LatestBlogContainer: React.FC<LatestBlogContainerProps> = ({
   if (multiPost) {
     return (
       <Container>
-        <ListItem>
+        <ListItem $full={false}>
           <LatestPost />
         </ListItem>
-        <ListItem>
+        <ListItem $full={false}>
           <FeaturedPost />
         </ListItem>
       </Container>
