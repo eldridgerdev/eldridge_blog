@@ -60,7 +60,7 @@ const BlogList: React.FC = () => {
                   date={formatDate(published_at)}
                   title={title}
                   description={desc}
-                  image={imageSharp && imageSharp.fluid}
+                  fluidImage={imageSharp && imageSharp.fluid}
                   key={i}
                   postNumber={postNumber}
                   full={false}
