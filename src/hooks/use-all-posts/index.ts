@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { EdgeType, QueryProps } from './types'
 
 export const useAllBlogPosts = (): EdgeType[] => {
-  const previewMode = process.env.PUBLICATION_STATE === 'preview'
+  const previewMode = process.env.GATSBY_PUBLICATION_STATE === 'preview'
 
   const data: QueryProps = useStaticQuery(graphql`
     query GetAllBlogPosts {
