@@ -2,6 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import { EdgeType, QueryProps } from './types'
 
+const previewMode = process.env.PUBLICATION_STATE === 'preview'
 export const useAllBlogPosts = (): EdgeType[] => {
   const data: QueryProps = useStaticQuery(graphql`
     query GetAllBlogPosts {
@@ -73,14 +74,15 @@ export const useAllBlogPosts = (): EdgeType[] => {
 
   return data.allStrapiBlogPost.edges.filter((edge: EdgeType) => {
     const { Hide: hide, ppreviewOnly: previewOnly } = edge.node
-    const previewMode = process.env.PUBLICATION_STATE === 'preview'
 
     if (hide) {
       return false
     }
 
     if (!previewMode && previewOnly) {
-      console.error(`previewMode: ${previewMode} previewOnly: ${previewOnly}`)
+      console.error(
+        `previewMode: ${process.env.PUBLICATION_STATE} previewOnly: ${previewOnly}`
+      )
       console.error(`id: ${edge.node.id}, title: ${edge.node.Title}`)
       return false
     }
