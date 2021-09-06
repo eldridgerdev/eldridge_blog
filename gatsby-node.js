@@ -7,6 +7,7 @@ const {
 
 const activeEnv =
   process.env.GATSBY_ACTIVE_env || process.env.NODE_ENV || 'development'
+const previewMode = process.env.PUBLICATIONSTATE === 'preview'
 
 const makeRequest = (graphql, request) =>
   new Promise((resolve, reject) => {
@@ -24,15 +25,6 @@ const makeRequest = (graphql, request) =>
   })
 
 exports.createSchemaCustomization = createSchemaCustomization
-// exports.createSchemaCustomization = ({ actions }) => {
-//   const { createTypes } = actions
-//   const typeDefs = `
-//     type StrapiBlogPost implements Node {
-
-//     }
-//   `
-//   createTypes(typeDefs)
-// }
 
 // Implement the Gatsby API “createPages”. This is called once the
 // data layer is bootstrapped to let plugins create pages from data
@@ -50,6 +42,8 @@ exports.createPages = ({ actions, graphql }) => {
         node {
           id
           Slug
+          ppreviewOnly
+          Hide
         }
       }
     }
@@ -57,13 +51,17 @@ exports.createPages = ({ actions, graphql }) => {
   ).then(result => {
     // Create pages for each article
     result.data.allStrapiBlogPost.edges.forEach(({ node }) => {
-      createPage({
-        path: `/${node.Slug || node.id}`,
-        component: path.resolve(`src/templates/blog-post-page.tsx`),
-        context: {
-          postId: node.id,
-        },
-      })
+      const hide = node.Hide
+      const ppreviewOnly = node.ppreviewOnly
+      if (!hide && !(previewMode && ppreviewOnly)) {
+        createPage({
+          path: `/${node.Slug || node.id}`,
+          component: path.resolve(`src/templates/blog-post-page.tsx`),
+          context: {
+            postId: node.id,
+          },
+        })
+      }
     })
   })
 
