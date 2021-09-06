@@ -33,8 +33,8 @@ const BlogPost: React.FC<BlogPostProps> = props => {
     post && allPosts.find(p => p.node.postNumber === post.node.postNumber - 1)
 
   if (!post) {
-    navigate('/404')
-    return null
+    // navigate('/404')
+    return <div>ERROR</div>
   }
 
   const {
