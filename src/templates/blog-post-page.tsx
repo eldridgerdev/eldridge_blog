@@ -39,8 +39,12 @@ const BlogPost: React.FC<BlogPostProps> = props => {
   })
 
   if (!post) {
+    const posts = allPosts.map(p => ({
+      nodeId: p.node.id,
+      title: p.node.Title,
+    }))
     console.error(`No post found: postId: ${props.pageContext.postId}`)
-    console.error(`posts: ${JSON.stringify(allPosts, null, '  ')}`)
+    console.error(`posts: ${JSON.stringify(posts, null, '  ')}`)
     return <div>ERROR</div>
   }
 
