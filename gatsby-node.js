@@ -7,7 +7,7 @@ const {
 
 const activeEnv =
   process.env.GATSBY_ACTIVE_env || process.env.NODE_ENV || 'development'
-const previewMode = process.env.PUBLICATIONSTATE === 'preview'
+const previewMode = process.env.PUBLICATION_STATE === 'preview'
 
 const makeRequest = (graphql, request) =>
   new Promise((resolve, reject) => {
