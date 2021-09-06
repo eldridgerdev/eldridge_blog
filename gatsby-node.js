@@ -51,7 +51,7 @@ exports.createPages = ({ actions, graphql }) => {
   ).then(result => {
     // Create pages for each article
     result.data.allStrapiBlogPost.edges.forEach(({ node }) => {
-      const { Hide: hide, previewOnly: ppreviewOnly } = node
+      const { Hide: hide, ppreviewOnly: previewOnly } = node
 
       if (hide) {
         return
