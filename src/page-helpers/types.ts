@@ -10,7 +10,7 @@ export type MetaType = {
 export type TextPageType = {
   Content: string
   Page: PageType
-  metaGroup: MetaType
+  metaGroup?: MetaType
 }
 
 export type PageType = {

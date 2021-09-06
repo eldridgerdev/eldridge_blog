@@ -19,6 +19,7 @@ export const pageQuery = graphql`
         }
       }
       description
+      multiPost
       metaGroup {
         title
         description
@@ -34,6 +35,9 @@ export const pageQuery = graphql`
         Description
         image {
           childImageSharp {
+            fixed(width: 125, height: 125) {
+              ...GatsbyImageSharpFixed
+            }
             fluid(quality: 100) {
               ...GatsbyImageSharpFluid
             }

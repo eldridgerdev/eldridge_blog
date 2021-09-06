@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import tw from 'twin.macro'
+
+import { ListItemProps } from './types'
 import theme from '../../../utils/theme'
 
 export const Container = styled.ul`
@@ -35,6 +37,7 @@ export const LatestText = styled.li`
   ${tw`flex mx-auto mt-3 text-3xl sm:text-3xl md:text-4xl`}
 `
 
-export const ListItem = styled.li`
-  ${tw`w-full sm:w-full md:w-1/2`}
+export const ListItem = styled.li<ListItemProps>`
+  ${tw`w-full sm:w-full`}
+  ${props => !props.$full && tw`md:w-1/2`}
 `

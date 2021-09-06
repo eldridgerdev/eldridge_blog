@@ -12,7 +12,7 @@ export interface BlogListPageProps extends PageProps {
         }
       }
       heroText?: string
-      metaGroup: MetaType
+      metaGroup?: MetaType
       siteTitle: string
     }
   }

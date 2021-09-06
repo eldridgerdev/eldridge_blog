@@ -8,6 +8,8 @@ import BlogCreateComment from '../components/blog-post/comments/create-comment'
 import { BlogContent, StrapiComponent } from '../hooks/use-all-posts/types'
 import { useAllBlogPosts } from '../hooks/use-all-posts'
 import SEO from '../components/seo'
+import { LatestContainer } from '../components/pages/home/styled'
+import LatestBlog from '../components/cards/latest-blog-container'
 
 interface BlogPostProps {
   pageContext: {
@@ -25,6 +27,10 @@ const defaultContent = (text: string): BlogContent => [
 const BlogPost: React.FC<BlogPostProps> = props => {
   const allPosts = useAllBlogPosts()
   const post = allPosts.find(p => p.node.id === props.pageContext.postId)
+  const nextPost =
+    post && allPosts.find(p => p.node.postNumber === post.node.postNumber + 1)
+  const previousPost =
+    post && allPosts.find(p => p.node.postNumber === post.node.postNumber - 1)
 
   if (!post) {
     navigate('/404')
@@ -54,6 +60,13 @@ const BlogPost: React.FC<BlogPostProps> = props => {
       <TextSection title={title} content={blogContent} />
       <BlogComments comments={comments} />
       <BlogCreateComment post_id={strapiId} />
+      {/* TODO: Move component to a more central location */}
+      <LatestContainer $multipost>
+        <LatestBlog
+          nextPost={nextPost && nextPost.node}
+          previousPost={previousPost && previousPost.node}
+        />
+      </LatestContainer>
     </Layout>
   )
 }

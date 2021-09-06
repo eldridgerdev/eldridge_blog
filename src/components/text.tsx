@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import tw from 'twin.macro'
+import theme from '../utils/theme'
 
 const Text = styled.div`
   color: #000000;
@@ -7,6 +8,15 @@ const Text = styled.div`
   font-weight: 400;
 
   ${tw`leading-tight text-base md:text-xl w-full`}
+
+  & a {
+    color: ${theme.colors.main};
+    font-weight: bold;
+  }
+
+  & a:hover {
+    color: ${theme.colors.selectedHeader};
+  }
 
   & > h1 {
     // font-family: 'alegreya', serif;

@@ -21,28 +21,33 @@ const formatDate = (dateString: string) => {
   })
 }
 
+// @TODO: Using this for things other than Latest, consider renaming
 const LatestBlogContainer: React.FC<LatestBlogContainerProps> = ({
   featuredPost = null,
-  multiPost,
+  multiPost = false,
+  nextPost = null,
+  previousPost = null,
 }) => {
   const [{ node: latestPost }] = useAllBlogPosts()
 
   const post = featuredPost || latestPost
-  const image = post.image?.childImageSharp?.fluid
 
-  const Card = ({ cardPost }: CardProps) => (
-    <BlogCard
-      extraCSS={extraCSS}
-      extraCardCSS={extraCardCSS}
-      blogId={cardPost.Slug || cardPost.id}
-      title={cardPost.Title}
-      fluidImage={image}
-      description={cardPost.Description}
-      date={formatDate(cardPost.published_at)}
-      full
-      makeLong={false}
-    />
-  )
+  const Card = ({ cardPost }: CardProps) => {
+    const image = cardPost.image?.childImageSharp?.fluid
+    return (
+      <BlogCard
+        extraCSS={extraCSS}
+        extraCardCSS={extraCardCSS}
+        blogId={cardPost.Slug || cardPost.id}
+        title={cardPost.Title}
+        fluidImage={image}
+        description={cardPost.Description}
+        date={formatDate(cardPost.published_at)}
+        full
+        makeLong={false}
+      />
+    )
+  }
 
   const LatestPost = () => (
     <Container
@@ -73,13 +78,57 @@ const LatestBlogContainer: React.FC<LatestBlogContainerProps> = ({
     )
   }
 
+  const NextPost = () => {
+    if (!nextPost) {
+      return null
+    }
+
+    return (
+      <Container>
+        <LatestText>Next Post</LatestText>
+        <Card cardPost={nextPost} />
+      </Container>
+    )
+  }
+
+  const PreviousPost = () => {
+    if (!previousPost) {
+      return null
+    }
+
+    return (
+      <Container>
+        <LatestText>Previous Post</LatestText>
+        <Card cardPost={previousPost} />
+      </Container>
+    )
+  }
+  // @TODO: Clean up, this is messy
+  if (nextPost || previousPost) {
+    const isSingle = !(nextPost && previousPost)
+    return (
+      <Container>
+        {previousPost && (
+          <ListItem $full={isSingle}>
+            <PreviousPost />
+          </ListItem>
+        )}
+        {nextPost && (
+          <ListItem $full={isSingle}>
+            <NextPost />
+          </ListItem>
+        )}
+      </Container>
+    )
+  }
+
   if (multiPost) {
     return (
       <Container>
-        <ListItem>
+        <ListItem $full={false}>
           <LatestPost />
         </ListItem>
-        <ListItem>
+        <ListItem $full={false}>
           <FeaturedPost />
         </ListItem>
       </Container>

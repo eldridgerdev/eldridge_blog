@@ -6,7 +6,7 @@ export interface HomePageProps extends PageProps {
   data: {
     strapiIndexPage: {
       Page: PageType
-      metaGroup: MetaType
+      metaGroup?: MetaType
       description: string
       multiPost: boolean
     }
