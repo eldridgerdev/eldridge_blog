@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 
 // import { rhythm, scale } from "../utils/typography"
-import Header from '../header/header'
+import Header from '../header'
 import Hero from '../hero'
 import GlobalStyle from '../../global-style'
 import SEO from '../seo'

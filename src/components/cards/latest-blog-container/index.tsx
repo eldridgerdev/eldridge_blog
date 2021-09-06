@@ -30,8 +30,6 @@ const LatestBlogContainer: React.FC<LatestBlogContainerProps> = ({
 }) => {
   const [{ node: latestPost }] = useAllBlogPosts()
 
-  const post = featuredPost || latestPost
-
   const Card = ({ cardPost }: CardProps) => {
     const image = cardPost.image?.childImageSharp?.fluid
     return (

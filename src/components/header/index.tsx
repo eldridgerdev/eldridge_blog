@@ -1,45 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import tw from 'twin.macro'
 
-import theme from '../../utils/theme'
 import Logo from './logo'
 import BurgerButton from './burgerButton'
-
-//@TODO: Break out Nav Component?
-
-type HeaderProps = {
-  title?: string
-}
-
-const navHeaders = [
-  {
-    title: 'Home',
-    link: '/',
-  },
-  {
-    title: 'About',
-    link: '/about',
-  },
-  {
-    title: 'Blog',
-    link: '/blog-post-list',
-  },
-  {
-    title: 'Contact Us',
-    link: '/contact',
-  },
-]
-
-const Nav = styled.header`
-  background-color: ${theme.colors.light};
-
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  border-bottom: ${theme.colors.main};
-  border-bottom-width: thick;
-  border-style: solid;
-`
+import { EmptyDiv, Nav, NavButton } from './styled'
+import { HeaderProps } from './types'
+import { navHeaders } from './navigation'
 
 // @TODO: Screen size adjustments. Font size smaller? Remove Logo Text?
 const NavButtonContainer = styled(({ className, open, children }) => {
@@ -53,10 +19,6 @@ const NavButtonContainer = styled(({ className, open, children }) => {
       return `${prev} ${prefix}${classString}`
     }, '')
   }
-
-  const EmptyDiv = styled.div`
-    ${tw`flex sm:flex md:hidden lg:hidden xl:hidden`}
-  `
 
   return (
     <>
@@ -78,23 +40,6 @@ const NavButtonContainer = styled(({ className, open, children }) => {
   )
 })`
   align-items: flex-start;
-`
-
-const NavButton = styled.a`
-  color: ${theme.colors.secondary};
-  &:hover {
-    color: ${theme.colors.selectedHeader};
-  }
-  margin-right: 50px;
-  ${tw`
-        self-center
-        font-semibold block text-lg
-        mr-0 md:mr-10
-    `}
-`
-
-const TitleSpan = styled.span`
-  ${tw`font-semibold text-xl tracking-tight`};
 `
 
 const Header: React.FC<HeaderProps> = () => {
