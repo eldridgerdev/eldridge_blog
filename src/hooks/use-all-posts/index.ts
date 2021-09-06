@@ -2,8 +2,9 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import { EdgeType, QueryProps } from './types'
 
-const previewMode = process.env.PUBLICATION_STATE === 'preview'
 export const useAllBlogPosts = (): EdgeType[] => {
+  const previewMode = process.env.PUBLICATION_STATE === 'preview'
+
   const data: QueryProps = useStaticQuery(graphql`
     query GetAllBlogPosts {
       allStrapiBlogPost(sort: { fields: published_at, order: DESC }) {
