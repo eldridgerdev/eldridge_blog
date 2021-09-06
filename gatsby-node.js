@@ -51,18 +51,24 @@ exports.createPages = ({ actions, graphql }) => {
   ).then(result => {
     // Create pages for each article
     result.data.allStrapiBlogPost.edges.forEach(({ node }) => {
-      const hide = node.Hide
-      const ppreviewOnly = node.ppreviewOnly
-      if (!hide && !(previewMode && ppreviewOnly)) {
-        createPage({
-          path: `/${node.Slug || node.id}`,
-          component: path.resolve(`src/templates/blog-post-page.tsx`),
-          context: {
-            postId: node.id,
-            slug: node.Slug,
-          },
-        })
+      const { Hide: hide, previewOnly: ppreviewOnly } = node
+
+      if (hide) {
+        return
       }
+
+      if (!previewMode && previewOnly) {
+        return
+      }
+
+      createPage({
+        path: `/${node.Slug || node.id}`,
+        component: path.resolve(`src/templates/blog-post-page.tsx`),
+        context: {
+          postId: node.id,
+          slug: node.Slug,
+        },
+      })
     })
   })
 
