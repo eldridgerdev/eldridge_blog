@@ -14,6 +14,7 @@ import LatestBlog from '../components/cards/latest-blog-container'
 interface BlogPostProps {
   pageContext: {
     postId: string
+    slug: string
   }
 }
 
@@ -43,7 +44,9 @@ const BlogPost: React.FC<BlogPostProps> = props => {
       nodeId: p.node.id,
       title: p.node.Title,
     }))
-    console.error(`No post found: postId: ${props.pageContext.postId}`)
+    console.error(
+      `No post found: postId: ${props.pageContext.postId} slug: ${props.pageContext.slug}`
+    )
     console.error(`posts: ${JSON.stringify(posts, null, '  ')}`)
     return <div>ERROR</div>
   }
