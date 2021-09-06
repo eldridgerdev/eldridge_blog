@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { navigate } from 'gatsby'
 
 import Layout from '../components/layout'
@@ -32,8 +32,15 @@ const BlogPost: React.FC<BlogPostProps> = props => {
   const previousPost =
     post && allPosts.find(p => p.node.postNumber === post.node.postNumber - 1)
 
+  useEffect(() => {
+    if (!post) {
+      navigate('/404')
+    }
+  })
+
   if (!post) {
-    // navigate('/404')
+    console.error(`No post found: postId: ${props.pageContext.postId}`)
+    console.error(`posts: ${JSON.stringify(allPosts, null, '  ')}`)
     return <div>ERROR</div>
   }
 

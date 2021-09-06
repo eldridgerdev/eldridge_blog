@@ -72,10 +72,10 @@ export const useAllBlogPosts = (): EdgeType[] => {
   `)
 
   return data.allStrapiBlogPost.edges.filter((edge: EdgeType) => {
-    const hide = edge.node.Hide
+    const { Hide: hide, ppreviewOnly: preview } = edge.node
 
     if (process.env.PUBLICATION_STATE !== 'preview') {
-      return !edge.node.ppreviewOnly && !hide
+      return !preview && !hide
     }
 
     return !hide
