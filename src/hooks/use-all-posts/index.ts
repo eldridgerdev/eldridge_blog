@@ -73,12 +73,15 @@ export const useAllBlogPosts = (): EdgeType[] => {
 
   return data.allStrapiBlogPost.edges.filter((edge: EdgeType) => {
     const { Hide: hide, ppreviewOnly: previewOnly } = edge.node
+    const previewMode = process.env.PUBLICATION_STATE === 'preview'
 
     if (hide) {
       return false
     }
 
-    if (process.env.PUBLICATION_STATE !== 'preview' && previewOnly) {
+    if (!previewMode && previewOnly) {
+      console.error(`previewMode: ${previewMode} previewOnly: ${previewOnly}`)
+      console.error(`id: ${edge.node.id}, title: ${edge.node.Title}`)
       return false
     }
 
