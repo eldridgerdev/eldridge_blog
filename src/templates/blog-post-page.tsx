@@ -44,10 +44,6 @@ const BlogPost: React.FC<BlogPostProps> = props => {
       nodeId: p.node.id,
       title: p.node.Title,
     }))
-    console.error(
-      `No post found: postId: ${props.pageContext.postId} slug: ${props.pageContext.slug}`
-    )
-    console.error(`posts: ${JSON.stringify(posts, null, '  ')}`)
     return <div>ERROR</div>
   }
 

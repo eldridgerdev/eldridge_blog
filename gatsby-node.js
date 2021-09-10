@@ -60,8 +60,6 @@ exports.createPages = ({ actions, graphql }) => {
         return
       }
 
-      console.error(`PREVIEW_MODE: ${previewMode}`)
-
       createPage({
         path: `/${node.Slug || node.id}`,
         component: path.resolve(`src/templates/blog-post-page.tsx`),
