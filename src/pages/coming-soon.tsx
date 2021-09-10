@@ -14,7 +14,7 @@ export const pageQuery = graphql`
           HeroText
           HeroImage {
             childImageSharp {
-              fluid() {
+              fluid {
                 ...GatsbyImageSharpFluid
               }
             }
