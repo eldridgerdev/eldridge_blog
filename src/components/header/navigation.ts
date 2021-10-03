@@ -9,7 +9,7 @@ export const navHeaders = [
   },
   {
     title: 'Blog',
-    link: '/blog-post-list',
+    link: '/blog',
   },
   {
     title: 'Contact Us',

@@ -26,7 +26,7 @@ const Text = styled.div`
   }
 
   & > h2 {
-    ${tw`leading-loose text-3xl md:text-4xl`}
+    ${tw`leading-loose text-2xl md:text-3xl`}
   }
 
   & > h3 {

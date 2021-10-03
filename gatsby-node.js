@@ -33,6 +33,7 @@ exports.createPages = ({ actions, graphql }) => {
   const publicationState = activeEnv === 'staging' ? 'PREVIEW' : 'LIVE'
 
   // Query for articles nodes to use in creating pages.
+  // @TODO: Clean an organize different page types
   const getArticles = makeRequest(
     graphql,
     `{
@@ -43,6 +44,13 @@ exports.createPages = ({ actions, graphql }) => {
           Slug
           ppreviewOnly
           Hide
+        }
+      }
+    }
+    allStrapiCategory {
+      edges {
+        node {
+          text
         }
       }
     }
@@ -69,6 +77,34 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
+
+    if (result.data.allStrapiCategory.edges.length === 0) {
+      // @TODO: either this or category: all might not be necessary.
+      createPage({
+        path: `/blog`,
+        component: path.resolve(`src/templates/blog-post-list.tsx`),
+      })
+    } else {
+      // Create page for All categories
+      createPage({
+        path: `/blog`,
+        component: path.resolve(`src/templates/blog-post-list.tsx`),
+        context: {
+          category: 'All',
+        },
+      })
+
+      // Create pages for each blog category
+      result.data.allStrapiCategory.edges.forEach(({ node }) => {
+        createPage({
+          path: `/blog/${node.text}`,
+          component: path.resolve(`src/templates/blog-post-list.tsx`),
+          context: {
+            category: node.text,
+          },
+        })
+      })
+    }
   })
 
   return getArticles

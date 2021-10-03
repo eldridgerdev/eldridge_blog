@@ -8,6 +8,7 @@ export interface HomePageProps extends PageProps {
       Page: PageType
       metaGroup?: MetaType
       description: string
+      subDescription?: string
       multiPost: boolean
     }
     strapiFeaturedPost: any

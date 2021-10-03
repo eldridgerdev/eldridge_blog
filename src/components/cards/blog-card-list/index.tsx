@@ -6,6 +6,7 @@ import Categories from '../../categories/category-list'
 
 import BlogCard from '../blog-card'
 import { Container } from './styled'
+import { ListProps } from './types'
 
 const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -15,9 +16,9 @@ const formatDate = (dateString: string) => {
   })
 }
 
-const BlogList: React.FC = () => {
+const BlogList: React.FC<ListProps> = ({ initialCategory = 'All' }) => {
   const posts = useAllBlogPosts()
-  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory)
 
   const filteredPosts = (() => {
     if (selectedCategory === 'All') {

@@ -19,6 +19,7 @@ export const pageQuery = graphql`
         }
       }
       description
+      subDescription
       multiPost
       metaGroup {
         title

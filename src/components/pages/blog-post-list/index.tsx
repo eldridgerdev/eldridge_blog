@@ -6,7 +6,7 @@ import CardList from '../../cards/blog-card-list'
 import { BlogListPageProps } from './types'
 import { Inner } from './styled'
 
-const BlogPosts: React.FC<BlogListPageProps> = ({ data, location }) => {
+const BlogPosts: React.FC<BlogListPageProps> = ({ data, category }) => {
   const blogListData = data.strapiBlogListPage
   const meta = data.strapiBlogListPage.metaGroup
   const image = blogListData.heroImage?.childImageSharp.fluid
@@ -16,7 +16,7 @@ const BlogPosts: React.FC<BlogListPageProps> = ({ data, location }) => {
     <Layout heroOverride={image}>
       <SEO title={title} />
       <Inner>
-        <CardList />
+        <CardList initialCategory={category} />
       </Inner>
     </Layout>
   )

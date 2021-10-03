@@ -13,7 +13,6 @@ export const mobileHeight = 30
 export const HeroContainer = styled.div`
   ${tw`mt-2`}
 
-  height: 75%;
   max-height: 75%;
   @media screen and (max-width: 600px) {
     height: ${mobileHeight}vh;

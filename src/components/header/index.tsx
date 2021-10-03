@@ -52,7 +52,7 @@ const Header: React.FC<HeaderProps> = () => {
       <BurgerButton onClick={() => setNavbarOpen(!navbarOpen)} />
       <NavButtonContainer open={navbarOpen}>
         {navHeaders.map((header, key) => (
-          <NavButton href={header.link} key={key}>
+          <NavButton to={header.link} key={key}>
             {header.title}
           </NavButton>
         ))}

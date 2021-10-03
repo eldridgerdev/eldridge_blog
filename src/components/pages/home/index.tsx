@@ -7,8 +7,6 @@ import { LatestContainer, MorePosts } from './styled'
 import Layout from '../../layout'
 import SEO from '../../seo'
 import LatestBlog from '../../cards/latest-blog-container'
-import Text from '../../text'
-import { Container } from '../../blog-post/sections/text-section/styled'
 
 const MoreIcon = () => (
   // <IconContainer>
@@ -23,19 +21,19 @@ const BlogIndex: React.FC<HomePageProps> = ({ data }) => {
   const image = pageData.HeroImage?.childImageSharp.fluid
   const multiPost = data.strapiIndexPage.multiPost
 
+  const { description, subDescription } = data.strapiIndexPage
+
   return (
     <>
-      <Layout heroOverride={image} heroText={pageData.HeroText}>
+      <Layout
+        heroOverride={image}
+        heroText={pageData.HeroText}
+        description={description}
+        subDescription={subDescription}>
         <SEO
           title={meta?.title || pageData.SiteTitle}
           description={meta?.description}
         />
-        {/* @TODO: move container comp to more global location */}
-        <Container>
-          <Text>
-            <h1>{data.strapiIndexPage.description}</h1>
-          </Text>
-        </Container>
 
         <LatestContainer $multipost={multiPost}>
           <LatestBlog multiPost={multiPost} featuredPost={featuredPost} />

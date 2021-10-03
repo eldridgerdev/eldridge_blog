@@ -62,6 +62,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type StrapiIndexPage implements Node {
       metaGroup: Meta
       description: String
+      subDescription: String
       multiPost: Boolean
     }
 
