@@ -37,7 +37,9 @@ export const HeroText = styled.div`
 export const CustomImage = styled(Image)<CustomImageProps>`
   max-height: 100%;
   ${(props: CustomImageProps) => {
-    let propStyles = ''
+    let propStyles = `
+      position: initial
+    `
     if (props.height) {
       propStyles = `
           ${propStyles}
