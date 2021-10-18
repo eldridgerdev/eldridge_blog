@@ -1,7 +1,6 @@
 import React from 'react'
 
 import BlogCard from '../blog-card'
-import { BlogCardProps } from '../blog-card/types'
 import { useAllBlogPosts } from '../../../hooks/use-all-posts'
 import { CardProps, LatestBlogContainerProps } from './types'
 import {
@@ -11,7 +10,6 @@ import {
   LatestText,
   ListItem,
 } from './styled'
-import { BlogPost } from '../../../hooks/use-all-posts/types'
 
 const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -28,9 +26,9 @@ const LatestBlogContainer: React.FC<LatestBlogContainerProps> = ({
   nextPost = null,
   previousPost = null,
 }) => {
-  const [{ node: latestPost }] = useAllBlogPosts()
-
-  const post = featuredPost || latestPost
+  const latestPost = useAllBlogPosts().sort(
+    (a, b) => b.node.postNumber - a.node.postNumber
+  )[0].node
 
   const Card = ({ cardPost }: CardProps) => {
     const image = cardPost.image?.childImageSharp?.fluid

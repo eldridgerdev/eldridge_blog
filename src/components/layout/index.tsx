@@ -3,20 +3,24 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 
 // import { rhythm, scale } from "../utils/typography"
-import Header from '../header/header'
+import Header from '../header'
 import Hero from '../hero'
-import GlobalStyle from '../../global-style'
-import SEO from '../seo'
-import theme from '../../utils/theme'
-import Footer from '../footer/footer'
+import Text from '../text'
 
 import { LayoutProps } from './types'
-import { MainContainer, ContentContainer, LayoutContainer } from './styled'
+import {
+  MainContainer,
+  ContentContainer,
+  LayoutContainer,
+  DescriptionContainer,
+} from './styled'
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   heroOverride,
   heroText,
+  description,
+  subDescription,
 }) => {
   return (
     <>
@@ -25,6 +29,14 @@ const Layout: React.FC<LayoutProps> = ({
         <Header />
         <ContentContainer>
           <Hero image={heroOverride} text={heroText} />
+          {description && (
+            <DescriptionContainer>
+              <Text>
+                <h1>{description}</h1>
+                {subDescription && <h2>{subDescription}</h2>}
+              </Text>
+            </DescriptionContainer>
+          )}
           {/* <BlogNav /> */}
           {/* <HeroNotif /> */}
           <MainContainer>{children}</MainContainer>

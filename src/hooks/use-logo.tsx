@@ -17,7 +17,7 @@ export const useLogo = (): FixedObject => {
       strapiLogo {
         LogoImage {
           childImageSharp {
-            fixed(height: 77, quality: 100) {
+            fixed(height: 77) {
               ...GatsbyImageSharpFixed
             }
           }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { navigate } from 'gatsby'
 
 import Layout from '../components/layout'
@@ -14,6 +14,7 @@ import LatestBlog from '../components/cards/latest-blog-container'
 interface BlogPostProps {
   pageContext: {
     postId: string
+    slug: string
   }
 }
 
@@ -32,9 +33,18 @@ const BlogPost: React.FC<BlogPostProps> = props => {
   const previousPost =
     post && allPosts.find(p => p.node.postNumber === post.node.postNumber - 1)
 
+  useEffect(() => {
+    if (!post) {
+      navigate('/404')
+    }
+  })
+
   if (!post) {
-    navigate('/404')
-    return null
+    const posts = allPosts.map(p => ({
+      nodeId: p.node.id,
+      title: p.node.Title,
+    }))
+    return <div>ERROR</div>
   }
 
   const {

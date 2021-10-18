@@ -3,6 +3,9 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { EdgeType, QueryProps } from './types'
 
 export const useAllBlogPosts = (): EdgeType[] => {
+  const previewMode = process.env.GATSBY_PUBLICATION_STATE === 'preview'
+  const quality = process.env.GATSBY_IMAGE_QUALITY || 'q_auto'
+
   const data: QueryProps = useStaticQuery(graphql`
     query GetAllBlogPosts {
       allStrapiBlogPost(sort: { fields: published_at, order: DESC }) {
@@ -32,7 +35,7 @@ export const useAllBlogPosts = (): EdgeType[] => {
               ImageWidth
               Image {
                 childImageSharp {
-                  fluid(quality: 100) {
+                  fluid {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -53,14 +56,14 @@ export const useAllBlogPosts = (): EdgeType[] => {
             }
             image {
               childImageSharp {
-                fluid(quality: 100) {
+                fluid {
                   ...GatsbyImageSharpFluid
                 }
               }
             }
             HeroImage {
               childImageSharp {
-                fluid(quality: 100) {
+                fluid {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -72,12 +75,16 @@ export const useAllBlogPosts = (): EdgeType[] => {
   `)
 
   return data.allStrapiBlogPost.edges.filter((edge: EdgeType) => {
-    const hide = edge.node.Hide
+    const { Hide: hide, ppreviewOnly: previewOnly } = edge.node
 
-    if (process.env.PUBLICATION_STATE !== 'preview') {
-      return !edge.node.ppreviewOnly && !hide
+    if (hide) {
+      return false
     }
 
-    return !hide
+    if (!previewMode && previewOnly) {
+      return false
+    }
+
+    return true
   })
 }

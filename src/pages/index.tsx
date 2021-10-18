@@ -19,6 +19,7 @@ export const pageQuery = graphql`
         }
       }
       description
+      subDescription
       multiPost
       metaGroup {
         title
@@ -38,7 +39,7 @@ export const pageQuery = graphql`
             fixed(width: 125, height: 125) {
               ...GatsbyImageSharpFixed
             }
-            fluid(quality: 100) {
+            fluid {
               ...GatsbyImageSharpFluid
             }
           }

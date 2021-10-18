@@ -32,6 +32,33 @@ module.exports = {
         name: `assets`,
       },
     },
+
+    {
+      resolve: `@raae/gatsby-remark-oembed`,
+      options: {
+        // usePrefix defaults to false
+        // usePrefix: true is the same as ["oembed"]
+        usePrefix: ['oembed', 'video'],
+        providers: {
+          // Important to exclude providers
+          // that adds js to the page.
+          // If you do not need them.
+          exclude: ['Reddit'],
+        },
+      },
+    },
+
+    {
+      // Using gatsby-remark-embed-video before gatsby-remark-images & gatsby-remark-responsive-iframe plugins.
+      resolve: `gatsby-remark-embed-video`,
+      options: {
+        maxWidth: 799,
+        ratio: 0.77,
+        height: 399,
+        related: false,
+        noIframerder: true,
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -117,6 +144,8 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+    },
   ],
 }

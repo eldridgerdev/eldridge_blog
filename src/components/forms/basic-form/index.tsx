@@ -46,7 +46,6 @@ const FormComponent: React.FC<FormComponentProps> = ({
     : [null, { loading: false, error: false }]
 
   const [values, setValues] = useState(defaultState)
-  // const [serverResponse, setServerResponse] = React.useState(``)
 
   if (error) {
     console.error(error)
