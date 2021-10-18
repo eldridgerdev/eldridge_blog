@@ -36,28 +36,27 @@ export const HeroText = styled.div`
 
 export const CustomImage = styled(Image)<CustomImageProps>`
   max-height: 100%;
-  ${(props: CustomImageProps) => {
-    let propStyles = `
-      position: initial
-    `
-    if (props.height) {
-      propStyles = `
+  position: initial
+    ${(props: CustomImageProps) => {
+      let propStyles = ``
+      if (props.height) {
+        propStyles = `
           ${propStyles}
           height: ${props.height};
         `
-    }
+      }
 
-    if (props.mobileHeight) {
-      propStyles = `
+      if (props.mobileHeight) {
+        propStyles = `
           ${propStyles}
           @media screen and (max-width: 600px) {
             height: ${props.mobileHeight};
           }
         `
-    }
+      }
 
-    return propStyles
-  }}
+      return propStyles
+    }};
 `
 
 // Has to be an object instead of normal styled components for gatsby-image's "imgStyle" prop
