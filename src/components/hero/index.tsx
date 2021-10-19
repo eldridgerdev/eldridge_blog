@@ -58,6 +58,9 @@ const Hero: React.FC<HeroProps> = ({ image, text }) => {
           fluid={image}
           height={height}
           mobileHeight={mobileHeight}
+          style={{
+            position: 'initial',
+          }}
           imgStyle={CustomImageStyle}
         />
       )}
