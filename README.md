@@ -6,4 +6,4 @@
   View 
 </h2>
 
-[View Production Site here](https://www.eldridgeexpedition.com)
+View Production Site here: https://www.eldridgeexpedition.com
