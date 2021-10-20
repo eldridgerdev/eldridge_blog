@@ -28,6 +28,6 @@ import { ComingSoonPageProps } from '../components/pages/coming-soon/types'
 //   }
 // `
 
-const ComingSoonPage = (props: ComingSoonPageProps) => <ComingSoon {...props} />
+const ComingSoonPage = (props: ComingSoonPageProps) => <div></div> //<ComingSoon {...props} />
 
 export default ComingSoonPage
