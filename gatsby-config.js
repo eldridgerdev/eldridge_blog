@@ -114,5 +114,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
     },
+    'gatsby-plugin-gatsby-cloud',
   ],
 }
