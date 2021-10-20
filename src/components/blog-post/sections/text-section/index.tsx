@@ -8,12 +8,15 @@ import {
   BlogContent,
   StrapiComponent,
   ImageWidthOptions,
+  BlogContentImageItem,
+  BlogContentAffiliateItem,
+  BlogContentTextItem,
 } from '../../../../hooks/use-all-posts/types'
 
 import { SectionLine, Container, BlogTextSection } from './styled'
 import { SectionProps } from './types'
 
-// @TODO: text-section doesn't seem to be the best descriptor. Rethink this.
+// @TODO: This isn't just text-section any more. Rename or move some stuff to their own components.
 
 const defaultContent = (text: string, i?: number) => (
   <BlogTextSection key={i} dangerouslySetInnerHTML={{ __html: text }} />
@@ -29,41 +32,46 @@ const renderText = (content: BlogContent) => {
           }
           switch (item.strapi_component) {
             case StrapiComponent.IMAGE: {
-              if (!item.Image || !item.Image.childImageSharp) {
+              const image = item as BlogContentImageItem
+              if (!image.Image || !image.Image.childImageSharp) {
                 return
               }
 
-              const width = item.ImageWidth || ImageWidthOptions.SMALL
+              const width =
+                (item as BlogContentImageItem).ImageWidth ||
+                ImageWidthOptions.SMALL
 
               return (
                 <Text key={i}>
                   <BlogImage
-                    image={item.Image.childImageSharp.fluid}
-                    caption={item.ImageCaption}
+                    image={image.Image}
+                    caption={image.ImageCaption}
                     width={width}
                   />
                 </Text>
               )
             }
             case StrapiComponent.AFFILIATE: {
-              if (!item.AffiliateLinkText) {
+              const affiliateItem = item as BlogContentAffiliateItem
+              if (!affiliateItem.AffiliateLinkText) {
                 return
               }
 
               return (
                 <AffiliateLinks
                   key={i}
-                  linkText={item.AffiliateLinkText}
-                  hide={item.Hide}
-                  blockText={item.BlockText}
+                  linkText={affiliateItem.AffiliateLinkText}
+                  hide={affiliateItem.Hide}
+                  blockText={affiliateItem.BlockText}
                 />
               )
             }
             default: {
-              if (!item.Text) {
+              const textItem = item as BlogContentTextItem
+              if (!textItem.Text) {
                 return
               }
-              return defaultContent(item.Text, i)
+              return defaultContent(textItem.Text, i)
             }
           }
         })}

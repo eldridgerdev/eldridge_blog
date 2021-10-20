@@ -62,7 +62,7 @@ const BlogPost: React.FC<BlogPostProps> = props => {
     content && content.length > 0 ? content : defaultContent(text)
 
   return (
-    <Layout heroOverride={hero?.childImageSharp.fluid} heroText={null}>
+    <Layout heroOverride={hero} heroText={null}>
       <SEO
         title={meta.title || title}
         description={meta.description || description}

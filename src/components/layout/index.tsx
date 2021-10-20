@@ -1,8 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-import tw from 'twin.macro'
 
-// import { rhythm, scale } from "../utils/typography"
 import Header from '../header'
 import Hero from '../hero'
 import Text from '../text'

@@ -1,7 +1,7 @@
 import React from 'react'
-import Image, { GatsbyImageProps } from 'gatsby-image'
 import tw from 'twin.macro'
 
+import CustomImage from '../../image'
 import Line from '../../line/line'
 import { DisplayImageProps, BlogCardProps } from './types'
 import {
@@ -15,35 +15,19 @@ import {
 } from './styled'
 
 //@TODO: This file is a mess. featured and blog-list look different and it isn't handled well
-const DisplayImage = tw(
-  ({ fixedImage, fluidImage, className = '' }: DisplayImageProps) => {
-    const Img = (props: GatsbyImageProps) => (
-      <Image
-        className={className}
-        imgStyle={{ objectPosition: 'left center' }}
-        {...props}
-      />
-    )
-
-    if (fluidImage) {
-      return <Img fluid={fluidImage} />
-    }
-
-    if (fixedImage) {
-      return <Img fixed={fixedImage} />
-    }
-
-    return null
+const DisplayImage = tw(({ image, className = '' }: DisplayImageProps) => {
+  if (!image) {
+    return <span></span>
   }
-)`
+  return <CustomImage Image={image} />
+})`
     flex-auto min-w-0
 `
 
 const BlogCard = ({
   title,
   description,
-  fixedImage,
-  fluidImage,
+  image,
   blogId,
   date,
   height,
@@ -61,7 +45,7 @@ const BlogCard = ({
     <ListItem $full={full} $duration={500} $state="entering">
       <CardLink $extraCSS={extraCSS} $height={height} to={`/${blogId}`}>
         {/* <div className='rounded overflow-hidden shadow-lg'> */}
-        <DisplayImage fixedImage={fixedImage} fluidImage={fluidImage} />
+        <DisplayImage image={image} />
         <TextContainer $extraCSS={extraCardCSS}>
           <Title>{title}</Title>
           <Date>{date}</Date>

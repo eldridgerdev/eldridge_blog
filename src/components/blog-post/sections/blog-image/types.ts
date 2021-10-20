@@ -1,8 +1,8 @@
-import { FixedObject, FluidObject } from 'gatsby-image'
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks'
 import { ImageWidthOptions } from '../../../../hooks/use-all-posts/types'
 
 export interface ImageProps {
-  image: FluidObject | FixedObject
+  image: FileNode
   caption?: string
   width?: ImageWidthOptions
 }

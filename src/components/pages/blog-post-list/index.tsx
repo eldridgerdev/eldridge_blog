@@ -9,7 +9,7 @@ import { Inner } from './styled'
 const BlogPosts: React.FC<BlogListPageProps> = ({ data, category }) => {
   const blogListData = data.strapiBlogListPage
   const meta = data.strapiBlogListPage.metaGroup
-  const image = blogListData.heroImage?.childImageSharp.fluid
+  const image = blogListData.heroImage
   const { siteTitle: title, heroText: text } = blogListData
 
   return (

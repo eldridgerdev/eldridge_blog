@@ -53,7 +53,6 @@ const BlogList: React.FC<ListProps> = ({ initialCategory = 'All' }) => {
               Description: desc,
               image,
             } = post.node
-            const imageSharp = image && image.childImageSharp
             return (
               <CSSTransition key={i} timeout={800} classNames="card">
                 <BlogCard
@@ -61,7 +60,7 @@ const BlogList: React.FC<ListProps> = ({ initialCategory = 'All' }) => {
                   date={formatDate(published_at)}
                   title={title}
                   description={desc}
-                  fluidImage={imageSharp && imageSharp.fluid}
+                  image={image}
                   key={i}
                   postNumber={postNumber}
                   full={false}

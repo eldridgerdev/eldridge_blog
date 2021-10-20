@@ -15,7 +15,7 @@ const ContactUs = ({ data, location }: ContactPageProps) => {
   const { SiteTitle: title, HeroText: text, HeroImage: image } = pageData
 
   return (
-    <Layout heroText={text} heroOverride={image?.childImageSharp?.fluid}>
+    <Layout heroText={text} heroOverride={image}>
       <SEO title={meta?.title || title} description={meta?.description} />
       <TextSection text={content}></TextSection>
       <ContactForm />

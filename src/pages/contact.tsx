@@ -12,26 +12,14 @@ export const pageQuery = graphql`
         Page {
           SiteTitle
           HeroText
-          HeroImage {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+          ...GetHeroImage
         }
       }
       metaGroup {
         title
         description
       }
-      image {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
+      ...GetImageLower
     }
   }
 `

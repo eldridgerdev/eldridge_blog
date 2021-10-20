@@ -1,4 +1,4 @@
-import { FixedObject, FluidObject } from 'gatsby-image'
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks'
 
 //@TODO: find a better location for this
 
@@ -16,10 +16,5 @@ export type TextPageType = {
 export type PageType = {
   SiteTitle: string
   HeroText: string
-  HeroImage?: {
-    childImageSharp: {
-      fluid: FluidObject
-      fixed: FixedObject
-    }
-  }
+  HeroImage?: FileNode
 }

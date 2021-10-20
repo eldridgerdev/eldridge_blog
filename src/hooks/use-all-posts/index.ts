@@ -4,7 +4,6 @@ import { EdgeType, QueryProps } from './types'
 
 export const useAllBlogPosts = (): EdgeType[] => {
   const previewMode = process.env.GATSBY_PUBLICATION_STATE === 'preview'
-  const quality = process.env.GATSBY_IMAGE_QUALITY || 'q_auto'
 
   const data: QueryProps = useStaticQuery(graphql`
     query GetAllBlogPosts {
@@ -33,13 +32,7 @@ export const useAllBlogPosts = (): EdgeType[] => {
               Hide
               ImageCaption
               ImageWidth
-              Image {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
+              ...GetImageUpper
             }
             categories {
               text
@@ -54,20 +47,8 @@ export const useAllBlogPosts = (): EdgeType[] => {
                 text
               }
             }
-            image {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            HeroImage {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
+            ...GetImageLower
+            ...GetHeroImage
           }
         }
       }

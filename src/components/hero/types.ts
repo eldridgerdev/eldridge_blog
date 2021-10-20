@@ -1,21 +1,15 @@
-import { FixedObject, FluidObject, GatsbyImageFluidProps } from 'gatsby-image'
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks'
 
 export interface HeroImageStyledProps {
   url: string
 }
 
-export type HeroTextProps = {
-  text: string
-  img?: FluidObject | FixedObject
-  title?: string
-}
-
 export type HeroProps = {
-  image?: FluidObject | FixedObject
+  image?: FileNode
   text?: string | null
 }
 
-export interface CustomImageProps extends GatsbyImageFluidProps {
+export interface CustomImageProps {
   height?: number | null
   mobileHeight?: number | null
 }

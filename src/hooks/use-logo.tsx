@@ -1,30 +1,24 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { FixedObject } from 'gatsby-image'
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks'
 
 interface QueryProps {
   strapiLogo: {
-    LogoImage: {
-      childImageSharp: {
-        fixed: FixedObject
-      }
-    }
+    LogoImage: FileNode
   }
 }
 
-export const useLogo = (): FixedObject => {
+export const useLogo = (): FileNode => {
   const data: QueryProps = useStaticQuery(graphql`
     query GetLogo {
       strapiLogo {
         LogoImage {
           childImageSharp {
-            fixed(height: 77) {
-              ...GatsbyImageSharpFixed
-            }
+            gatsbyImageData(height: 77)
           }
         }
       }
     }
   `)
 
-  return data.strapiLogo.LogoImage?.childImageSharp.fixed
+  return data.strapiLogo.LogoImage
 }

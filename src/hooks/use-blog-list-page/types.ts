@@ -1,16 +1,11 @@
-import { FixedObject, FluidObject } from 'gatsby-image'
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks'
 import { MetaType } from '../../page-helpers/types'
 
 export interface BlogListPageData {
   strapiBlogListPage: {
     siteTitle: string
     heroText?: string
-    heroImage?: {
-      childImageSharp: {
-        fluid: FluidObject
-        fixed?: FixedObject
-      }
-    }
+    heroImage?: FileNode
     metaGroup?: MetaType
   }
 }
