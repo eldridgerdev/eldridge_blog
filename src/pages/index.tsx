@@ -10,13 +10,7 @@ export const pageQuery = graphql`
       Page {
         SiteTitle
         HeroText
-        HeroImage {
-          childImageSharp {
-            fluid(quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        ...GetHeroImage
       }
       description
       subDescription
@@ -34,16 +28,7 @@ export const pageQuery = graphql`
         published_at
         Title
         Description
-        image {
-          childImageSharp {
-            fixed(width: 125, height: 125) {
-              ...GatsbyImageSharpFixed
-            }
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        ...GetImageLower
       }
     }
   }

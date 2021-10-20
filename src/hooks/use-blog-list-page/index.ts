@@ -7,13 +7,7 @@ export const useBlogListPage = (): BlogListPageData => {
       strapiBlogListPage {
         siteTitle
         heroText
-        heroImage {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        ...GetHeroImageLower
         metaGroup {
           title
           description

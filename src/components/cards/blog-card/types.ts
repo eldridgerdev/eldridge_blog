@@ -1,8 +1,7 @@
-import { FixedObject, FluidObject } from 'gatsby-image'
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks'
 
 export type BlogCardProps = {
-  fluidImage?: FluidObject
-  fixedImage?: FixedObject
+  image?: FileNode
   title: string
   description: string
   date: string
@@ -16,8 +15,7 @@ export type BlogCardProps = {
 }
 
 export type DisplayImageProps = {
-  fixedImage?: FixedObject
-  fluidImage?: FluidObject
+  image?: FileNode
   className?: string
 }
 

@@ -13,22 +13,23 @@ import { HomeButton, HomeText } from './styled'
 const ComingSoon = ({ data, location }: ComingSoonPageProps) => {
   const pageData = data.strapiComingSoon.Page
 
-  return (
-    <Layout
-      heroText={pageData.Page.HeroText}
-      heroOverride={pageData.Page.HeroImage?.childImageSharp.fluid}>
-      <SEO title={pageData.Page.SiteTitle} />
-      <h1>Coming Soon</h1>
-      <p>
-        {pageData.Content || 'This page does not exist yet, check back later'}
-      </p>
-      <HomeButton to="/">
-        <HomeText>
-          <FontAwesomeIcon icon={faHome} style={{ color: theme.colors.main }} />
-        </HomeText>
-      </HomeButton>
-    </Layout>
-  )
+  return <div></div>
+  // return (
+  //   <Layout
+  //     heroText={pageData.Page.HeroText}
+  //     heroOverride={pageData.Page.HeroImage?.childImageSharp.fluid}>
+  //     <SEO title={pageData.Page.SiteTitle} />
+  //     <h1>Coming Soon</h1>
+  //     <p>
+  //       {pageData.Content || 'This page does not exist yet, check back later'}
+  //     </p>
+  //     <HomeButton to="/">
+  //       <HomeText>
+  //         <FontAwesomeIcon icon={faHome} style={{ color: theme.colors.main }} />
+  //       </HomeText>
+  //     </HomeButton>
+  //   </Layout>
+  // )
 }
 
 export default ComingSoon

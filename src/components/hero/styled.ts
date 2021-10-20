@@ -1,19 +1,19 @@
 import tw from 'twin.macro'
 import styled from 'styled-components'
-import Image from 'gatsby-image'
 
+import Image from '../image'
 import theme from '../../utils/theme'
 import { CustomImageProps } from './types'
 
 export const height = 65
 export const mobileHeight = 30
 
-// @TODO: TW shortcuts
+// @TODO: Tailwind shortcuts
 
 export const HeroContainer = styled.div`
   ${tw`mt-2`}
 
-  max-height: 75%;
+  max-height: 60vh;
   @media screen and (max-width: 600px) {
     height: ${mobileHeight}vh;
   }

@@ -18,7 +18,7 @@ const BlogIndex: React.FC<HomePageProps> = ({ data }) => {
   const featuredPost = data.strapiFeaturedPost.blog_post
   const pageData = data.strapiIndexPage.Page
   const meta = data.strapiIndexPage.metaGroup
-  const image = pageData.HeroImage?.childImageSharp.fluid
+  const image = pageData.HeroImage
   const multiPost = data.strapiIndexPage.multiPost
 
   const { description, subDescription } = data.strapiIndexPage

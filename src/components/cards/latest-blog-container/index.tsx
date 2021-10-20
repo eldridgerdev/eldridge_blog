@@ -31,14 +31,14 @@ const LatestBlogContainer: React.FC<LatestBlogContainerProps> = ({
   )[0].node
 
   const Card = ({ cardPost }: CardProps) => {
-    const image = cardPost.image?.childImageSharp?.fluid
+    const image = cardPost.image
     return (
       <BlogCard
         extraCSS={extraCSS}
         extraCardCSS={extraCardCSS}
         blogId={cardPost.Slug || cardPost.id}
         title={cardPost.Title}
-        fluidImage={image}
+        image={image}
         description={cardPost.Description}
         date={formatDate(cardPost.published_at)}
         full

@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: [
     ...CMSSettings,
+    'gatsby-plugin-image',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -75,7 +76,6 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          // `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
@@ -94,15 +94,6 @@ module.exports = {
         display: 'swap',
       },
     },
-    // {
-    //   resolve: 'gatsby-transformer-cloudinary',
-    //   options: {
-    //     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    //     apiKey: process.env.CLOUDINARY_API_KEY,
-    //     apiSecret: process.env.CLOUDINARY_API_SECRET,
-    //     uploadFolder: 'gatsby-cloudinary',
-    //   }
-    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -117,33 +108,9 @@ module.exports = {
       resolve: `gatsby-plugin-styled-components`,
       options: {},
     },
-    // {
-    //   resolve: 'gatsby-background-image-es5',
-    //   options: {
-    //     // add your own characters to escape, replacing the default ':/'
-    //     specialChars: '/:',
-    //   },
-    // },
-    // `gatsby-plugin-feed`,
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `Gatsby Starter Blog`,
-    //     short_name: `GatsbyJS`,
-    //     start_url: `/`,
-    //     background_color: `#ffffff`,
-    //     theme_color: `#663399`,
-    //     display: `minimal-ui`,
-    //     icon: `content/assets/gatsby-icon.png`,
-    //   },
-    // },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     'gatsby-plugin-fontawesome-css',
-    // `gatsby-plugin-background-image`
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-sitemap`,
     },

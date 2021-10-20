@@ -14,7 +14,7 @@ const NotFoundPage = ({ data, location }: NotFoundPageProps) => {
   const { SiteTitle: title, HeroText: text, HeroImage: image } = pageData
 
   return (
-    <Layout heroText={text} heroOverride={image?.childImageSharp.fluid}>
+    <Layout heroText={text} heroOverride={image}>
       <SEO title={meta?.title || title} description={meta?.description} />
       <h1>Not Found</h1>
       <p>

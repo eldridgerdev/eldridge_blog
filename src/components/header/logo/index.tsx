@@ -1,15 +1,15 @@
 import React from 'react'
-import Image from 'gatsby-image'
 
 import { useLogo } from '../../../hooks/use-logo'
 import { LogoArea, LogoContainer } from './styled'
+import CustomImage from '../../image'
 
 const Logo: React.FC = () => {
   const logo = useLogo()
   return (
     <LogoArea>
       <LogoContainer to={'/'}>
-        <Image fixed={logo} />
+        <CustomImage Image={logo} />
       </LogoContainer>
     </LogoArea>
   )

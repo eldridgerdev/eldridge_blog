@@ -37,6 +37,7 @@ interface FakeBgImageStyledProps extends GatsbyImageFluidProps {
 
 const FakeBgImage = styled(Image)<FakeBgImageStyledProps>`
   max-height: 100%;
+  position: initial;
   // @media screen and (min-width: 500px) {
   //   // width: 500px;
   //   margin: auto;

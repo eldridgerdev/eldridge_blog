@@ -1,11 +1,4 @@
-import { FixedObject, FluidObject } from 'gatsby-image'
-
-export type imageType = {
-  childImageSharp: {
-    fluid?: FluidObject
-    fixed?: FixedObject
-  }
-}
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks'
 
 export type ReplyType = {
   username: string
@@ -40,7 +33,7 @@ export type BlogContentAffiliateItem = {
 }
 
 export type BlogContentImageItem = {
-  Image?: imageType
+  Image?: FileNode
   ImageCaption?: string
   ImageWidth?: ImageWidthOptions
 }
@@ -72,11 +65,12 @@ export type BlogPost = {
   Description: string
   postNumber: number
   comments: [CommentType]
-  image?: imageType
-  HeroImage?: imageType
+  image?: FileNode
+  HeroImage?: FileNode
   text: string
   BlogContent?: BlogContent
   ppreviewOnly?: boolean
+  Ads?: boolean
   categories: [
     {
       text: string
