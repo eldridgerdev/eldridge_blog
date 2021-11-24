@@ -27,7 +27,7 @@ export const ImageQueryLower = graphql`
   fragment GetImageLower on IHasImageLower {
     image {
       childImageSharp {
-        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
       }
     }
   }
@@ -37,7 +37,7 @@ export const ImageQuery = graphql`
   fragment GetImageUpper on IHasImageUpper {
     Image {
       childImageSharp {
-        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
       }
     }
   }
@@ -50,7 +50,7 @@ export const sitePageFragment = graphql`
       HeroText
       HeroImage {
         childImageSharp {
-          gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+          gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
         }
       }
     }
