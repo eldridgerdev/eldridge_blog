@@ -37,7 +37,7 @@ const BlogIndex: React.FC<HomePageProps> = ({ data }) => {
 
         <LatestContainer $multipost={multiPost}>
           <LatestBlog multiPost={multiPost} featuredPost={featuredPost} />
-          <MorePosts to="/blog-post-list">
+          <MorePosts to="/blog">
             More Posts
             <MoreIcon />
           </MorePosts>
